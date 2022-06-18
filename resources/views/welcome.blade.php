@@ -4,6 +4,11 @@
 
     </head>
     <body class="antialiased">
-      <div><h1>h1</h1></div>
+        <div>
+            <div id="app">
+                <example-component></example-component>
+            </div>
+            <script src="{{ mix('/js/app.js') }}"></script>
+        </div>
     </body>
 </html>
