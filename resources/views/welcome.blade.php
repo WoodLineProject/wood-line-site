@@ -4,6 +4,6 @@
 
     </head>
     <body class="antialiased">
-      <div><h1>h</h1></div>
+      <div><h1>h1</h1></div>
     </body>
 </html>
