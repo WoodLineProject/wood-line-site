@@ -1,16 +1,20 @@
-import Vue from "vue";
+import { createApp } from 'vue'
+import { i18n } from './plugins/i18n';
+import { store } from './store/index'
+import App from "./components/App.vue";
+import 'vuetify/styles' // Global CSS has to be imported
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/lib/components'
+import * as directives from 'vuetify/lib/directives'
 
-require('./bootstrap');
-import vuetify from './plugins/vuetify' // path to vuetify export
-import i18n from './plugins/i18n';
-import App from "./components/App";
-window.Vue = require('vue').default;
 
-Vue.component('App', require('./components/App.vue').default);
-
-const app = new Vue({
-    render: h => h(App),
-    el: '#app',
-    vuetify,
-    i18n
+export const vuetify = createVuetify({
+    components,
+    directives,
 });
+
+createApp(App)
+    .use(i18n)
+    .use(vuetify)
+    .use(store)
+    .mount('#app');

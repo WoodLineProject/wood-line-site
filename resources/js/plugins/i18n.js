@@ -1,14 +1,16 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n';
-import ukr from '../locales/ukr/main_locale'
+import ukr from '../locales/ukr/main_locale.js'
 import rus from '../locales/rus/main_locale.js'
+import {createI18n} from "vue-i18n";
 
-Vue.use(VueI18n);
 
-export default new VueI18n({
-    locale: 'ukr',
-    fallbackLocale: 'rus',
+export const i18n = createI18n({
+    legacy: false,
+    globalInjection: true,
+    locale: 'rus',
+    fallbackLocale:  'ukr',
     messages: {
         ukr, rus
     }
 })
+
+

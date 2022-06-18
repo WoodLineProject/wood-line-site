@@ -1,6 +1,6 @@
 const main_locale = 'ukr';
 
-export default {
+const locale = {
     projectName: "Wood line",
     current_lang: "Язык: {locale}",
     app: require(`../../locales/${main_locale}/app.json`),
@@ -9,3 +9,4 @@ export default {
         //test: require(`@/locales/${main_locale}/pages/test/test.json`),
     }
 }
+module.exports = locale;

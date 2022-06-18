@@ -1,27 +1,30 @@
 <script>
+import {i18n} from "../plugins/i18n";
+import {mapGetters, mapActions} from "vuex";
 
-import i18n from "../plugins/i18n";
-import ukr from '../locales/ukr/main_locale'
-import rus from '../locales/rus/main_locale.js'
 
 export default {
+    name: "App",
     mounted() {
-        console.log(i18n.locale)
+
+    },
+    computed:{
+        ...mapGetters('locale', ['currentLocale']),
     },
     methods: {
+        ...mapActions('locale',['changeCurrentLocale']),
         changeLocale() {
-            i18n.locale = i18n.locale === 'ukr'
-                ? 'rus'
-                : 'ukr';
-
+            //i18n.global.locale =  i18n.global.locale === 'rus' ? 'ukr' : 'rus'
+           this.changeCurrentLocale(this.currentLocale === 'rus' ? 'ukr' : 'rus' );
         },
     }
 }
 </script>
 <template>
-    <div>
-        <v-btn @click="changeLocale">change locale</v-btn>
-        <h1>{{ $t('app.test')}}</h1>
-    </div>
-
+    <v-app>
+        <div>
+            <v-btn @click="changeLocale">change locale</v-btn>
+            <h1>{{ $t('app.test')}}</h1>
+        </div>
+    </v-app>
 </template>
