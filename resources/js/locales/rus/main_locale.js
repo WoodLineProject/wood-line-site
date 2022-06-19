@@ -1,7 +1,7 @@
 const main_locale = 'rus';
 
 const locale = {
-    projectName: "Wood line",
+    projectName: "Мебель",
     current_lang: "Язык: {locale}",
     app: require(`../../locales/${main_locale}/app.json`),
     //menu: require(`@/locales/${main_locale}/menu.json`),

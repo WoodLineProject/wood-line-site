@@ -1,24 +1,16 @@
 <script>
-import {mapGetters, mapActions} from "vuex";
-
+import Header from "./pages/core/Header";
+import Footer from "./pages/core/Footer";
 export default {
     name: "App",
-    computed:{
-        ...mapGetters('locale', ['currentLocale']),
-    },
-    methods: {
-        ...mapActions('locale',['changeCurrentLocale']),
-        changeLocale() {
-           this.changeCurrentLocale(this.currentLocale === 'rus' ? 'ukr' : 'rus' );
-        },
+    components:{
+        Header,Footer,
     }
 }
 </script>
 <template>
     <v-app>
-        <div>
-            <v-btn @click="changeLocale">change locale</v-btn>
-            <h1>{{ $t('app.test')}}</h1>
-        </div>
+        <Header/>
+        <Footer/>
     </v-app>
 </template>
