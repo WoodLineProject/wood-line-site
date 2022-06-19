@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
-include "test-routes.php";
+Route::get('/bar', function () {
+    return view('welcome');
+});

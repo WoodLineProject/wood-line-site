@@ -1,16 +1,15 @@
 <script>
-import Header from "./pages/core/Header";
-import Footer from "./pages/core/Footer";
-export default {
-    name: "App",
-    components:{
-        Header,Footer,
+    export default {
+        mounted() {
+            console.log('Component mounted.')
+        }
     }
-}
 </script>
 <template>
-    <v-app>
-        <Header/>
-        <Footer/>
-    </v-app>
+    <div>
+        <v-btn>test</v-btn>
+        <router-link :to="{ name: 'home' }">Home </router-link>
+        <router-link :to="{ name: 'bar' }">About </router-link>
+        <router-view></router-view>
+    </div>
 </template>

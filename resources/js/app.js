@@ -1,30 +1,17 @@
-import { createApp } from 'vue'
-import { i18n } from './plugins/i18n';
-import { store } from './store/index'
-import App from "./components/App.vue";
-import 'vuetify/styles' // Global CSS has to be imported
-import { createVuetify } from 'vuetify'
-import { aliases, mdi } from 'vuetify/iconsets/mdi'
-import * as components from 'vuetify/lib/components'
-import * as directives from 'vuetify/lib/directives'
-import router from "../routers/router";
 
+import Vue from 'vue'
+import vuetify from './plugins/vuetify' // path to vuetify export
+import App from './components/App'
+import {store} from "./store/store";
+import {router} from "./routes/router";
+import VueRouter from 'vue-router'
 
-export const vuetify = createVuetify({
-    components,
-    directives,
-    icons: {
-        defaultSet: 'mdi',
-        aliases,
-        sets: {
-            mdi,
-        }
-    },
-});
+Vue.use(VueRouter)
 
-createApp(App)
-    .use(i18n)
-    .use(vuetify)
-    .use(store)
-    .use(router)
-    .mount('#app');
+new Vue({
+    el: '#app',
+    render: h => h(App),
+    store,
+    router,
+    vuetify,
+})
