@@ -48,6 +48,7 @@
     },
     "dependencies": {
         "apexcharts": "^3.30.0",
+        "i18n": "^0.15.0",
         "vue-apexcharts": "^1.6.2",
         "vue2-datepicker": "^3.9.2"
     }

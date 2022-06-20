@@ -1,5 +1,5 @@
 <template>
-<h1>Bar</h1>
+<h1>{{ $t('app.test') }}</h1>
 </template>
 
 <script>
