@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@mdi/font": "^5.9.55",
+        "@mdi/font": "^6.7.96",
         "axios": "^0.21",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0.3",

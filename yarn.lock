@@ -971,14 +971,14 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@mdi/font@^5.9.55":
-  version "5.9.55"
-  resolved "https://registry.npmjs.org/@mdi/font/-/font-5.9.55.tgz"
-  integrity sha512-jswRF6q3eq8NWpWiqct6q+6Fg/I7nUhrxYJfiEM8JJpap0wVJLQdbKtyS65GdlK7S7Ytnx3TTi/bmw+tBhkGmg==
+"@mdi/font@^6.7.96":
+  version "6.7.96"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-6.7.96.tgz#1686425ba291b90ea02a87292a565c6d0c854afe"
+  integrity sha512-M68vlRhtmA/SpDjo2dV3SUZus20jrU9Zp2ggslfzh0cbFpygPukcVpBIA3pErwsukhYt4RfbgXpFi74SjixOrQ==
 
 "@messageformat/core@^3.0.0":
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@messageformat/core/-/core-3.0.1.tgz#191e12cf9643704d1fd32e592a3fbdc194dd588e"
+  resolved "https://registry.npmjs.org/@messageformat/core/-/core-3.0.1.tgz"
   integrity sha512-yxj2+0e46hcZqJfNf0ZYbC2q6WlcGoh4g11mCyRtTueR0AD8F9z4JMYAS1aOiFG8Vl1LZg/h5hZHKmWTAyZq8g==
   dependencies:
     "@messageformat/date-skeleton" "^1.0.0"
@@ -990,24 +990,24 @@
 
 "@messageformat/date-skeleton@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@messageformat/date-skeleton/-/date-skeleton-1.0.0.tgz#a3bc22f0943b7f2871980cf2d7aa870195f19b06"
+  resolved "https://registry.npmjs.org/@messageformat/date-skeleton/-/date-skeleton-1.0.0.tgz"
   integrity sha512-vvj5Sd3VyXUHGbYpiFsPsSQ8pkdUM9vrR/NUbyP6ga3UqJH4p9eCwzfwaCAZatZMYMTyiKG/8QbUyGKHeTZ5kw==
 
 "@messageformat/number-skeleton@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@messageformat/number-skeleton/-/number-skeleton-1.0.0.tgz#1864b8b65abbee57a02bc8ea67061aa132947af7"
+  resolved "https://registry.npmjs.org/@messageformat/number-skeleton/-/number-skeleton-1.0.0.tgz"
   integrity sha512-Pe1HX/VG0q7tclM/ri85I4FKYd7Uc3gluSZbRaK1+jcXdT9Biw2hLAKyMsiz2tM6zLiK1xX+K0NMDO4RIstQig==
 
 "@messageformat/parser@^5.0.0":
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@messageformat/parser/-/parser-5.0.0.tgz#5737e69d7d4a469998b527710f1891174fc1b262"
+  resolved "https://registry.npmjs.org/@messageformat/parser/-/parser-5.0.0.tgz"
   integrity sha512-WiDKhi8F0zQaFU8cXgqq69eYFarCnTVxKcvhAONufKf0oUxbqLMW6JX6rV4Hqh+BEQWGyKKKHY4g1XA6bCLylA==
   dependencies:
     moo "^0.5.1"
 
 "@messageformat/runtime@^3.0.1":
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@messageformat/runtime/-/runtime-3.0.1.tgz#94d1f6c43265c28ef7aed98ecfcc0968c6c849ac"
+  resolved "https://registry.npmjs.org/@messageformat/runtime/-/runtime-3.0.1.tgz"
   integrity sha512-6RU5ol2lDtO8bD9Yxe6CZkl0DArdv0qkuoZC+ZwowU+cdRlVE1157wjCmlA5Rsf1Xc/brACnsZa5PZpEDfTFFg==
   dependencies:
     make-plural "^7.0.0"
@@ -1987,7 +1987,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
 
 boolean@^3.1.4:
   version "3.2.0"
-  resolved "https://registry.yarnpkg.com/boolean/-/boolean-3.2.0.tgz#9e5294af4e98314494cbb17979fa54ca159f116b"
+  resolved "https://registry.npmjs.org/boolean/-/boolean-3.2.0.tgz"
   integrity sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==
 
 bootstrap@^4.0.0:
@@ -3614,7 +3614,7 @@ fast-json-stable-stringify@^2.0.0:
 
 fast-printf@^1.6.9:
   version "1.6.9"
-  resolved "https://registry.yarnpkg.com/fast-printf/-/fast-printf-1.6.9.tgz#212f56570d2dc8ccdd057ee93d50dd414d07d676"
+  resolved "https://registry.npmjs.org/fast-printf/-/fast-printf-1.6.9.tgz"
   integrity sha512-FChq8hbz65WMj4rstcQsFB0O7Cy++nmbNfLYnD9cYv2cRn8EG6k/MGn9kO/tjO66t09DLDugj3yL+V2o6Qftrg==
   dependencies:
     boolean "^3.1.4"
@@ -4366,7 +4366,7 @@ human-signals@^2.1.0:
 
 i18n@^0.15.0:
   version "0.15.0"
-  resolved "https://registry.yarnpkg.com/i18n/-/i18n-0.15.0.tgz#dca7a498a4371874db01f6610381a412897306eb"
+  resolved "https://registry.npmjs.org/i18n/-/i18n-0.15.0.tgz"
   integrity sha512-TUOkuFbl8Y/q7zF0tHdtpk1/TtxH0T+Drp2NFrHhmN1Qs0Sob9/0uVLS2BPVkEXNh2jZrimOiFJk+tkaOumzog==
   dependencies:
     "@messageformat/core" "^3.0.0"
@@ -5345,7 +5345,7 @@ make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
 
 make-plural@^7.0.0:
   version "7.1.0"
-  resolved "https://registry.yarnpkg.com/make-plural/-/make-plural-7.1.0.tgz#8a0381ff8c9be4f074e0acdc42ec97639c2344f9"
+  resolved "https://registry.npmjs.org/make-plural/-/make-plural-7.1.0.tgz"
   integrity sha512-PKkwVlAxYVo98NrbclaQIT4F5Oy+X58PZM5r2IwUSCe3syya6PXkIRCn2XCdz7p58Scgpp50PBeHmepXVDG3hg==
 
 map-cache@^0.2.2:
@@ -5367,7 +5367,7 @@ map-visit@^1.0.0:
 
 math-interval-parser@^2.0.1:
   version "2.0.1"
-  resolved "https://registry.yarnpkg.com/math-interval-parser/-/math-interval-parser-2.0.1.tgz#e22cd6d15a0a7f4c03aec560db76513da615bed4"
+  resolved "https://registry.npmjs.org/math-interval-parser/-/math-interval-parser-2.0.1.tgz"
   integrity sha512-VmlAmb0UJwlvMyx8iPhXUDnVW1F9IrGEd9CIOmv+XL8AErCUUuozoDMrgImvnYt2A+53qVX/tPW6YJurMKYsvA==
 
 md5.js@^1.3.4:
@@ -5568,7 +5568,7 @@ moment@^2.29.1:
 
 moo@^0.5.1:
   version "0.5.1"
-  resolved "https://registry.yarnpkg.com/moo/-/moo-0.5.1.tgz#7aae7f384b9b09f620b6abf6f74ebbcd1b65dbc4"
+  resolved "https://registry.npmjs.org/moo/-/moo-0.5.1.tgz"
   integrity sha512-I1mnb5xn4fO80BH9BLcF0yLypy2UKl+Cb01Fu0hJRkJjlCRtxZMWkTdAtDd5ZqCOxtCkhmRwyI57vWT+1iZ67w==
 
 ms@2.0.0:
@@ -5596,7 +5596,7 @@ multicast-dns@^7.2.5:
 
 mustache@^4.2.0:
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/mustache/-/mustache-4.2.0.tgz#e5892324d60a12ec9c2a73359edca52972bf6f64"
+  resolved "https://registry.npmjs.org/mustache/-/mustache-4.2.0.tgz"
   integrity sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==
 
 nanoid@^3.3.4:
@@ -6935,7 +6935,7 @@ safe-buffer@5.2.1, safe-buffer@^5.2.0, safe-buffer@~5.2.0:
 
 safe-identifier@^0.4.1:
   version "0.4.2"
-  resolved "https://registry.yarnpkg.com/safe-identifier/-/safe-identifier-0.4.2.tgz#cf6bfca31c2897c588092d1750d30ef501d59fcb"
+  resolved "https://registry.npmjs.org/safe-identifier/-/safe-identifier-0.4.2.tgz"
   integrity sha512-6pNbSMW6OhAi9j+N8V+U715yBQsaWJ7eyEUaOrawX+isg5ZxhUlV1NipNtgaKHmFGiABwt+ZF04Ii+3Xjkg+8w==
 
 safe-regex@^1.1.0:
