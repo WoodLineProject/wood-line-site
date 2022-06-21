@@ -1,18 +1,17 @@
 import VueRouter from 'vue-router'
-import Foo from "../components/Foo";
-import Bar from "../components/Bar";
-const routes = [
+import HomePage from "../components/Pages/HomePage/HomePage";
+import Test from './test/test-route-list'
+const BaseRoute = [
     {
         path: '/',
-        component: Foo,
+        component: HomePage,
         name: 'home'
     },
-    {
-        path: '/bar',
-        component: Bar,
-        name: 'bar'
-    }
+
 ]
+const routes = BaseRoute.concat(
+    Test,
+)
 
 
 export const router = new VueRouter({

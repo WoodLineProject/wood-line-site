@@ -2,21 +2,19 @@
 
 import Header from "./Core/Header";
 import NavDrawer from "./Core/NavDrawer";
+import ViewBody from "./Core/ViewBody";
+import Footer from "./Core/Footer";
+
 
     export default {
-        components:{
-          Header, NavDrawer
-        },
+        components:{Header, NavDrawer,ViewBody,Footer,},
     }
 </script>
 <template>
     <v-app>
         <Header/>
         <nav-drawer/>
-        <v-main>
-            <v-container fluid>
-                <router-view></router-view>
-            </v-container>
-        </v-main>
+        <view-body/>
+        <Footer/>
     </v-app>
 </template>

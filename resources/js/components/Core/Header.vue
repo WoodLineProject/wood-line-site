@@ -1,6 +1,6 @@
 <script>
 import i18n from "../../plugins/i18n";
-import {mapActions, mapGetters} from "vuex";
+import {mapActions} from "vuex";
 export default {
     name: "Header",
     methods: {
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <v-card class="overflow-hidden">
+    <v-card id="core-header" class="overflow-hidden">
         <v-app-bar
             absolute
             color="#6A76AB"
@@ -59,3 +59,8 @@ export default {
         </v-sheet>
     </v-card>
 </template>
+<style>
+#core-header {
+    z-index: 0;
+}
+</style>
