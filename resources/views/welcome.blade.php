@@ -5,6 +5,12 @@
     </head>
     <body class="antialiased">
     <div id="app"></div>
+    <script>
+        // rename myToken as you like
+        window.myToken =  <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
     <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>

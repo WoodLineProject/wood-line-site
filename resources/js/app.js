@@ -5,7 +5,10 @@ import {store} from "./store/store"
 import {router} from "./routes/router"
 import VueRouter from 'vue-router'
 import i18n from './plugins/i18n'
+import VueAxios from 'vue-axios'
+import axios from './modules/axios_module'
 
+Vue.use(VueAxios,axios);
 Vue.use(VueRouter)
 
 new Vue({

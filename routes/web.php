@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,4 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('welcome');
 });
+Route::post('/test2',  [TestController::class, 'test']);
