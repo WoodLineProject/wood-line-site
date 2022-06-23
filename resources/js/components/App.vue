@@ -1,15 +1,20 @@
 <script>
+
+import Header from "./Core/Header";
+import NavDrawer from "./Core/NavDrawer";
+import ViewBody from "./Core/ViewBody";
+import Footer from "./Core/Footer";
+
+
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+        components:{Header, NavDrawer,ViewBody,Footer,},
     }
 </script>
 <template>
-    <div>
-        <v-btn>test</v-btn>
-        <router-link :to="{ name: 'home' }">Home </router-link>
-        <router-link :to="{ name: 'bar' }">About </router-link>
-        <router-view></router-view>
-    </div>
+    <v-app>
+        <Header/>
+        <nav-drawer/>
+        <view-body/>
+        <Footer/>
+    </v-app>
 </template>
