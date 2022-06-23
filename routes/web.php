@@ -21,3 +21,7 @@ Route::get('/test', function () {
     return view('welcome');
 });
 Route::post('/test2',  [TestController::class, 'test']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

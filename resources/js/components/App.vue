@@ -1,20 +1,23 @@
+<template>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Example Component</div>
+
+                    <div class="card-body">
+                        I'm an example component.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script>
-
-import Header from "./Core/Header";
-import NavDrawer from "./Core/NavDrawer";
-import ViewBody from "./Core/ViewBody";
-import Footer from "./Core/Footer";
-
-
     export default {
-        components:{Header, NavDrawer,ViewBody,Footer,},
+        mounted() {
+            console.log('Component mounted.')
+        }
     }
 </script>
-<template>
-    <v-app>
-        <Header/>
-        <nav-drawer/>
-        <view-body/>
-        <Footer/>
-    </v-app>
-</template>
