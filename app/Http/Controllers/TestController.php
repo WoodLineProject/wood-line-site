@@ -18,8 +18,7 @@ class TestController extends BaseController
        //$res = $this->table_name->take(5)->get()->toArray();
         $query = $this->table_name->select([
             'column_1',
-        ])
-            ->whereIn('column_1',[5,8]);
+        ]) ;
         /*if(true){
             $query->where('column_1', 7);
         }*/
