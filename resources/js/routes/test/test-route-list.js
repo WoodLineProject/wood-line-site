@@ -1,9 +1,9 @@
-import Test from "../../components/Pages/Test/Test";
+import Dashboard from "../../Pages/Welcome";
 
 export default [
     {
         path: '/test',
-        component: Test,
+        component: Dashboard,
         name: 'test'
     }
 ]
