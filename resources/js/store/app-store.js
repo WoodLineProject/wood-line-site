@@ -21,7 +21,7 @@ const actions = {
         commit('setIsShowDrawer', !state.isShowDrawer);
     },
     testAxios: async ({commit},payload) => {
-        return await axios.post('/register', payload)
+        return await axios.post('/singIn', payload)
             .then(({data}) => {
                 //console.log(data)
             })

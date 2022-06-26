@@ -2589,7 +2589,7 @@ var actions = {
             case 0:
               commit = _ref2.commit;
               _context.next = 3;
-              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', payload).then(function (_ref3) {//console.log(data)
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/singIn', payload).then(function (_ref3) {//console.log(data)
 
                 var data = _ref3.data;
               })["catch"](function (errorResponse) {});

@@ -23,3 +23,4 @@ Route::get('/test', function () {
 });
 //Route::post('/test2',  [TestController::class, 'test'])->middleware('auth');
 Route::post('/register',  [LoginRegController::class, 'register']);
+Route::post('/singIn',  [LoginRegController::class, 'singIn']);
