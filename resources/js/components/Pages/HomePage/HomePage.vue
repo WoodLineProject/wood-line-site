@@ -7,7 +7,10 @@ export default {
         ...mapActions('appStore',['testAxios']),
         click(){
             this.testAxios({
-                test: 1
+                name: 'test1',
+                email: 'test1@test.test',
+                password: 'test1',
+                number: '+380977094293',
             })
         }
     }

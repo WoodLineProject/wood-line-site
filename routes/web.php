@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginRegController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('welcome');
 });
-Route::post('/test2',  [TestController::class, 'test']);
+//Route::post('/test2',  [TestController::class, 'test'])->middleware('auth');
+Route::post('/register',  [LoginRegController::class, 'register']);
