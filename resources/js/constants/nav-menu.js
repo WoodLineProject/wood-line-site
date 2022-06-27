@@ -26,5 +26,21 @@ export const NAV_MENU = [
                 text: 'test',
             },
         ]
+    },
+    {
+        icon: 'mdi-folder',
+        text: 'singIn',
+        items:[
+            {
+                to: '/login',
+                icon: 'mdi-home-circle-outline',
+                text: 'login',
+            },
+            {
+                to: '/registry',
+                icon: 'mdi-account-question',
+                text: 'reg',
+            },
+        ]
     }
 ]

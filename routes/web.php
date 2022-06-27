@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test', function () {
-    return view('welcome');
-});
+
+
 Route::post('/test2',  [TestController::class, 'test']);
+Route::get('/{any?}', function() {
+    return view('welcome');
+});
+Auth::routes();
+
+

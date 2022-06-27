@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import HomePage from "../components/Pages/HomePage/HomePage";
 import Test from './test/test-route-list'
+import Auth from './auth/auth-route-list'
 const BaseRoute = [
     {
         path: '/',
@@ -11,6 +12,7 @@ const BaseRoute = [
 ]
 const routes = BaseRoute.concat(
     Test,
+    Auth
 )
 
 
