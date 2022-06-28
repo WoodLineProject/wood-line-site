@@ -11,19 +11,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Registr",
   data: function data() {
     return {
+      show: false,
+      show1: false,
       form: {
         name: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        password_confirmation: '',
         phone: ''
       }
     };
-  }
+  },
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['registerAsync'])), {}, {
+    register: function register() {
+      var _this = this;
+
+      this.registerAsync(this.form).then(function () {
+        _this.$router.push({
+          name: 'home'
+        });
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -148,7 +169,11 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("v-text-field", {
-                    attrs: { clearable: "", label: _vm.$t("app.email") },
+                    attrs: {
+                      clearable: "",
+                      type: "email",
+                      label: _vm.$t("app.email"),
+                    },
                     model: {
                       value: _vm.form.email,
                       callback: function ($$v) {
@@ -159,7 +184,17 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("v-text-field", {
-                    attrs: { clearable: "", label: _vm.$t("app.password") },
+                    attrs: {
+                      "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
+                      type: _vm.show ? "text" : "password",
+                      counter: "",
+                      label: _vm.$t("app.password"),
+                    },
+                    on: {
+                      "click:append": function ($event) {
+                        _vm.show = !_vm.show
+                      },
+                    },
                     model: {
                       value: _vm.form.password,
                       callback: function ($$v) {
@@ -171,15 +206,22 @@ var render = function () {
                   _vm._v(" "),
                   _c("v-text-field", {
                     attrs: {
-                      clearable: "",
+                      "append-icon": _vm.show1 ? "mdi-eye" : "mdi-eye-off",
+                      type: _vm.show1 ? "text" : "password",
+                      counter: "",
                       label: _vm.$t("app.confirmPassword"),
                     },
-                    model: {
-                      value: _vm.form.confirmPassword,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.form, "confirmPassword", $$v)
+                    on: {
+                      "click:append": function ($event) {
+                        _vm.show1 = !_vm.show1
                       },
-                      expression: "form.confirmPassword",
+                    },
+                    model: {
+                      value: _vm.form.password_confirmation,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.form, "password_confirmation", $$v)
+                      },
+                      expression: "form.password_confirmation",
                     },
                   }),
                   _vm._v(" "),
@@ -204,7 +246,10 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "v-btn",
-                    { attrs: { color: "blue darken-1", text: "" } },
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.register },
+                    },
                     [_c("v-icon", [_vm._v("mdi-check-outline")])],
                     1
                   ),

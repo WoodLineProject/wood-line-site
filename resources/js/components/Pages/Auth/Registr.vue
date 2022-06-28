@@ -1,17 +1,29 @@
 <script>
+import {mapActions} from "vuex";
+
 export default {
     name: "Registr",
     data(){
         return {
+            show: false,
+            show1: false,
             form: {
                 name: '',
                 email: '',
                 password: '',
-                confirmPassword: '',
+                password_confirmation: '',
                 phone: '',
             }
         }
     },
+    methods:{
+        ...mapActions('authStore',['registerAsync']),
+        register(){
+          this.registerAsync(this.form).then(() => {
+              this.$router.push({name: 'home'});
+          })
+        },
+    }
 }
 </script>
 
@@ -29,16 +41,23 @@ export default {
                         v-model="form.name"/>
                     <v-text-field
                         clearable
+                        type="email"
                         :label="$t(`app.email`)"
                         v-model="form.email"/>
                     <v-text-field
-                        clearable
+                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="show ? 'text' : 'password'"
+                        counter
+                        @click:append="show = !show"
                         :label="$t(`app.password`)"
                         v-model="form.password"/>
                     <v-text-field
-                        clearable
+                        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="show1 ? 'text' : 'password'"
+                        counter
+                        @click:append="show1 = !show1"
                         :label="$t(`app.confirmPassword`)"
-                        v-model="form.confirmPassword"/>
+                        v-model="form.password_confirmation"/>
                     <v-text-field
                         clearable
                         :label="$t(`app.phone`)"
@@ -46,7 +65,7 @@ export default {
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text>
+                    <v-btn color="blue darken-1" text @click="register">
                         <v-icon>mdi-check-outline</v-icon>
                     </v-btn>
                 </v-card-actions>

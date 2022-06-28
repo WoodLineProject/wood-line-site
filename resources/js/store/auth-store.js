@@ -18,14 +18,31 @@ const mutations = {
 };
 
 const actions = {
+    getCsrfTokenAsync: async () => {
+        return await axios.get('sanctum/csrf-cookie');
+    },
     loginAsync: async ({commit}, payload) => {
         return await axios.post('/login', payload)
             .then(({data}) => {
-                console.log(data)
+
             })
             .catch(errorResponse => {
 
             });
+    },
+    registerAsync: async ({commit}, payload) => {
+        return await axios.post('/register', payload)
+            .then(({data}) => {
+
+            })
+            .catch(errorResponse => {
+
+            });
+    },
+    logoutAsync: async () => {
+        return await axios.post('/logout').then(() =>{
+            this.$router.push({name: 'home'});
+        });
     },
 };
 

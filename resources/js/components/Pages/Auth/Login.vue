@@ -15,7 +15,9 @@ export default {
     methods:{
         ...mapActions('authStore',['loginAsync']),
         login(){
-            this.loginAsync(this.form)
+            this.loginAsync(this.form).then(() => {
+                this.$router.push({name: 'home'});
+            })
         }
     }
 }

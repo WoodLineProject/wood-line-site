@@ -41,6 +41,11 @@ export const NAV_MENU = [
                 icon: 'mdi-account-question',
                 text: 'reg',
             },
+            {
+                to: '/',
+                icon: 'mdi-account-question',
+                text: 'logout',
+            },
         ]
     }
 ]

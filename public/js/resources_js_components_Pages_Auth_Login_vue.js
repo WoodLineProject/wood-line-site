@@ -32,7 +32,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync'])), {}, {
     login: function login() {
-      this.loginAsync(this.form);
+      var _this = this;
+
+      this.loginAsync(this.form).then(function () {
+        _this.$router.push({
+          name: 'home'
+        });
+      });
     }
   })
 });

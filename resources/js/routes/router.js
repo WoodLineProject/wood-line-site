@@ -8,7 +8,6 @@ const BaseRoute = [
         component: HomePage,
         name: 'home'
     },
-
 ]
 const routes = BaseRoute.concat(
     Test,
