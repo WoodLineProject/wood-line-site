@@ -32,12 +32,12 @@ export const NAV_MENU = [
         text: 'singIn',
         items:[
             {
-                to: '/login',
+                to: '/singIn',
                 icon: 'mdi-home-circle-outline',
                 text: 'login',
             },
             {
-                to: '/registry',
+                to: '/reg',
                 icon: 'mdi-account-question',
                 text: 'reg',
             },

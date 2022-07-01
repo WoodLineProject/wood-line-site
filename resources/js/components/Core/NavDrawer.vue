@@ -12,9 +12,8 @@ export default {
         ...mapActions('authStore',['logoutAsync']),
         ...mapMutations('appStore',['setIsShowDrawer']),
         logout(){
-            this.logoutAsync().then(() => {
-                this.$router.push({name: 'home'});
-            })
+            this.logoutAsync();
+
         }
     },
     watch: {

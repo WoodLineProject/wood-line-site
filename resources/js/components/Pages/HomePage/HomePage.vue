@@ -7,17 +7,24 @@ export default {
         this.getCsrfTokenAsync();
     },
     methods:{
-        ...mapActions('appStore',['testAxios']),
+        ...mapActions('appStore',['testAxios','testAxios3']),
         ...mapActions('authStore',['getCsrfTokenAsync']),
         click(){
             this.testAxios({
                 test: 1
             })
+        },
+        click2(){
+            this.testAxios3();
         }
     }
 }
 </script>
 
 <template>
-<v-btn @click="click()">click</v-btn>
+    <div>
+        <v-btn @click="click()">click</v-btn>
+        <v-btn @click="click2()">AuthClick</v-btn>
+    </div>
+
 </template>

@@ -7,7 +7,10 @@ import VueRouter from 'vue-router'
 import i18n from './plugins/i18n'
 import VueAxios from 'vue-axios'
 import axios from './modules/axios_module'
+import VueAlertify from 'vue-alertify';
+import {useProp} from './plugins/alertify'
 
+Vue.use(VueAlertify,useProp);
 Vue.use(VueAxios,axios);
 Vue.use(VueRouter)
 

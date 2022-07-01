@@ -29,6 +29,15 @@ const actions = {
 
             });
     },
+    testAxios3: async ({commit},payload) => {
+        return await axios.post('/test3', payload)
+            .then(({data}) => {
+                //console.log(data)
+            })
+            .catch(errorResponse => {
+
+            });
+    },
 };
 
 export default {

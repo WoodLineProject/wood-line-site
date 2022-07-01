@@ -21,19 +21,26 @@ const actions = {
     getCsrfTokenAsync: async () => {
         return await axios.get('sanctum/csrf-cookie');
     },
+
     loginAsync: async ({commit}, payload) => {
         return await axios.post('/login', payload)
             .then(({data}) => {
-
+                axios.post('api/user').then((data) => {
+                    localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
+                })
+                this.$alertify.success('success')
+                this.$router.push({path: '/'});
             })
-            .catch(errorResponse => {
-
+            .catch(err => {
             });
     },
     registerAsync: async ({commit}, payload) => {
         return await axios.post('/register', payload)
             .then(({data}) => {
-
+                axios.post('api/user').then((data) => {
+                    localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
+                })
+                this.$router.push({path: '/'});
             })
             .catch(errorResponse => {
 
@@ -41,7 +48,8 @@ const actions = {
     },
     logoutAsync: async () => {
         return await axios.post('/logout').then(() =>{
-            this.$router.push({name: 'home'});
+            localStorage.removeItem('x_xsrf_token');
+            //this.$router.push({path: '/'});
         });
     },
 };

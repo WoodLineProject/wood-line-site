@@ -13,9 +13,17 @@ const routes = BaseRoute.concat(
     Test,
     Auth
 )
-
-
 export const router = new VueRouter({
     mode: 'history',
     routes
+})
+
+router.beforeEach((to,from,next) =>{
+    const token = localStorage.getItem('x_xsrf_token');
+    if (to.name === 'login' || to.name === 'registry'){
+        return token
+            ? next({name: 'home'})
+            : next();
+    }
+    next();
 })
