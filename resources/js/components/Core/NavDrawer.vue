@@ -1,13 +1,13 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import {Menu} from "../../constants/nav-menu";
+
 import {CheckUserAndRolesMixin} from "../../mixins/check-user-and-role-mixin";
 import {ROLE_ADMIN, ROLE_OWNER, ROLE_USER} from "../../constants/roles";
+import {Menu} from "../../constants/nav-menu";
 export default {
     name: "NavDrawer",
-    mixins: [CheckUserAndRolesMixin],
+    mixins: [CheckUserAndRolesMixin,Menu],
     data: () => ({
-        Menu,
         group: null,
     }),
     methods:{
@@ -28,9 +28,10 @@ export default {
     mounted() {
     },
     computed:{
-      ...mapGetters('appStore',['isShowDrawer']),
+        ...mapGetters('appStore',['isShowDrawer']),
+        ...mapGetters('authStore',['currentUser']),
         showUser(){
-          return this.checkUserAndRoles([ROLE_USER, ROLE_ADMIN, ROLE_OWNER])
+            return this.checkUserAndRoles()
         },
         drawer: {
             get() {
@@ -40,8 +41,8 @@ export default {
                 this.setIsShowDrawer(val)
             }
         },
-        NAV_MENU () {
-          return this.Menu.methods.getMenu()
+        NAV_MENU(){
+          return this.getMenu()
         }
     },
 }
@@ -53,6 +54,8 @@ export default {
         absolute
         bottom
         temporary
+        src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+        width="30%"
     >
         <v-list
             nav
@@ -62,6 +65,15 @@ export default {
                 v-model="group"
                 active-class="deep-purple--text text--accent-4"
             >
+                <v-list-item link v-show="showUser">
+                    <v-list-item-content>
+                        <v-list-item-title class="text-h6">
+                            {{currentUser.name}}
+                        </v-list-item-title>
+                        <v-list-item-subtitle>{{currentUser.email}}</v-list-item-subtitle>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-divider></v-divider>
                 <template v-for="(item, key) in NAV_MENU">
                     <v-list-item
                         v-if="item.text !== 'logout'"

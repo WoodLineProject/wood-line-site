@@ -5832,9 +5832,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _constants_nav_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants/nav-menu */ "./resources/js/constants/nav-menu.js");
-/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
-/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/roles */ "./resources/js/constants/roles.js");
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/roles */ "./resources/js/constants/roles.js");
+/* harmony import */ var _constants_nav_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/nav-menu */ "./resources/js/constants/nav-menu.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5847,10 +5847,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NavDrawer",
-  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__.CheckUserAndRolesMixin],
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin, _constants_nav_menu__WEBPACK_IMPORTED_MODULE_2__.Menu],
   data: function data() {
     return {
-      Menu: _constants_nav_menu__WEBPACK_IMPORTED_MODULE_0__.Menu,
       group: null
     };
   },
@@ -5869,9 +5868,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {},
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('appStore', ['isShowDrawer'])), {}, {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('appStore', ['isShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('authStore', ['currentUser'])), {}, {
     showUser: function showUser() {
-      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_USER, _constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_ADMIN, _constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_OWNER]);
+      return this.checkUserAndRoles();
     },
     drawer: {
       get: function get() {
@@ -5882,7 +5881,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     NAV_MENU: function NAV_MENU() {
-      return this.Menu.methods.getMenu();
+      return this.getMenu();
     }
   })
 });
@@ -6056,54 +6055,44 @@ new vue__WEBPACK_IMPORTED_MODULE_11__["default"]({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "Menu": () => (/* binding */ Menu)
 /* harmony export */ });
 /* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
 
-
-function getMenu() {
-  return [{
-    to: '/singIn',
-    icon: 'mdi-home-circle-outline',
-    text: 'login',
-    show: !_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin.methods.checkUserAndRoles()
-  }
-  /*{
-      to: '/reg',
-      icon: 'mdi-account-question',
-      text: 'reg',
-      show: !this.checkUserAndRoles()
-  },
-  {
-      to: '/',
-      icon: 'mdi-account-question',
-      text: 'logout',
-      show: this.checkUserAndRoles()
-  },
-  {
-      to: '/',
-      icon: 'mdi-home-circle-outline',
-      text: 'home',
-      show: true
-  },
-  {
-      to: '/test',
-      icon: 'mdi-account-question',
-      text: 'test',
-      show: true
-  }*/
-  ];
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMenu());
-/*export default {
-    data: () => ({
-    }),
-    mixins: [CheckUserAndRolesMixin],
-    methods: {
-
+var Menu = {
+  name: "Menu",
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
+  methods: {
+    getMenu: function getMenu() {
+      return [{
+        to: '/singIn',
+        icon: 'mdi-home-circle-outline',
+        text: 'login',
+        show: !this.checkUserAndRoles()
+      }, {
+        to: '/reg',
+        icon: 'mdi-account-question',
+        text: 'reg',
+        show: !this.checkUserAndRoles()
+      }, {
+        to: '/',
+        icon: 'mdi-account-question',
+        text: 'logout',
+        show: this.checkUserAndRoles()
+      }, {
+        to: '/',
+        icon: 'mdi-home-circle-outline',
+        text: 'home',
+        show: true
+      }, {
+        to: '/test',
+        icon: 'mdi-account-question',
+        text: 'test',
+        show: true
+      }];
     }
-}*/
+  }
+};
 
 /***/ }),
 
@@ -7064,7 +7053,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#core-header {\n    z-index: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#core-header {\r\n    z-index: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10940,7 +10929,13 @@ var render = function () {
   return _c(
     "v-navigation-drawer",
     {
-      attrs: { absolute: "", bottom: "", temporary: "" },
+      attrs: {
+        absolute: "",
+        bottom: "",
+        temporary: "",
+        src: "https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg",
+        width: "30%",
+      },
       model: {
         value: _vm.drawer,
         callback: function ($$v) {
@@ -10967,6 +10962,43 @@ var render = function () {
               },
             },
             [
+              _c(
+                "v-list-item",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showUser,
+                      expression: "showUser",
+                    },
+                  ],
+                  attrs: { link: "" },
+                },
+                [
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", { staticClass: "text-h6" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.currentUser.name) +
+                            "\n                    "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("v-list-item-subtitle", [
+                        _vm._v(_vm._s(_vm.currentUser.email)),
+                      ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
               _vm._l(_vm.NAV_MENU, function (item, key) {
                 return [
                   item.text !== "logout"
@@ -74275,7 +74307,7 @@ module.exports = JSON.parse('{"test":"Это тестовая запись на 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации! {error}","logoutSuccess":"Пока!"}');
+module.exports = JSON.parse('{"authSuccess":"Добро пожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации! {error}","logoutSuccess":"Пока!"}');
 
 /***/ }),
 
