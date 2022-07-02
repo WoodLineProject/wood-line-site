@@ -6616,7 +6616,7 @@ var actions = {
                 var data = _ref2.data;
                 resp = {
                   result: true,
-                  message: 'singIngSuccess'
+                  message: 'authSuccess'
                 };
                 return resp;
               })["catch"](function (err) {
@@ -6657,7 +6657,7 @@ var actions = {
                 var data = _ref4.data;
                 resp = {
                   result: true,
-                  message: 'regSuccess'
+                  message: 'authSuccess'
                 };
                 return resp;
               })["catch"](function (err) {
@@ -74058,7 +74058,7 @@ module.exports = JSON.parse('{"test":"Это тестовая запись на 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"singIngSuccess":"Вход успешно выполнен!","singIngError":"Ошибка при входе не верный email или пароль","regSuccess":"Вы зарегестрировались!","regError":"Ошибка при регестрации!","logoutSuccess":"Досвидания","logoutError":"Ошибка при выходе!"}');
+module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации!","logoutSuccess":"Досвидания","logoutError":"Ошибка при выходе!"}');
 
 /***/ }),
 
@@ -74091,7 +74091,7 @@ module.exports = JSON.parse('{"test":"Це тестовий запис на те
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"singIngSuccess":"Вхід успішно виконано!","singIngError":"Помилка при вході не вірний email або пароль","regSuccess":"Ви зареєструвалися!","regError":"Помилка при реєстрації!","logoutSuccess":"Досвідання","logoutError":"Помилка при виході!"}');
+module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації!","logoutSuccess":"Досвідання","logoutError":"Помилка при виході!"}');
 
 /***/ }),
 

@@ -39,7 +39,7 @@ const actions = {
             .then(({data}) =>{
                 resp = {
                     result: true,
-                    message: 'singIngSuccess',
+                    message: 'authSuccess',
                 }
                 return resp
             }).catch(err =>{
@@ -56,7 +56,7 @@ const actions = {
             .then(({data}) =>{
                 resp = {
                     result: true,
-                    message: 'regSuccess',
+                    message: 'authSuccess',
                 }
                 return resp
             }).catch(err =>{

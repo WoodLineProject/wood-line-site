@@ -1,5 +1,5 @@
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "Registr",
@@ -16,23 +16,26 @@ export default {
             }
         }
     },
+    computed:{
+        ...mapGetters('authStore',['currentUser']),
+    },
     methods:{
         ...mapActions('authStore',['registerAsync','getUserAsync']),
         register(){
           this.registerAsync(this.form).then((response) => {
               if(response.result){
-                  this.$swal({
-                      //position: 'top-end',
-                      icon: 'success',
-                      title: this.$t(`auth.${response.message}`),
-                      showConfirmButton: false,
-                      timer: 2000
-                  })
                   this.getUserAsync()
+                  setTimeout(() => {
+                      this.$swal({
+                          icon: 'success',
+                          title: this.$t(`auth.${response.message}`,{name: this.currentUser.name}),
+                          showConfirmButton: false,
+                          timer: 3000
+                      })
+                  }, 500);
                   this.$router.push({path: '/'});
               }else{
                   this.$swal({
-                      //position: 'top-end',
                       icon: 'error',
                       title: this.$t(`auth.${response.message}`),
                       showConfirmButton: false,
