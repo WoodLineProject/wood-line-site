@@ -13,7 +13,6 @@ export default {
         ...mapMutations('appStore',['setIsShowDrawer']),
         logout(){
             this.logoutAsync();
-
         }
     },
     watch: {

@@ -1,4 +1,5 @@
 import axios from "../modules/axios_module";
+const SUCCESS = 302
 
 const state = {
     isShowDrawer: false,
@@ -33,38 +34,38 @@ const actions = {
     },
 
     loginAsync: async ({commit}, payload) => {
+        let resp;
         return await axios.post('/login', payload)
-            .then(({data}) => {
-                axios.post('api/user').then((data) => {
-                    localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
-                    commit('setCurrentUser', {
-                        email:data.data.email,
-                        name:data.data.name,
-                        role:data.data.role,
-                    });
-                })
-               // this.$alertify.success('success')
-                this.$router.push({path: '/'});
+            .then(({data}) =>{
+                resp = {
+                    result: true,
+                    message: 'singIngSuccess',
+                }
+                return resp
+            }).catch(err =>{
+                resp = {
+                    result: false,
+                    message: 'singIngError',
+                }
+                return resp
             })
-            .catch(err => {
-            });
     },
     registerAsync: async ({commit}, payload) => {
+        let resp;
         return await axios.post('/register', payload)
-            .then(({data}) => {
-                axios.post('api/user').then((data) => {
-                    localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
-                    commit('setCurrentUser', {
-                        email:data.data.email,
-                        name:data.data.name,
-                        role:data.data.role,
-                    });
-                })
-                this.$router.push({path: '/'});
+            .then(({data}) =>{
+                resp = {
+                    result: true,
+                    message: 'regSuccess',
+                }
+                return resp
+            }).catch(err =>{
+                resp = {
+                    result: false,
+                    message: 'regError',
+                }
+                return resp
             })
-            .catch(errorResponse => {
-
-            });
     },
     logoutAsync: async ({commit}) => {
         return await axios.post('/logout').then(() =>{
@@ -76,6 +77,16 @@ const actions = {
             });
         });
     },
+    getUserAsync: async ({commit}) => {
+        axios.post('api/user').then((data) => {
+            localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
+            commit('setCurrentUser', {
+                email:data.data.email,
+                name:data.data.name,
+                role:data.data.role,
+            });
+        }).catch(err => {});
+    }
 };
 
 export default {

@@ -9,7 +9,10 @@ import VueAxios from 'vue-axios'
 import axios from './modules/axios_module'
 import VueAlertify from 'vue-alertify';
 import {useProp} from './plugins/alertify'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
+Vue.use(VueSweetalert2);
 Vue.use(VueAlertify,useProp);
 Vue.use(VueAxios,axios);
 Vue.use(VueRouter)

@@ -13,10 +13,28 @@ export default {
         }
     },
     methods:{
-        ...mapActions('authStore',['loginAsync']),
+        ...mapActions('authStore',['loginAsync','getUserAsync']),
         login(){
-            this.loginAsync(this.form).then(() => {
-                this.$router.push({name: 'home'});
+            this.loginAsync(this.form).then((response) => {
+                if(response.result){
+                    this.$swal({
+                        //position: 'top-end',
+                        icon: 'success',
+                        title: this.$t(`auth.${response.message}`),
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    this.getUserAsync()
+                    this.$router.push({path: '/'});
+                }else{
+                    this.$swal({
+                        //position: 'top-end',
+                        icon: 'error',
+                        title: this.$t(`auth.${response.message}`),
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
             })
         }
     }

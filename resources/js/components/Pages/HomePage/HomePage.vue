@@ -3,16 +3,18 @@ import {mapActions} from "vuex";
 
 export default {
     name: "HomePage",
-    mounted() {
-        this.getCsrfTokenAsync();
-    },
+
     methods:{
         ...mapActions('appStore',['testAxios','testAxios3']),
-        ...mapActions('authStore',['getCsrfTokenAsync']),
         click(){
             this.testAxios({
                 test: 1
             })
+            this.$swal({
+                icon: 'success',
+                title: 'Hello',
+                text: 'Hello brave new world!',
+            });
         },
         click2(){
             this.testAxios3();

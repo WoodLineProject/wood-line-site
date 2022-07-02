@@ -30,14 +30,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync', 'getUserAsync'])), {}, {
     login: function login() {
       var _this = this;
 
-      this.loginAsync(this.form).then(function () {
-        _this.$router.push({
-          name: 'home'
-        });
+      this.loginAsync(this.form).then(function (response) {
+        if (response.result) {
+          _this.$swal({
+            //position: 'top-end',
+            icon: 'success',
+            title: _this.$t("auth.".concat(response.message)),
+            showConfirmButton: false,
+            timer: 2000
+          });
+
+          _this.getUserAsync();
+
+          _this.$router.push({
+            path: '/'
+          });
+        } else {
+          _this.$swal({
+            //position: 'top-end',
+            icon: 'error',
+            title: _this.$t("auth.".concat(response.message)),
+            showConfirmButton: false,
+            timer: 2000
+          });
+        }
       });
     }
   })
