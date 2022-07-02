@@ -12,7 +12,14 @@ export default {
         ...mapActions('authStore',['logoutAsync']),
         ...mapMutations('appStore',['setIsShowDrawer']),
         logout(){
-            this.logoutAsync();
+            this.logoutAsync().then(() =>{
+                this.$swal({
+                    icon: 'success',
+                    title: this.$t(`auth.logoutSuccess`),
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            });
         }
     },
     watch: {

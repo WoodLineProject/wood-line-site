@@ -5851,7 +5851,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('appStore', ['changeIsShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('authStore', ['logoutAsync'])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)('appStore', ['setIsShowDrawer'])), {}, {
     logout: function logout() {
-      this.logoutAsync();
+      var _this = this;
+
+      this.logoutAsync().then(function () {
+        _this.$swal({
+          icon: 'success',
+          title: _this.$t("auth.logoutSuccess"),
+          showConfirmButton: false,
+          timer: 3000
+        });
+      });
     }
   }),
   watch: {},
@@ -74058,7 +74067,7 @@ module.exports = JSON.parse('{"test":"Это тестовая запись на 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации!","logoutSuccess":"Досвидания","logoutError":"Ошибка при выходе!"}');
+module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации!","logoutSuccess":"Пока!"}');
 
 /***/ }),
 
@@ -74091,7 +74100,7 @@ module.exports = JSON.parse('{"test":"Це тестовий запис на те
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації!","logoutSuccess":"Досвідання","logoutError":"Помилка при виході!"}');
+module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації!","logoutSuccess":"Бувай!"}');
 
 /***/ }),
 
