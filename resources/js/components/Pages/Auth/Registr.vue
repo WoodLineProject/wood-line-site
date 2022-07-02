@@ -12,7 +12,7 @@ export default {
                 email: '',
                 password: '',
                 password_confirmation: '',
-                phone: '',
+                phone: '+380',
             }
         }
     },
@@ -37,9 +37,9 @@ export default {
               }else{
                   this.$swal({
                       icon: 'error',
-                      title: this.$t(`auth.${response.message}`),
+                      title: this.$t(`auth.${response.message}`,{error: response.errors}),
                       showConfirmButton: false,
-                      timer: 2000
+                      timer: 5000
                   });
               }
           })

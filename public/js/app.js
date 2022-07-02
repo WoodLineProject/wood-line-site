@@ -5906,7 +5906,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _mixins_check_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/check-role-mixin */ "./resources/js/mixins/check-role-mixin.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../constants/roles */ "./resources/js/constants/roles.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5914,9 +5916,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "HomePage",
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('appStore', ['testAxios', 'testAxios3'])), {}, {
+  mixins: [_mixins_check_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckRolesMixin],
+  computed: {
+    shUser: function shUser() {
+      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_USER]);
+    },
+    shAdmin: function shAdmin() {
+      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_ADMIN]);
+    },
+    shOwner: function shOwner() {
+      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER]);
+    }
+  },
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('appStore', ['testAxios', 'user', 'admin', 'owner'])), {}, {
     click: function click() {
       this.testAxios({
         test: 1
@@ -5928,7 +5944,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     click2: function click2() {
-      this.testAxios3();
+      this.user({
+        test: 1
+      });
+    },
+    click3: function click3() {
+      this.admin({
+        test: 1
+      });
+    },
+    click4: function click4() {
+      this.owner({
+        test: 1
+      });
     }
   })
 });
@@ -6061,6 +6089,25 @@ var NAV_MENU = [/// is not folder
 
 /***/ }),
 
+/***/ "./resources/js/constants/roles.js":
+/*!*****************************************!*\
+  !*** ./resources/js/constants/roles.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ROLE_ADMIN": () => (/* binding */ ROLE_ADMIN),
+/* harmony export */   "ROLE_OWNER": () => (/* binding */ ROLE_OWNER),
+/* harmony export */   "ROLE_USER": () => (/* binding */ ROLE_USER)
+/* harmony export */ });
+var ROLE_USER = 1;
+var ROLE_ADMIN = 2;
+var ROLE_OWNER = 3;
+
+/***/ }),
+
 /***/ "./resources/js/locales/rus/main_locale.js":
 /*!*************************************************!*\
   !*** ./resources/js/locales/rus/main_locale.js ***!
@@ -6104,6 +6151,48 @@ var main_locale = 'ukr';
   auth: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.json$")("./".concat(main_locale, "/auth.json")),
   pages: {}
 });
+
+/***/ }),
+
+/***/ "./resources/js/mixins/check-role-mixin.js":
+/*!*************************************************!*\
+  !*** ./resources/js/mixins/check-role-mixin.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CheckRolesMixin": () => (/* binding */ CheckRolesMixin)
+/* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/roles */ "./resources/js/constants/roles.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var CheckRolesMixin = {
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])),
+  methods: {
+    checkRoles: function checkRoles(arrayRoles) {
+      var role = this.currentUser.role;
+      /*uncomment return true to disable role checking*/
+      //return true
+
+      if (!role) {
+        return false;
+      } else if (role === _constants_roles__WEBPACK_IMPORTED_MODULE_0__.ROLE_OWNER) {
+        return true;
+      } else {
+        return arrayRoles.includes(this.currentUser.role);
+      }
+    }
+  }
+};
 
 /***/ }),
 
@@ -6497,8 +6586,8 @@ var actions = {
 
     return testAxios;
   }(),
-  testAxios3: function () {
-    var _testAxios2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref4, payload) {
+  user: function () {
+    var _user = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref4, payload) {
       var commit;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
@@ -6522,11 +6611,73 @@ var actions = {
       }, _callee2);
     }));
 
-    function testAxios3(_x3, _x4) {
-      return _testAxios2.apply(this, arguments);
+    function user(_x3, _x4) {
+      return _user.apply(this, arguments);
     }
 
-    return testAxios3;
+    return user;
+  }(),
+  admin: function () {
+    var _admin = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_ref6, payload) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref6.commit;
+              _context3.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/test4', payload).then(function (_ref7) {//console.log(data)
+
+                var data = _ref7.data;
+              })["catch"](function (errorResponse) {});
+
+            case 3:
+              return _context3.abrupt("return", _context3.sent);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    function admin(_x5, _x6) {
+      return _admin.apply(this, arguments);
+    }
+
+    return admin;
+  }(),
+  owner: function () {
+    var _owner = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_ref8, payload) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref8.commit;
+              _context4.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/test5', payload).then(function (_ref9) {//console.log(data)
+
+                var data = _ref9.data;
+              })["catch"](function (errorResponse) {});
+
+            case 3:
+              return _context4.abrupt("return", _context4.sent);
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    function owner(_x7, _x8) {
+      return _owner.apply(this, arguments);
+    }
+
+    return owner;
   }()
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6560,13 +6711,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-var SUCCESS = 302;
 var state = {
   isShowDrawer: false,
   currentUser: {
-    email: '',
-    name: '',
-    role: ''
+    email: null,
+    name: null,
+    role: null
   }
 };
 var getters = {
@@ -6670,9 +6820,12 @@ var actions = {
                 };
                 return resp;
               })["catch"](function (err) {
+                var error = err.response.data.errors;
+                var key = Object.keys(error);
                 resp = {
                   result: false,
-                  message: 'regError'
+                  message: 'regError',
+                  errors: key + ': ' + error[key]
                 };
                 return resp;
               });
@@ -6706,9 +6859,9 @@ var actions = {
               return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function () {
                 localStorage.removeItem('x_xsrf_token');
                 commit('setCurrentUser', {
-                  email: '',
-                  name: '',
-                  role: ''
+                  email: null,
+                  name: null,
+                  role: null
                 });
               });
 
@@ -6744,7 +6897,9 @@ var actions = {
                   name: data.data.name,
                   role: data.data.role
                 });
-              })["catch"](function (err) {});
+              })["catch"](function (err) {
+                localStorage.removeItem('x_xsrf_token');
+              });
 
             case 2:
             case "end":
@@ -10972,17 +11127,47 @@ var render = function () {
         [_vm._v("click")]
       ),
       _vm._v(" "),
-      _c(
-        "v-btn",
-        {
-          on: {
-            click: function ($event) {
-              return _vm.click2()
+      _vm.shUser
+        ? _c(
+            "v-btn",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.click2()
+                },
+              },
             },
-          },
-        },
-        [_vm._v("AuthClick")]
-      ),
+            [_vm._v("userClick")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.shAdmin
+        ? _c(
+            "v-btn",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.click3()
+                },
+              },
+            },
+            [_vm._v("adminClick")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.shOwner
+        ? _c(
+            "v-btn",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.click4()
+                },
+              },
+            },
+            [_vm._v("owterClick")]
+          )
+        : _vm._e(),
     ],
     1
   )
@@ -74067,7 +74252,7 @@ module.exports = JSON.parse('{"test":"Это тестовая запись на 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации!","logoutSuccess":"Пока!"}');
+module.exports = JSON.parse('{"authSuccess":"Добропожаловать {name}","singIngError":"Ошибка при входе не верный email или пароль","regError":"Ошибка при регестрации! {error}","logoutSuccess":"Пока!"}');
 
 /***/ }),
 
@@ -74100,7 +74285,7 @@ module.exports = JSON.parse('{"test":"Це тестовий запис на те
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації!","logoutSuccess":"Бувай!"}');
+module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації! {error}","logoutSuccess":"Бувай!"}');
 
 /***/ }),
 

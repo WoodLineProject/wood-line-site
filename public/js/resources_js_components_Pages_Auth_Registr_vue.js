@@ -30,7 +30,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         email: '',
         password: '',
         password_confirmation: '',
-        phone: ''
+        phone: '+380'
       }
     };
   },
@@ -60,9 +60,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           _this.$swal({
             icon: 'error',
-            title: _this.$t("auth.".concat(response.message)),
+            title: _this.$t("auth.".concat(response.message), {
+              error: response.errors
+            }),
             showConfirmButton: false,
-            timer: 2000
+            timer: 5000
           });
         }
       });

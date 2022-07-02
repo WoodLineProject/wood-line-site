@@ -29,8 +29,26 @@ const actions = {
 
             });
     },
-    testAxios3: async ({commit},payload) => {
+    user: async ({commit},payload) => {
         return await axios.post('/test3', payload)
+            .then(({data}) => {
+                //console.log(data)
+            })
+            .catch(errorResponse => {
+
+            });
+    },
+    admin: async ({commit},payload) => {
+        return await axios.post('/test4', payload)
+            .then(({data}) => {
+                //console.log(data)
+            })
+            .catch(errorResponse => {
+
+            });
+    },
+    owner: async ({commit},payload) => {
+        return await axios.post('/test5', payload)
             .then(({data}) => {
                 //console.log(data)
             })

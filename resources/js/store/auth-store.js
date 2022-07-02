@@ -1,12 +1,11 @@
 import axios from "../modules/axios_module";
-const SUCCESS = 302
 
 const state = {
     isShowDrawer: false,
     currentUser :{
-        email: '',
-        name: '',
-        role: ''
+        email: null,
+        name: null,
+        role: null
     }
 };
 
@@ -60,9 +59,12 @@ const actions = {
                 }
                 return resp
             }).catch(err =>{
+                let error = err.response.data.errors;
+                let key = Object.keys(error)
                 resp = {
                     result: false,
                     message: 'regError',
+                    errors: key +': '+error[key]
                 }
                 return resp
             })
@@ -71,9 +73,9 @@ const actions = {
         return await axios.post('/logout').then(() =>{
             localStorage.removeItem('x_xsrf_token');
             commit('setCurrentUser', {
-                email:'',
-                name:'',
-                role:'',
+                email: null,
+                name: null,
+                role: null
             });
         });
     },
@@ -85,7 +87,9 @@ const actions = {
                 name:data.data.name,
                 role:data.data.role,
             });
-        }).catch(err => {});
+        }).catch(err => {
+            localStorage.removeItem('x_xsrf_token');
+        });
     }
 };
 
