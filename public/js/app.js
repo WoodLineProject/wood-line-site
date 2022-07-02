@@ -6362,6 +6362,12 @@ router.beforeEach(function (to, from, next) {
     }) : next();
   }
 
+  if (to.name === 'logout') {
+    return token ? next() : next({
+      name: 'home'
+    });
+  }
+
   next();
 });
 
@@ -6525,16 +6531,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var state = {
-  isShowDrawer: false
+  isShowDrawer: false,
+  currentUser: {
+    email: '',
+    name: '',
+    role: ''
+  }
 };
 var getters = {
   isShowDrawer: function isShowDrawer(state) {
     return state.isShowDrawer;
+  },
+  currentUser: function currentUser(state) {
+    return state.currentUser;
   }
 };
 var mutations = {
   setIsShowDrawer: function setIsShowDrawer(state, payload) {
     state.isShowDrawer = payload;
+  },
+  setCurrentUser: function setCurrentUser(state, payload) {
+    state.currentUser = payload;
   }
 };
 var actions = {
@@ -6577,9 +6594,12 @@ var actions = {
                 var data = _ref2.data;
                 _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('api/user').then(function (data) {
                   localStorage.setItem('x_xsrf_token', data.config.headers['X-XSRF-TOKEN']);
-                });
-
-                _this.$alertify.success('success');
+                  commit('setCurrentUser', {
+                    email: data.data.email,
+                    name: data.data.name,
+                    role: data.data.role
+                  });
+                }); // this.$alertify.success('success')
 
                 _this.$router.push({
                   path: '/'
@@ -6616,6 +6636,11 @@ var actions = {
                 var data = _ref4.data;
                 _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('api/user').then(function (data) {
                   localStorage.setItem('x_xsrf_token', data.config.headers['X-XSRF-TOKEN']);
+                  commit('setCurrentUser', {
+                    email: data.data.email,
+                    name: data.data.name,
+                    role: data.data.role
+                  });
                 });
 
                 _this.$router.push({
@@ -6641,20 +6666,27 @@ var actions = {
     return registerAsync;
   }(),
   logoutAsync: function () {
-    var _logoutAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+    var _logoutAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_ref5) {
+      var commit;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
+              commit = _ref5.commit;
+              _context4.next = 3;
               return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function () {
-                localStorage.removeItem('x_xsrf_token'); //this.$router.push({path: '/'});
+                localStorage.removeItem('x_xsrf_token');
+                commit('setCurrentUser', {
+                  email: '',
+                  name: '',
+                  role: ''
+                });
               });
 
-            case 2:
+            case 3:
               return _context4.abrupt("return", _context4.sent);
 
-            case 3:
+            case 4:
             case "end":
               return _context4.stop();
           }
@@ -6662,7 +6694,7 @@ var actions = {
       }, _callee4);
     }));
 
-    function logoutAsync() {
+    function logoutAsync(_x5) {
       return _logoutAsync.apply(this, arguments);
     }
 

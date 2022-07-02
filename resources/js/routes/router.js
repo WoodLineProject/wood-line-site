@@ -25,5 +25,10 @@ router.beforeEach((to,from,next) =>{
             ? next({name: 'home'})
             : next();
     }
+    if(to.name === 'logout'){
+        return  token
+            ? next()
+            : next({name: 'home'})
+    }
     next();
 })
