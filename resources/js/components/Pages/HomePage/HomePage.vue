@@ -1,19 +1,19 @@
 <script>
 import {mapActions} from "vuex";
-import {CheckRolesMixin} from "../../../mixins/check-role-mixin";
+import {CheckUserAndRolesMixin} from "../../../mixins/check-user-and-role-mixin";
 import {ROLE_USER,ROLE_OWNER,ROLE_ADMIN} from "../../../constants/roles";
 export default {
     name: "HomePage",
-    mixins:[CheckRolesMixin],
+    mixins: [CheckUserAndRolesMixin],
     computed:{
         shUser(){
-            return this.checkRoles([ROLE_USER])
+            return this.checkUserAndRoles([ROLE_USER])
         },
         shAdmin(){
-            return this.checkRoles([ROLE_ADMIN])
+            return this.checkUserAndRoles([ROLE_ADMIN])
         },
         shOwner(){
-            return this.checkRoles([ROLE_OWNER])
+            return this.checkUserAndRoles([ROLE_OWNER])
         },
     },
     methods:{

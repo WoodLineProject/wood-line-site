@@ -1,51 +1,47 @@
-export const NAV_MENU = [
-    /// is not folder
-    {
-        to: '/',
-        icon: 'mdi-home-circle-outline',
-        text: 'home',
-    },
-    {
-        to: '/test',
-        icon: 'mdi-account-question',
-        text: 'test',
-    },
-    // is folder
-    {
-        icon: 'mdi-folder',
-        text: 'folder',
-        items:[
-            {
-                to: '/',
-                icon: 'mdi-home-circle-outline',
-                text: 'home',
-            },
-            {
-                to: '/test',
-                icon: 'mdi-account-question',
-                text: 'test',
-            },
-        ]
-    },
-    {
-        icon: 'mdi-folder',
-        text: 'singIn',
-        items:[
-            {
-                to: '/singIn',
-                icon: 'mdi-home-circle-outline',
-                text: 'login',
-            },
-            {
-                to: '/reg',
-                icon: 'mdi-account-question',
-                text: 'reg',
-            },
-            {
-                to: '/',
-                icon: 'mdi-account-question',
-                text: 'logout',
-            },
-        ]
+import {CheckUserAndRolesMixin} from "../mixins/check-user-and-role-mixin";
+function getMenu() {
+    return [
+        {
+            to: '/singIn',
+            icon: 'mdi-home-circle-outline',
+            text: 'login',
+            show: !CheckUserAndRolesMixin.methods.checkUserAndRoles()
+        },
+        /*{
+            to: '/reg',
+            icon: 'mdi-account-question',
+            text: 'reg',
+            show: !this.checkUserAndRoles()
+        },
+        {
+            to: '/',
+            icon: 'mdi-account-question',
+            text: 'logout',
+            show: this.checkUserAndRoles()
+        },
+        {
+            to: '/',
+            icon: 'mdi-home-circle-outline',
+            text: 'home',
+            show: true
+        },
+        {
+            to: '/test',
+            icon: 'mdi-account-question',
+            text: 'test',
+            show: true
+        }*/
+    ]
+}
+
+export default getMenu()
+
+/*export default {
+    data: () => ({
+    }),
+    mixins: [CheckUserAndRolesMixin],
+    methods: {
+
     }
-]
+}*/
+

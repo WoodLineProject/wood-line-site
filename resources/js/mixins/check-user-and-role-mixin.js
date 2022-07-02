@@ -1,12 +1,15 @@
 import {mapGetters} from "vuex";
 import {ROLE_OWNER} from "../constants/roles";
 
-export const CheckRolesMixin = {
+export const CheckUserAndRolesMixin = {
     computed: {
         ...mapGetters('authStore', ['currentUser']),
     },
     methods: {
-        checkRoles(arrayRoles) {
+        checkUserAndRoles(arrayRoles = []) {
+            if (!this.currentUser)
+                return false;
+
             let role = this.currentUser.role
             /*uncomment return true to disable role checking*/
             //return true

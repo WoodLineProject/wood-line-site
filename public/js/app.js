@@ -5831,8 +5831,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _constants_nav_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../constants/nav-menu */ "./resources/js/constants/nav-menu.js");
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/roles */ "./resources/js/constants/roles.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5841,15 +5843,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NavDrawer",
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__.CheckUserAndRolesMixin],
   data: function data() {
     return {
-      NAV_MENU: _constants_nav_menu__WEBPACK_IMPORTED_MODULE_0__.NAV_MENU,
+      Menu: _constants_nav_menu__WEBPACK_IMPORTED_MODULE_0__.Menu,
       group: null
     };
   },
-  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('appStore', ['changeIsShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('authStore', ['logoutAsync'])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)('appStore', ['setIsShowDrawer'])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)('appStore', ['changeIsShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)('authStore', ['logoutAsync'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapMutations)('appStore', ['setIsShowDrawer'])), {}, {
     logout: function logout() {
       var _this = this;
 
@@ -5863,8 +5868,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }),
-  watch: {},
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('appStore', ['isShowDrawer'])), {}, {
+  mounted: function mounted() {},
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('appStore', ['isShowDrawer'])), {}, {
+    showUser: function showUser() {
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_USER, _constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_ADMIN, _constants_roles__WEBPACK_IMPORTED_MODULE_2__.ROLE_OWNER]);
+    },
     drawer: {
       get: function get() {
         return this.isShowDrawer;
@@ -5872,6 +5880,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       set: function set(val) {
         this.setIsShowDrawer(val);
       }
+    },
+    NAV_MENU: function NAV_MENU() {
+      return this.Menu.methods.getMenu();
     }
   })
 });
@@ -5907,7 +5918,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _mixins_check_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/check-role-mixin */ "./resources/js/mixins/check-role-mixin.js");
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
 /* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../constants/roles */ "./resources/js/constants/roles.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -5920,16 +5931,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "HomePage",
-  mixins: [_mixins_check_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckRolesMixin],
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
   computed: {
     shUser: function shUser() {
-      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_USER]);
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_USER]);
     },
     shAdmin: function shAdmin() {
-      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_ADMIN]);
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_ADMIN]);
     },
     shOwner: function shOwner() {
-      return this.checkRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER]);
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER]);
     }
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('appStore', ['testAxios', 'user', 'admin', 'owner'])), {}, {
@@ -6045,47 +6056,54 @@ new vue__WEBPACK_IMPORTED_MODULE_11__["default"]({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "NAV_MENU": () => (/* binding */ NAV_MENU)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var NAV_MENU = [/// is not folder
-{
-  to: '/',
-  icon: 'mdi-home-circle-outline',
-  text: 'home'
-}, {
-  to: '/test',
-  icon: 'mdi-account-question',
-  text: 'test'
-}, // is folder
-{
-  icon: 'mdi-folder',
-  text: 'folder',
-  items: [{
-    to: '/',
-    icon: 'mdi-home-circle-outline',
-    text: 'home'
-  }, {
-    to: '/test',
-    icon: 'mdi-account-question',
-    text: 'test'
-  }]
-}, {
-  icon: 'mdi-folder',
-  text: 'singIn',
-  items: [{
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+
+
+function getMenu() {
+  return [{
     to: '/singIn',
     icon: 'mdi-home-circle-outline',
-    text: 'login'
-  }, {
-    to: '/reg',
-    icon: 'mdi-account-question',
-    text: 'reg'
-  }, {
-    to: '/',
-    icon: 'mdi-account-question',
-    text: 'logout'
-  }]
-}];
+    text: 'login',
+    show: !_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin.methods.checkUserAndRoles()
+  }
+  /*{
+      to: '/reg',
+      icon: 'mdi-account-question',
+      text: 'reg',
+      show: !this.checkUserAndRoles()
+  },
+  {
+      to: '/',
+      icon: 'mdi-account-question',
+      text: 'logout',
+      show: this.checkUserAndRoles()
+  },
+  {
+      to: '/',
+      icon: 'mdi-home-circle-outline',
+      text: 'home',
+      show: true
+  },
+  {
+      to: '/test',
+      icon: 'mdi-account-question',
+      text: 'test',
+      show: true
+  }*/
+  ];
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMenu());
+/*export default {
+    data: () => ({
+    }),
+    mixins: [CheckUserAndRolesMixin],
+    methods: {
+
+    }
+}*/
 
 /***/ }),
 
@@ -6121,11 +6139,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var main_locale = 'rus';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  projectName: "Wood Line",
-  current_lang: " Русский  ",
+  projectName: "Wood Line Factory",
   app: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/app\\.json$")("./".concat(main_locale, "/app.json")),
   navMenu: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/nav\\-menu\\.json$")("./".concat(main_locale, "/nav-menu.json")),
   auth: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.json$")("./".concat(main_locale, "/auth.json")),
+  current_lang: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$")("./".concat(main_locale, "/locale.json")),
   pages: {}
 });
 
@@ -6144,26 +6162,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var main_locale = 'ukr';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  projectName: "Wood Line",
-  current_lang: "Українська",
+  projectName: "Wood Line Factory",
   app: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/app\\.json$")("./".concat(main_locale, "/app.json")),
   navMenu: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/nav\\-menu\\.json$")("./".concat(main_locale, "/nav-menu.json")),
   auth: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.json$")("./".concat(main_locale, "/auth.json")),
+  current_lang: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$")("./".concat(main_locale, "/locale.json")),
   pages: {}
 });
 
 /***/ }),
 
-/***/ "./resources/js/mixins/check-role-mixin.js":
-/*!*************************************************!*\
-  !*** ./resources/js/mixins/check-role-mixin.js ***!
-  \*************************************************/
+/***/ "./resources/js/mixins/check-user-and-role-mixin.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/mixins/check-user-and-role-mixin.js ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CheckRolesMixin": () => (/* binding */ CheckRolesMixin)
+/* harmony export */   "CheckUserAndRolesMixin": () => (/* binding */ CheckUserAndRolesMixin)
 /* harmony export */ });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants/roles */ "./resources/js/constants/roles.js");
@@ -6175,10 +6193,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var CheckRolesMixin = {
+var CheckUserAndRolesMixin = {
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])),
   methods: {
-    checkRoles: function checkRoles(arrayRoles) {
+    checkUserAndRoles: function checkUserAndRoles() {
+      var arrayRoles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      if (!this.currentUser) return false;
       var role = this.currentUser.role;
       /*uncomment return true to disable role checking*/
       //return true
@@ -7044,7 +7064,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#core-header {\r\n    z-index: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#core-header {\n    z-index: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10860,9 +10880,21 @@ var render = function () {
               },
             },
             [
-              _vm._v(
-                "\n            " + _vm._s(_vm.$t("current_lang")) + "\n        "
-              ),
+              _vm.$vuetify.breakpoint.mdAndUp
+                ? _c("span", [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.$t("current_lang.fullLocale")) +
+                        "\n            "
+                    ),
+                  ])
+                : _c("span", [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.$t("current_lang.shortLocale")) +
+                        "\n            "
+                    ),
+                  ]),
             ]
           ),
         ],
@@ -10873,9 +10905,9 @@ var render = function () {
         "v-sheet",
         {
           staticClass: "overflow-y-auto",
-          attrs: { id: "scrolling-techniques-3", "max-height": "600" },
+          attrs: { id: "scrolling-techniques-3" },
         },
-        [_c("v-container", { staticStyle: { height: "70px" } })],
+        [_c("v-container", { staticStyle: { "min-height": "128px" } })],
         1
       ),
     ],
@@ -10937,12 +10969,27 @@ var render = function () {
             [
               _vm._l(_vm.NAV_MENU, function (item, key) {
                 return [
-                  !item.items
+                  item.text !== "logout"
                     ? _c(
                         "v-list-item",
-                        { attrs: { to: item.to } },
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: item.show,
+                              expression: "item.show",
+                            },
+                          ],
+                          key: key,
+                          attrs: { to: item.to },
+                        },
                         [
-                          _c("v-icon", [_vm._v(_vm._s(item.icon))]),
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                            1
+                          ),
                           _vm._v(" "),
                           _c("v-list-item-title", [
                             _vm._v(_vm._s(_vm.$t("navMenu." + item.text))),
@@ -10951,92 +10998,35 @@ var render = function () {
                         1
                       )
                     : _c(
-                        "v-list-group",
+                        "v-list-item",
                         {
-                          scopedSlots: _vm._u(
-                            [
-                              {
-                                key: "activator",
-                                fn: function () {
-                                  return [
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-icon", [
-                                          _vm._v(_vm._s(item.icon)),
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("v-list-item-title", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.$t("navMenu." + item.text)
-                                            )
-                                          ),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ]
-                                },
-                                proxy: true,
-                              },
-                            ],
-                            null,
-                            true
-                          ),
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: item.show,
+                              expression: "item.show",
+                            },
+                          ],
+                          key: key,
+                          on: {
+                            click: function ($event) {
+                              return _vm.logout()
+                            },
+                          },
                         },
                         [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                            1
+                          ),
                           _vm._v(" "),
-                          _vm._l(item.items, function (subItem, subKey) {
-                            return [
-                              subItem.text !== "logout"
-                                ? _c(
-                                    "v-list-item",
-                                    { key: subKey, attrs: { to: subItem.to } },
-                                    [
-                                      _c("v-icon", [
-                                        _vm._v(_vm._s(subItem.icon)),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-title", [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm.$t("navMenu." + subItem.text)
-                                          )
-                                        ),
-                                      ]),
-                                    ],
-                                    1
-                                  )
-                                : _c(
-                                    "v-list-item",
-                                    {
-                                      key: subKey,
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.logout()
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("v-icon", [
-                                        _vm._v(_vm._s(subItem.icon)),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-list-item-title", [
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm.$t("navMenu." + subItem.text)
-                                          )
-                                        ),
-                                      ]),
-                                    ],
-                                    1
-                                  ),
-                            ]
-                          }),
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(_vm.$t("navMenu." + item.text))),
+                          ]),
                         ],
-                        2
+                        1
                       ),
                 ]
               }),
@@ -74190,6 +74180,39 @@ webpackContext.id = "./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.js
 
 /***/ }),
 
+/***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$":
+/*!***********************************************************!*\
+  !*** ./resources/js/locales/ sync ^\.\/.*\/locale\.json$ ***!
+  \***********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./rus/locale.json": "./resources/js/locales/rus/locale.json",
+	"./ukr/locale.json": "./resources/js/locales/ukr/locale.json"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$";
+
+/***/ }),
+
 /***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/nav\\-menu\\.json$":
 /*!**************************************************************!*\
   !*** ./resources/js/locales/ sync ^\.\/.*\/nav\-menu\.json$ ***!
@@ -74256,6 +74279,17 @@ module.exports = JSON.parse('{"authSuccess":"Добропожаловать {nam
 
 /***/ }),
 
+/***/ "./resources/js/locales/rus/locale.json":
+/*!**********************************************!*\
+  !*** ./resources/js/locales/rus/locale.json ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"fullLocale":"Русский","shortLocale":"РУС"}');
+
+/***/ }),
+
 /***/ "./resources/js/locales/rus/nav-menu.json":
 /*!************************************************!*\
   !*** ./resources/js/locales/rus/nav-menu.json ***!
@@ -74286,6 +74320,17 @@ module.exports = JSON.parse('{"test":"Це тестовий запис на те
 
 "use strict";
 module.exports = JSON.parse('{"authSuccess":"Ласкаво просимо {name}","singIngError":"Помилка при вході не вірний email або пароль","regError":"Помилка при реєстрації! {error}","logoutSuccess":"Бувай!"}');
+
+/***/ }),
+
+/***/ "./resources/js/locales/ukr/locale.json":
+/*!**********************************************!*\
+  !*** ./resources/js/locales/ukr/locale.json ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"fullLocale":"Українська","shortLocale":"УКР"}');
 
 /***/ }),
 

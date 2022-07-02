@@ -7,7 +7,7 @@ export default {
         ...mapActions('appStore',['changeIsShowDrawer']),
         changeLocale() {
             i18n.locale = i18n.locale === 'ukr'
-            ? 'rus' : 'ukr';
+                ? 'rus' : 'ukr';
         },
     }
 
@@ -47,15 +47,19 @@ export default {
                 outlined
                 color="green"
             >
-                {{ $t('current_lang') }}
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                    {{ $t('current_lang.fullLocale') }}
+                </span>
+                <span v-else>
+                    {{ $t('current_lang.shortLocale') }}
+                </span>
             </v-btn>
         </v-app-bar>
         <v-sheet
             id="scrolling-techniques-3"
             class="overflow-y-auto"
-            max-height="600"
         >
-            <v-container style="height: 70px;"></v-container>
+            <v-container style="min-height: 128px;"></v-container>
         </v-sheet>
     </v-card>
 </template>

@@ -1,10 +1,13 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import {NAV_MENU} from "../../constants/nav-menu";
+import {Menu} from "../../constants/nav-menu";
+import {CheckUserAndRolesMixin} from "../../mixins/check-user-and-role-mixin";
+import {ROLE_ADMIN, ROLE_OWNER, ROLE_USER} from "../../constants/roles";
 export default {
     name: "NavDrawer",
+    mixins: [CheckUserAndRolesMixin],
     data: () => ({
-        NAV_MENU,
+        Menu,
         group: null,
     }),
     methods:{
@@ -22,11 +25,13 @@ export default {
             });
         }
     },
-    watch: {
-
+    mounted() {
     },
     computed:{
       ...mapGetters('appStore',['isShowDrawer']),
+        showUser(){
+          return this.checkUserAndRoles([ROLE_USER, ROLE_ADMIN, ROLE_OWNER])
+        },
         drawer: {
             get() {
                 return this.isShowDrawer;
@@ -34,6 +39,9 @@ export default {
             set(val) {
                 this.setIsShowDrawer(val)
             }
+        },
+        NAV_MENU () {
+          return this.Menu.methods.getMenu()
         }
     },
 }
@@ -56,43 +64,28 @@ export default {
             >
                 <template v-for="(item, key) in NAV_MENU">
                     <v-list-item
-                        v-if="!item.items"
+                        v-if="item.text !== 'logout'"
+                        v-show="item.show"
+                        :key="key"
                         :to="item.to"
+
                     >
-                        <v-icon>{{item.icon}}</v-icon>
+                        <v-list-item-icon>
+                            <v-icon>{{item.icon}}</v-icon>
+                        </v-list-item-icon>
                         <v-list-item-title>{{$t(`navMenu.${item.text}`)}}</v-list-item-title>
                     </v-list-item>
-
-                    <v-list-group
+                    <v-list-item
                         v-else
-
+                        v-show="item.show"
+                        :key="key"
+                        @click="logout()"
                     >
-                        <template v-slot:activator>
-                            <v-list-item-content>
-                                <v-icon>{{item.icon}}</v-icon>
-                                <v-list-item-title>{{$t(`navMenu.${item.text}`)}}</v-list-item-title>
-                            </v-list-item-content>
-                        </template>
-                        <template v-for="(subItem, subKey) in item.items">
-                            <v-list-item
-                                v-if="subItem.text !== 'logout'"
-                                :key="subKey"
-                                :to="subItem.to"
-                            >
-                                <v-icon>{{subItem.icon}}</v-icon>
-                                <v-list-item-title>{{$t(`navMenu.${subItem.text}`)}}</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item
-                                v-else
-                                :key="subKey"
-                                @click="logout()"
-                            >
-                                <v-icon>{{subItem.icon}}</v-icon>
-                                <v-list-item-title>{{$t(`navMenu.${subItem.text}`)}}</v-list-item-title>
-                            </v-list-item>
-                        </template>
-
-                    </v-list-group>
+                        <v-list-item-icon>
+                            <v-icon>{{item.icon}}</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>{{$t(`navMenu.${item.text}`)}}</v-list-item-title>
+                    </v-list-item>
                 </template>
             </v-list-item-group>
         </v-list>
