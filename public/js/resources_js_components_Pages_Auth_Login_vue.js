@@ -154,79 +154,73 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "v-form",
+    { ref: "form" },
     [
       _c(
-        "v-form",
-        { ref: "form" },
+        "v-card",
+        { staticClass: "m-1 p-1 my-1 ", attrs: { width: "500px" } },
         [
           _c(
-            "v-card",
-            { staticClass: "m-1 p-1 my-1 ", attrs: { width: "500px" } },
+            "v-card-title",
+            { staticClass: "text-center justify-center py-6 gen-ft-style" },
             [
-              _c(
-                "v-card-title",
-                { staticClass: "text-center justify-center py-6 gen-ft-style" },
-                [
-                  _c("span", { staticClass: "display-0" }, [
-                    _vm._v(_vm._s(_vm.$t("app.login"))),
-                  ]),
-                ]
-              ),
+              _c("span", { staticClass: "display-0" }, [
+                _vm._v(_vm._s(_vm.$t("app.login"))),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-text",
+            [
+              _c("v-text-field", {
+                attrs: { clearable: "", label: _vm.$t("app.email") },
+                model: {
+                  value: _vm.form.email,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.form, "email", $$v)
+                  },
+                  expression: "form.email",
+                },
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
+                  type: _vm.show ? "text" : "password",
+                  counter: "",
+                  label: _vm.$t("app.password"),
+                },
+                on: {
+                  "click:append": function ($event) {
+                    _vm.show = !_vm.show
+                  },
+                },
+                model: {
+                  value: _vm.form.password,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.form, "password", $$v)
+                  },
+                  expression: "form.password",
+                },
+              }),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c("v-spacer"),
               _vm._v(" "),
               _c(
-                "v-card-text",
-                [
-                  _c("v-text-field", {
-                    attrs: { clearable: "", label: _vm.$t("app.email") },
-                    model: {
-                      value: _vm.form.email,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.form, "email", $$v)
-                      },
-                      expression: "form.email",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: {
-                      "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
-                      type: _vm.show ? "text" : "password",
-                      counter: "",
-                      label: _vm.$t("app.password"),
-                    },
-                    on: {
-                      "click:append": function ($event) {
-                        _vm.show = !_vm.show
-                      },
-                    },
-                    model: {
-                      value: _vm.form.password,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.form, "password", $$v)
-                      },
-                      expression: "form.password",
-                    },
-                  }),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", text: "" },
-                      on: { click: _vm.login },
-                    },
-                    [_c("v-icon", [_vm._v("mdi-check-outline")])],
-                    1
-                  ),
-                ],
+                "v-btn",
+                {
+                  attrs: { color: "blue darken-1", text: "" },
+                  on: { click: _vm.login },
+                },
+                [_c("v-icon", [_vm._v("mdi-check-outline")])],
                 1
               ),
             ],
