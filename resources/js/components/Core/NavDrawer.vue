@@ -25,8 +25,6 @@ export default {
             });
         }
     },
-    mounted() {
-    },
     computed:{
         ...mapGetters('appStore',['isShowDrawer']),
         ...mapGetters('authStore',['currentUser']),
@@ -42,7 +40,7 @@ export default {
             }
         },
         NAV_MENU(){
-          return this.getMenu()
+            return this.getMenu()
         }
     },
 }
@@ -52,10 +50,10 @@ export default {
     <v-navigation-drawer
         v-model="drawer"
         absolute
-        bottom
+        dark
         temporary
         src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
-        width="30%"
+        :width="$vuetify.breakpoint.mdAndUp ? '30%' : '50%'"
     >
         <v-list
             nav

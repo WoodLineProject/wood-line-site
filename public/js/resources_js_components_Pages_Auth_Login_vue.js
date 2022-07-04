@@ -48,11 +48,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               showConfirmButton: false,
               timer: 3000
             });
-          }, 500);
 
-          _this.$router.push({
-            path: '/'
-          });
+            _this.$router.push({
+              path: '/'
+            });
+          }, 500);
         } else {
           _this.$swal({
             //position: 'top-end',
@@ -175,7 +175,11 @@ var render = function () {
             "v-card-text",
             [
               _c("v-text-field", {
-                attrs: { clearable: "", label: _vm.$t("app.email") },
+                attrs: {
+                  clearable: "",
+                  outlined: "",
+                  label: _vm.$t("app.email"),
+                },
                 model: {
                   value: _vm.form.email,
                   callback: function ($$v) {
@@ -187,6 +191,7 @@ var render = function () {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
+                  outlined: "",
                   "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
                   type: _vm.show ? "text" : "password",
                   counter: "",

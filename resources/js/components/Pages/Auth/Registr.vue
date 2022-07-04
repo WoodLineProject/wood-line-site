@@ -9,6 +9,8 @@ export default {
             show1: false,
             form: {
                 name: '',
+                surname: '',
+                patronymic: '',
                 email: '',
                 password: '',
                 password_confirmation: '',
@@ -16,23 +18,22 @@ export default {
             }
         }
     },
-    computed:{
-        ...mapGetters('authStore',['currentUser']),
-    },
+
     methods:{
         ...mapActions('authStore',['registerAsync','getUserAsync']),
         register(){
+            this.form.password_confirmation = this.form.password
           this.registerAsync(this.form).then((response) => {
               if(response.result){
-                  this.getUserAsync()
+                  this.getUserAsync();
                   setTimeout(() => {
                       this.$swal({
                           icon: 'success',
                           title: this.$t(`auth.${response.message}`,{name: this.currentUser.name}),
                           showConfirmButton: false,
-                          timer: 3000
+                          timer: 2000
                       })
-                  }, 500);
+                  }, 1000);
                   this.$router.push({path: '/'});
               }else{
                   this.$swal({
@@ -56,15 +57,36 @@ export default {
             </v-card-title>
             <v-card-text>
                 <v-text-field
+                    maxlength="50"
+                    counter
+                    outlined
                     clearable
                     :label="$t(`app.name`)"
                     v-model="form.name"/>
                 <v-text-field
+                    maxlength="50"
+                    counter
+                    outlined
+                    clearable
+                    :label="$t(`app.surname`)"
+                    v-model="form.surname"/>
+                <v-text-field
+                    maxlength="50"
+                    counter
+                    outlined
+                    clearable
+                    :label="$t(`app.patronymic`)"
+                    v-model="form.patronymic"/>
+                <v-text-field
+                    maxlength="50"
+                    counter
+                    outlined
                     clearable
                     type="email"
                     :label="$t(`app.email`)"
                     v-model="form.email"/>
                 <v-text-field
+                    outlined
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"
                     counter
@@ -72,13 +94,7 @@ export default {
                     :label="$t(`app.password`)"
                     v-model="form.password"/>
                 <v-text-field
-                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="show1 ? 'text' : 'password'"
-                    counter
-                    @click:append="show1 = !show1"
-                    :label="$t(`app.confirmPassword`)"
-                    v-model="form.password_confirmation"/>
-                <v-text-field
+                    outlined
                     clearable
                     :label="$t(`app.phone`)"
                     v-model="form.phone"/>

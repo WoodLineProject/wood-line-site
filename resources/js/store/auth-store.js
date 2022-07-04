@@ -80,13 +80,14 @@ const actions = {
         });
     },
     getUserAsync: async ({commit}) => {
-        axios.post('api/user').then((data) => {
+        await axios.post('api/user').then((data) => {
             localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
             commit('setCurrentUser', {
                 email:data.data.email,
                 name:data.data.name,
                 role:data.data.role,
             });
+            return data.data
         }).catch(err => {
             localStorage.removeItem('x_xsrf_token');
         });

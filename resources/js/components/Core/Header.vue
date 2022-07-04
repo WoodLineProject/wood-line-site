@@ -59,12 +59,8 @@ export default {
             id="scrolling-techniques-3"
             class="overflow-y-auto"
         >
-            <v-container style="min-height: 128px;"></v-container>
+            <v-container style="min-height: 96pt;"></v-container>
         </v-sheet>
     </v-card>
 </template>
-<style>
-#core-header {
-    z-index: 0;
-}
-</style>
+

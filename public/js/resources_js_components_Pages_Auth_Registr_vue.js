@@ -27,6 +27,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       show1: false,
       form: {
         name: '',
+        surname: '',
+        patronymic: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -34,11 +36,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('authStore', ['currentUser'])),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['registerAsync', 'getUserAsync'])), {}, {
     register: function register() {
       var _this = this;
 
+      this.form.password_confirmation = this.form.password;
       this.registerAsync(this.form).then(function (response) {
         if (response.result) {
           _this.getUserAsync();
@@ -50,9 +52,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 name: _this.currentUser.name
               }),
               showConfirmButton: false,
-              timer: 3000
+              timer: 2000
             });
-          }, 500);
+          }, 1000);
 
           _this.$router.push({
             path: '/'
@@ -180,7 +182,13 @@ var render = function () {
             "v-card-text",
             [
               _c("v-text-field", {
-                attrs: { clearable: "", label: _vm.$t("app.name") },
+                attrs: {
+                  maxlength: "50",
+                  counter: "",
+                  outlined: "",
+                  clearable: "",
+                  label: _vm.$t("app.name"),
+                },
                 model: {
                   value: _vm.form.name,
                   callback: function ($$v) {
@@ -192,6 +200,43 @@ var render = function () {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
+                  maxlength: "50",
+                  counter: "",
+                  outlined: "",
+                  clearable: "",
+                  label: _vm.$t("app.surname"),
+                },
+                model: {
+                  value: _vm.form.surname,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.form, "surname", $$v)
+                  },
+                  expression: "form.surname",
+                },
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  maxlength: "50",
+                  counter: "",
+                  outlined: "",
+                  clearable: "",
+                  label: _vm.$t("app.patronymic"),
+                },
+                model: {
+                  value: _vm.form.patronymic,
+                  callback: function ($$v) {
+                    _vm.$set(_vm.form, "patronymic", $$v)
+                  },
+                  expression: "form.patronymic",
+                },
+              }),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  maxlength: "50",
+                  counter: "",
+                  outlined: "",
                   clearable: "",
                   type: "email",
                   label: _vm.$t("app.email"),
@@ -207,6 +252,7 @@ var render = function () {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
+                  outlined: "",
                   "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
                   type: _vm.show ? "text" : "password",
                   counter: "",
@@ -228,27 +274,10 @@ var render = function () {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
-                  "append-icon": _vm.show1 ? "mdi-eye" : "mdi-eye-off",
-                  type: _vm.show1 ? "text" : "password",
-                  counter: "",
-                  label: _vm.$t("app.confirmPassword"),
+                  outlined: "",
+                  clearable: "",
+                  label: _vm.$t("app.phone"),
                 },
-                on: {
-                  "click:append": function ($event) {
-                    _vm.show1 = !_vm.show1
-                  },
-                },
-                model: {
-                  value: _vm.form.password_confirmation,
-                  callback: function ($$v) {
-                    _vm.$set(_vm.form, "password_confirmation", $$v)
-                  },
-                  expression: "form.password_confirmation",
-                },
-              }),
-              _vm._v(" "),
-              _c("v-text-field", {
-                attrs: { clearable: "", label: _vm.$t("app.phone") },
                 model: {
                   value: _vm.form.phone,
                   callback: function ($$v) {

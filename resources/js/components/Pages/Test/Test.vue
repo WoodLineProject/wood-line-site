@@ -1,5 +1,7 @@
 <template>
-<h1>{{$t(`app.test`)}}</h1>
+    <div>
+        <h1 v-for="i in 50">{{$t(`app.test`)}}</h1>
+    </div>
 </template>
 
 <script>

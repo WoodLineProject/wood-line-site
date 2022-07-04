@@ -28,8 +28,9 @@ export default {
                             showConfirmButton: false,
                             timer: 3000
                         })
+                        this.$router.push({path: '/'});
                     }, 500);
-                    this.$router.push({path: '/'});
+
                 }else{
                     this.$swal({
                         //position: 'top-end',
@@ -54,9 +55,11 @@ export default {
             <v-card-text>
                 <v-text-field
                     clearable
+                    outlined
                     :label="$t(`app.email`)"
                     v-model="form.email"/>
                 <v-text-field
+                    outlined
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"
                     counter

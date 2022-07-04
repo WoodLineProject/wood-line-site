@@ -6,5 +6,7 @@
     "email":"Емайл",
     "password": "Пароль",
     "confirmPassword":"Повторити пароль",
-    "phone": "Номер телефону"
+    "phone": "Номер телефону",
+    "surname": "Прізвище",
+    "patronymic": "По батькові"
 }
