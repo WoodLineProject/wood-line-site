@@ -10921,7 +10921,6 @@ var render = function () {
     {
       attrs: {
         absolute: "",
-        dark: "",
         temporary: "",
         src: "https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg",
         width: _vm.$vuetify.breakpoint.mdAndUp ? "30%" : "50%",

@@ -50,7 +50,6 @@ export default {
     <v-navigation-drawer
         v-model="drawer"
         absolute
-        dark
         temporary
         src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
         :width="$vuetify.breakpoint.mdAndUp ? '30%' : '50%'"
