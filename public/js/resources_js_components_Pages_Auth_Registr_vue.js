@@ -36,29 +36,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['registerAsync', 'getUserAsync'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['registerAsync', 'getCurrentUserAsync'])), {}, {
     register: function register() {
       var _this = this;
 
       this.form.password_confirmation = this.form.password;
       this.registerAsync(this.form).then(function (response) {
         if (response.result) {
-          _this.getUserAsync();
-
-          setTimeout(function () {
-            _this.$swal({
-              icon: 'success',
-              title: _this.$t("auth.".concat(response.message), {
-                name: _this.currentUser.name
-              }),
-              showConfirmButton: false,
-              timer: 2000
-            });
-          }, 1000);
+          _this.$swal({
+            icon: 'success',
+            title: _this.$t("auth.".concat(response.message), {
+              name: response.name
+            }),
+            showConfirmButton: false,
+            timer: 2000
+          });
 
           _this.$router.push({
             path: '/'
           });
+
+          _this.getCurrentUserAsync();
         } else {
           _this.$swal({
             icon: 'error',

@@ -1,9 +1,12 @@
 import {CheckUserAndRolesMixin} from "../mixins/check-user-and-role-mixin";
+import {mapGetters} from "vuex";
 export const Menu = {
     name: "Menu",
     mixins: [CheckUserAndRolesMixin],
-    methods:{
-        getMenu() {
+
+    computed:{
+        ...mapGetters('authStore', ['currentUser']),
+        NAV_MENU() {
             return [
                 {
                     to: '/singIn',
@@ -37,6 +40,6 @@ export const Menu = {
                 }
             ]
         },
-    }
+    },
 }
 

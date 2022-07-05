@@ -1,8 +1,6 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-
 import {CheckUserAndRolesMixin} from "../../mixins/check-user-and-role-mixin";
-import {ROLE_ADMIN, ROLE_OWNER, ROLE_USER} from "../../constants/roles";
 import {Menu} from "../../constants/nav-menu";
 export default {
     name: "NavDrawer",
@@ -39,9 +37,6 @@ export default {
                 this.setIsShowDrawer(val)
             }
         },
-        NAV_MENU(){
-            return this.getMenu()
-        }
     },
 }
 </script>

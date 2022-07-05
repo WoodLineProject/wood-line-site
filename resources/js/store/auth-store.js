@@ -52,10 +52,11 @@ const actions = {
     registerAsync: async ({commit}, payload) => {
         let resp;
         return await axios.post('/register', payload)
-            .then(({data}) =>{
+            .then((data) =>{
                 resp = {
                     result: true,
                     message: 'authSuccess',
+                    name: payload.name
                 }
                 return resp
             }).catch(err =>{
@@ -79,7 +80,7 @@ const actions = {
             });
         });
     },
-    getUserAsync: async ({commit}) => {
+    getCurrentUserAsync: async ({commit}) => {
         await axios.post('api/user').then((data) => {
             localStorage.setItem('x_xsrf_token',data.config.headers['X-XSRF-TOKEN'])
             commit('setCurrentUser', {

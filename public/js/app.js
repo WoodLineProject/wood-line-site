@@ -5759,9 +5759,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     this.getCsrfTokenAsync();
-    this.getUserAsync();
+    this.getCurrentUserAsync();
   },
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)('authStore', ['getCsrfTokenAsync', 'getUserAsync']))
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)('authStore', ['getCsrfTokenAsync', 'getCurrentUserAsync']))
 });
 
 /***/ }),
@@ -5831,10 +5831,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
-/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/roles */ "./resources/js/constants/roles.js");
-/* harmony import */ var _constants_nav_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/nav-menu */ "./resources/js/constants/nav-menu.js");
+/* harmony import */ var _constants_nav_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../constants/nav-menu */ "./resources/js/constants/nav-menu.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -5844,16 +5843,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "NavDrawer",
-  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin, _constants_nav_menu__WEBPACK_IMPORTED_MODULE_2__.Menu],
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin, _constants_nav_menu__WEBPACK_IMPORTED_MODULE_1__.Menu],
   data: function data() {
     return {
       group: null
     };
   },
-  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)('appStore', ['changeIsShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)('authStore', ['logoutAsync'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapMutations)('appStore', ['setIsShowDrawer'])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('appStore', ['changeIsShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('authStore', ['logoutAsync'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapMutations)('appStore', ['setIsShowDrawer'])), {}, {
     logout: function logout() {
       var _this = this;
 
@@ -5867,7 +5865,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }),
-  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('appStore', ['isShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)('authStore', ['currentUser'])), {}, {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('appStore', ['isShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('authStore', ['currentUser'])), {}, {
     showUser: function showUser() {
       return this.checkUserAndRoles();
     },
@@ -5878,9 +5876,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       set: function set(val) {
         this.setIsShowDrawer(val);
       }
-    },
-    NAV_MENU: function NAV_MENU() {
-      return this.getMenu();
     }
   })
 });
@@ -6067,12 +6062,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Menu": () => (/* binding */ Menu)
 /* harmony export */ });
 /* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 var Menu = {
   name: "Menu",
   mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
-  methods: {
-    getMenu: function getMenu() {
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])), {}, {
+    NAV_MENU: function NAV_MENU() {
       return [{
         to: '/singIn',
         icon: 'mdi-home-circle-outline',
@@ -6100,7 +6103,7 @@ var Menu = {
         show: true
       }];
     }
-  }
+  })
 };
 
 /***/ }),
@@ -6114,6 +6117,7 @@ var Menu = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ALL_ROLE": () => (/* binding */ ALL_ROLE),
 /* harmony export */   "ROLE_ADMIN": () => (/* binding */ ROLE_ADMIN),
 /* harmony export */   "ROLE_OWNER": () => (/* binding */ ROLE_OWNER),
 /* harmony export */   "ROLE_USER": () => (/* binding */ ROLE_USER)
@@ -6121,6 +6125,7 @@ __webpack_require__.r(__webpack_exports__);
 var ROLE_USER = 1;
 var ROLE_ADMIN = 2;
 var ROLE_OWNER = 3;
+var ALL_ROLE = [ROLE_USER, ROLE_ADMIN, ROLE_OWNER];
 
 /***/ }),
 
@@ -6195,11 +6200,12 @@ var CheckUserAndRolesMixin = {
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])),
   methods: {
     checkUserAndRoles: function checkUserAndRoles() {
-      var arrayRoles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      if (!this.currentUser) return false;
-      var role = this.currentUser.role;
+      var arrayRoles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants_roles__WEBPACK_IMPORTED_MODULE_0__.ALL_ROLE;
+
       /*uncomment return true to disable role checking*/
       //return true
+      if (!this.currentUser) return false;
+      var role = this.currentUser.role;
 
       if (!role) {
         return false;
@@ -6830,11 +6836,11 @@ var actions = {
             case 0:
               commit = _ref3.commit;
               _context3.next = 3;
-              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', payload).then(function (_ref4) {
-                var data = _ref4.data;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/register', payload).then(function (data) {
                 resp = {
                   result: true,
-                  message: 'authSuccess'
+                  message: 'authSuccess',
+                  name: payload.name
                 };
                 return resp;
               })["catch"](function (err) {
@@ -6866,13 +6872,13 @@ var actions = {
     return registerAsync;
   }(),
   logoutAsync: function () {
-    var _logoutAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_ref5) {
+    var _logoutAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(_ref4) {
       var commit;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              commit = _ref5.commit;
+              commit = _ref4.commit;
               _context4.next = 3;
               return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function () {
                 localStorage.removeItem('x_xsrf_token');
@@ -6900,14 +6906,14 @@ var actions = {
 
     return logoutAsync;
   }(),
-  getUserAsync: function () {
-    var _getUserAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(_ref6) {
+  getCurrentUserAsync: function () {
+    var _getCurrentUserAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(_ref5) {
       var commit;
       return _regeneratorRuntime().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              commit = _ref6.commit;
+              commit = _ref5.commit;
               _context5.next = 3;
               return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('api/user').then(function (data) {
                 localStorage.setItem('x_xsrf_token', data.config.headers['X-XSRF-TOKEN']);
@@ -6929,11 +6935,11 @@ var actions = {
       }, _callee5);
     }));
 
-    function getUserAsync(_x6) {
-      return _getUserAsync.apply(this, arguments);
+    function getCurrentUserAsync(_x6) {
+      return _getCurrentUserAsync.apply(this, arguments);
     }
 
-    return getUserAsync;
+    return getCurrentUserAsync;
   }()
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -7047,7 +7053,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()((_image_bg_img_jpg__WEBPACK_IMPORTED_MODULE_2___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ndiv[data-app='true'] {\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center center fixed !important;\n    background-size: cover;\n    width: 100%;\n    height: auto;\n    position: absolute;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ndiv[data-app='true'] {\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ") no-repeat center center fixed !important;\r\n    background-size: cover;\r\n    width: 100%;\r\n    height: auto;\r\n    position: absolute;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

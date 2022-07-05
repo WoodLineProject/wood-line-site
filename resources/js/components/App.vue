@@ -9,10 +9,10 @@ import {mapActions} from "vuex";
         components:{Header, NavDrawer,ViewBody,Footer,},
         mounted() {
             this.getCsrfTokenAsync();
-            this.getUserAsync();
+            this.getCurrentUserAsync();
         },
         methods:{
-            ...mapActions('authStore',['getCsrfTokenAsync','getUserAsync']),
+            ...mapActions('authStore',['getCsrfTokenAsync','getCurrentUserAsync']),
         }
     }
 </script>

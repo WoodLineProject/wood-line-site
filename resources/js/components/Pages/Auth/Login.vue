@@ -16,11 +16,11 @@ export default {
       ...mapGetters('authStore',['currentUser']),
     },
     methods:{
-        ...mapActions('authStore',['loginAsync','getUserAsync']),
+        ...mapActions('authStore',['loginAsync','getCurrentUserAsync']),
         login(){
             this.loginAsync(this.form).then((response) => {
                 if(response.result){
-                    this.getUserAsync();
+                    this.getCurrentUserAsync();
                     setTimeout(() => {
                         this.$swal({
                             icon: 'success',

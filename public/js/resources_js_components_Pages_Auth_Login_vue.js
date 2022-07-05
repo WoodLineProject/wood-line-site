@@ -31,13 +31,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('authStore', ['currentUser'])),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync', 'getUserAsync'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync', 'getCurrentUserAsync'])), {}, {
     login: function login() {
       var _this = this;
 
       this.loginAsync(this.form).then(function (response) {
         if (response.result) {
-          _this.getUserAsync();
+          _this.getCurrentUserAsync();
 
           setTimeout(function () {
             _this.$swal({

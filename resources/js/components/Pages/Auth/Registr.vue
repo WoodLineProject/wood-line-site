@@ -20,21 +20,19 @@ export default {
     },
 
     methods:{
-        ...mapActions('authStore',['registerAsync','getUserAsync']),
+        ...mapActions('authStore',['registerAsync','getCurrentUserAsync']),
         register(){
             this.form.password_confirmation = this.form.password
           this.registerAsync(this.form).then((response) => {
               if(response.result){
-                  this.getUserAsync();
-                  setTimeout(() => {
-                      this.$swal({
-                          icon: 'success',
-                          title: this.$t(`auth.${response.message}`,{name: this.currentUser.name}),
-                          showConfirmButton: false,
-                          timer: 2000
-                      })
-                  }, 1000);
+                  this.$swal({
+                      icon: 'success',
+                      title: this.$t(`auth.${response.message}`,{name: response.name}),
+                      showConfirmButton: false,
+                      timer: 2000
+                  })
                   this.$router.push({path: '/'});
+                  this.getCurrentUserAsync();
               }else{
                   this.$swal({
                       icon: 'error',
