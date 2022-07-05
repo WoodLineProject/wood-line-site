@@ -9082,6 +9082,11 @@ vue-i18n@^8.24.4:
   resolved "https://registry.npmjs.org/vue-i18n/-/vue-i18n-8.27.1.tgz"
   integrity sha512-lWrGm4F25qReJ7XxSnFVb2h3PfW54ldnM4C+YLBGGJ75+Myt/kj4hHSTKqsyDLamvNYpvINMicSOdW+7yuqgIQ==
 
+vue-ico@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/vue-ico/-/vue-ico-1.0.15.tgz#33a9dcffe0b4d508e982b643a2972d653a4615ad"
+  integrity sha512-Qfbp2HcFt+bXM7Euq3b55jqQosRcxVFo7kDcrFc4bhiGaMXjemx+TXt0UOTjHXbsxAaBAkCLD2atdDqOIP8wmQ==
+
 vue-loader@^15.9.7:
   version "15.9.8"
   resolved "https://registry.npmjs.org/vue-loader/-/vue-loader-15.9.8.tgz"

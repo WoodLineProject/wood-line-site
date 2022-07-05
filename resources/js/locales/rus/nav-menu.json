@@ -5,5 +5,9 @@
     "singIn": "Авторизация",
     "login": "Вход",
     "reg": "Регестрация",
-    "logout": "Выход"
+    "logout": "Выход",
+    "aboutAs": "О нас",
+    "upholstery": "Обивочная",
+    "wholesaleCustomers": "Оптовым клиентам",
+    "catalog": "Наши изделия"
 }

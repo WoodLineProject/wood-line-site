@@ -45,3 +45,6 @@ Route::group(['middleware' => [
     function (){
         Route::post('/test5',  [TestController::class, 'test']);
     });
+
+
+include "BaseRoute/base-route.php";

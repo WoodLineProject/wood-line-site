@@ -10,31 +10,55 @@ export const Menu = {
             return [
                 {
                     to: '/singIn',
-                    icon: 'mdi-home-circle-outline',
+                    icon: 'login',
                     text: 'login',
                     show: !this.checkUserAndRoles()
                 },
                 {
                     to: '/reg',
-                    icon: 'mdi-account-question',
+                    icon: 'person_add',
                     text: 'reg',
                     show: !this.checkUserAndRoles()
                 },
                 {
                     to: '/',
-                    icon: 'mdi-account-question',
+                    icon: 'logout',
                     text: 'logout',
                     show: this.checkUserAndRoles()
                 },
                 {
                     to: '/',
-                    icon: 'mdi-home-circle-outline',
+                    icon: 'house',
                     text: 'home',
                     show: true
                 },
                 {
+                    to: '/catalog',
+                    icon: 'import_contacts',
+                    text: 'catalog',
+                    show: true
+                },
+                {
+                    to: '/upholstery',
+                    icon: 'checkroom',
+                    text: 'upholstery',
+                    show: true
+                },
+                {
+                    to: '/wholesale-customers',
+                    icon: 'account_circle',
+                    text: 'wholesaleCustomers',
+                    show: true
+                },
+                {
+                    to: '/about-as',
+                    icon: 'help_center',
+                    text: 'aboutAs',
+                    show: true
+                },
+                {
                     to: '/test',
-                    icon: 'mdi-account-question',
+                    icon: 'bug_report',
                     text: 'test',
                     show: true
                 }
