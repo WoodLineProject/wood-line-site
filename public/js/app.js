@@ -5863,6 +5863,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           timer: 3000
         });
       });
+      this.$router.push({
+        name: 'home'
+      });
     }
   }),
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('appStore', ['isShowDrawer'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('authStore', ['currentUser'])), {}, {

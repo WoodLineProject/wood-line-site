@@ -2,6 +2,7 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import {CheckUserAndRolesMixin} from "../../mixins/check-user-and-role-mixin";
 import {Menu} from "../../constants/nav-menu";
+
 export default {
     name: "NavDrawer",
     mixins: [CheckUserAndRolesMixin,Menu],
@@ -21,6 +22,7 @@ export default {
                     timer: 3000
                 })
             });
+            this.$router.push({ name: 'home'})
         }
     },
     computed:{
