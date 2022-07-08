@@ -1,4 +1,5 @@
 import {CheckUserAndRolesMixin} from "../mixins/check-user-and-role-mixin";
+import {ROLE_ADMIN, ROLE_OWNER} from './roles'
 import {mapGetters} from "vuex";
 export const Menu = {
     name: "Menu",
@@ -25,6 +26,12 @@ export const Menu = {
                     icon: 'logout',
                     text: 'logout',
                     show: this.checkUserAndRoles()
+                },
+                {
+                    to: '/admin-panel',
+                    icon: 'admin_panel_settings',
+                    text: 'adminPanel',
+                    show: this.checkUserAndRoles([ROLE_ADMIN,ROLE_OWNER])
                 },
                 {
                     to: '/',

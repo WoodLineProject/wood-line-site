@@ -8,5 +8,6 @@
     "confirmPassword":"Повторить пароль",
     "phone": "Номер телефона",
     "surname": "Фамилия",
-    "patronymic":"Отчество"
+    "patronymic":"Отчество",
+    "role": "Роль"
 }

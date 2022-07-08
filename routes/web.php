@@ -48,3 +48,4 @@ Route::group(['middleware' => [
 
 
 include "BaseRoute/base-route.php";
+include "AdminPanel/admin-panel.php";

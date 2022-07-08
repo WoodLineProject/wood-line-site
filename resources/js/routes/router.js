@@ -6,6 +6,7 @@ import AboutAs from "../components/Pages/AboutAs/AboutAs";
 import Upholstery from '../components/Pages/Upholstery/Upholstery'
 import WholesaleCustomers from '../components/Pages/WholesaleCustomers/WholesaleCustomers'
 import Catalog from '../components/Pages/Catalog/Catalog'
+import AdminPanel from './adminPanel/admin-panel-route-list'
 
 const BaseRoute = [
     {
@@ -37,6 +38,7 @@ const BaseRoute = [
 const routes = BaseRoute.concat(
     Test,
     Auth,
+    AdminPanel,
 )
 export const router = new VueRouter({
     mode: 'history',

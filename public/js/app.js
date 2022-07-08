@@ -5924,6 +5924,129 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _constants_admin_nav_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../constants/admin-nav-menu */ "./resources/js/constants/admin-nav-menu.js");
+
+var trans_prefix = 'adminPanel.adminPanelMain';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "AdminPanelMain",
+  data: function data() {
+    return {
+      trans_prefix: trans_prefix,
+      group: null
+    };
+  },
+  mixins: [_constants_admin_nav_menu__WEBPACK_IMPORTED_MODULE_0__.AdminNavMenu]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../constants/roles */ "./resources/js/constants/roles.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var trans_prefix = 'adminPanel.userManagement';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "UserManagement",
+  components: {
+    UserFormDialog: function UserFormDialog() {
+      return __webpack_require__.e(/*! import() */ "resources_js_components_Pages_AdminPanel_UserManagement_UserFormDialog_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./UserFormDialog */ "./resources/js/components/Pages/AdminPanel/UserManagement/UserFormDialog.vue"));
+    }
+  },
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
+  data: function data() {
+    return {
+      trans_prefix: trans_prefix,
+      search: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getUsersAsync();
+    this.getRolesAsync();
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('userManagementStore', ['users'])), {}, {
+    showForOwner: function showForOwner() {
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER]);
+    },
+    headers: function headers() {
+      return [{
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.name")),
+        value: 'name',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.surname")),
+        value: 'surname',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.patronymic")),
+        value: 'patronymic',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.email")),
+        value: 'email',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.phone")),
+        value: 'phone',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        text: this.$t("".concat(trans_prefix, ".tableHeaders.role")),
+        value: 'role',
+        align: 'center',
+        "class": 'my-header',
+        sortable: true
+      }, {
+        value: 'action',
+        align: 'center',
+        "class": 'my-header',
+        sortable: false
+      }];
+    }
+  }),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('userManagementStore', ['getUsersAsync', 'getRolesAsync']))
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/Catalog/Catalog.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/Catalog/Catalog.vue?vue&type=script&lang=js& ***!
@@ -6120,6 +6243,46 @@ new vue__WEBPACK_IMPORTED_MODULE_11__["default"]({
 
 /***/ }),
 
+/***/ "./resources/js/constants/admin-nav-menu.js":
+/*!**************************************************!*\
+  !*** ./resources/js/constants/admin-nav-menu.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AdminNavMenu": () => (/* binding */ AdminNavMenu)
+/* harmony export */ });
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
+/* harmony import */ var _roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./roles */ "./resources/js/constants/roles.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var AdminNavMenu = {
+  name: "Menu",
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('authStore', ['currentUser'])), {}, {
+    ADMIN_NAV_MENU: function ADMIN_NAV_MENU() {
+      return [{
+        to: '/user-management',
+        icon: 'person_search',
+        text: 'userManagement',
+        show: this.checkUserAndRoles([_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_ADMIN, _roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER])
+      }];
+    }
+  })
+};
+
+/***/ }),
+
 /***/ "./resources/js/constants/nav-menu.js":
 /*!********************************************!*\
   !*** ./resources/js/constants/nav-menu.js ***!
@@ -6132,7 +6295,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Menu": () => (/* binding */ Menu)
 /* harmony export */ });
 /* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _roles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./roles */ "./resources/js/constants/roles.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -6141,10 +6305,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Menu = {
   name: "Menu",
   mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_0__.CheckUserAndRolesMixin],
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])), {}, {
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('authStore', ['currentUser'])), {}, {
     NAV_MENU: function NAV_MENU() {
       return [{
         to: '/singIn',
@@ -6161,6 +6326,11 @@ var Menu = {
         icon: 'logout',
         text: 'logout',
         show: this.checkUserAndRoles()
+      }, {
+        to: '/admin-panel',
+        icon: 'admin_panel_settings',
+        text: 'adminPanel',
+        show: this.checkUserAndRoles([_roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_ADMIN, _roles__WEBPACK_IMPORTED_MODULE_1__.ROLE_OWNER])
       }, {
         to: '/',
         icon: 'house',
@@ -6237,6 +6407,10 @@ var main_locale = 'rus';
   navMenu: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/nav\\-menu\\.json$")("./".concat(main_locale, "/nav-menu.json")),
   auth: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.json$")("./".concat(main_locale, "/auth.json")),
   current_lang: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$")("./".concat(main_locale, "/locale.json")),
+  adminPanel: {
+    adminPanelMain: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/AdminPanelMain\\/admin\\-panel\\-main\\.json$")("./".concat(main_locale, "/AdminPanelMain/admin-panel-main.json")),
+    userManagement: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/UserManagement\\/user\\-management\\.json$")("./".concat(main_locale, "/UserManagement/user-management.json"))
+  },
   pages: {}
 });
 
@@ -6260,6 +6434,10 @@ var main_locale = 'ukr';
   navMenu: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/nav\\-menu\\.json$")("./".concat(main_locale, "/nav-menu.json")),
   auth: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/auth\\.json$")("./".concat(main_locale, "/auth.json")),
   current_lang: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/locale\\.json$")("./".concat(main_locale, "/locale.json")),
+  adminPanel: {
+    adminPanelMain: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/AdminPanelMain\\/admin\\-panel\\-main\\.json$")("./".concat(main_locale, "/AdminPanelMain/admin-panel-main.json")),
+    userManagement: __webpack_require__("./resources/js/locales sync recursive ^\\.\\/.*\\/UserManagement\\/user\\-management\\.json$")("./".concat(main_locale, "/UserManagement/user-management.json"))
+  },
   pages: {}
 });
 
@@ -6529,6 +6707,33 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((vuetify__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
+/***/ "./resources/js/routes/adminPanel/admin-panel-route-list.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/routes/adminPanel/admin-panel-route-list.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_Pages_AdminPanel_AdminPanelMain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/Pages/AdminPanel/AdminPanelMain */ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue");
+/* harmony import */ var _components_Pages_AdminPanel_UserManagement_UserManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Pages/AdminPanel/UserManagement/UserManagement */ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue");
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  path: '/admin-panel',
+  component: _components_Pages_AdminPanel_AdminPanelMain__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: 'adminPanel'
+}, {
+  path: '/user-management',
+  component: _components_Pages_AdminPanel_UserManagement_UserManagement__WEBPACK_IMPORTED_MODULE_1__["default"],
+  name: 'userManagement'
+}]);
+
+/***/ }),
+
 /***/ "./resources/js/routes/auth/auth-route-list.js":
 /*!*****************************************************!*\
   !*** ./resources/js/routes/auth/auth-route-list.js ***!
@@ -6570,7 +6775,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "router": () => (/* binding */ router)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_Pages_HomePage_HomePage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Pages/HomePage/HomePage */ "./resources/js/components/Pages/HomePage/HomePage.vue");
 /* harmony import */ var _test_test_route_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./test/test-route-list */ "./resources/js/routes/test/test-route-list.js");
 /* harmony import */ var _auth_auth_route_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth/auth-route-list */ "./resources/js/routes/auth/auth-route-list.js");
@@ -6578,6 +6783,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Pages_Upholstery_Upholstery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Pages/Upholstery/Upholstery */ "./resources/js/components/Pages/Upholstery/Upholstery.vue");
 /* harmony import */ var _components_Pages_WholesaleCustomers_WholesaleCustomers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Pages/WholesaleCustomers/WholesaleCustomers */ "./resources/js/components/Pages/WholesaleCustomers/WholesaleCustomers.vue");
 /* harmony import */ var _components_Pages_Catalog_Catalog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Pages/Catalog/Catalog */ "./resources/js/components/Pages/Catalog/Catalog.vue");
+/* harmony import */ var _adminPanel_admin_panel_route_list__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./adminPanel/admin-panel-route-list */ "./resources/js/routes/adminPanel/admin-panel-route-list.js");
+
 
 
 
@@ -6607,8 +6814,8 @@ var BaseRoute = [{
   component: _components_Pages_Catalog_Catalog__WEBPACK_IMPORTED_MODULE_6__["default"],
   name: 'catalog'
 }];
-var routes = BaseRoute.concat(_test_test_route_list__WEBPACK_IMPORTED_MODULE_1__["default"], _auth_auth_route_list__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
+var routes = BaseRoute.concat(_test_test_route_list__WEBPACK_IMPORTED_MODULE_1__["default"], _auth_auth_route_list__WEBPACK_IMPORTED_MODULE_2__["default"], _adminPanel_admin_panel_route_list__WEBPACK_IMPORTED_MODULE_7__["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]({
   mode: 'history',
   routes: routes
 });
@@ -6650,6 +6857,125 @@ __webpack_require__.r(__webpack_exports__);
   component: _components_Pages_Test_Test__WEBPACK_IMPORTED_MODULE_0__["default"],
   name: 'test'
 }]);
+
+/***/ }),
+
+/***/ "./resources/js/store/UserManagement/user-management-store.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/store/UserManagement/user-management-store.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../modules/axios_module */ "./resources/js/modules/axios_module.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  users: [],
+  roles: []
+};
+var getters = {
+  users: function users(state) {
+    return state.users;
+  },
+  roles: function roles(state) {
+    return state.roles;
+  }
+};
+var mutations = {
+  setUsers: function setUsers(state, payload) {
+    state.users = payload;
+  },
+  setRoles: function setRoles(state, payload) {
+    state.roles = payload;
+  }
+};
+var actions = {
+  getUsersAsync: function () {
+    var _getUsersAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_ref) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/get-users').then(function (_ref2) {
+                var data = _ref2.data;
+                commit('setUsers', data.data);
+              })["catch"](function (errorResponse) {
+                commit('setUsers', []);
+              });
+
+            case 3:
+              return _context.abrupt("return", _context.sent);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    function getUsersAsync(_x) {
+      return _getUsersAsync.apply(this, arguments);
+    }
+
+    return getUsersAsync;
+  }(),
+  getRolesAsync: function () {
+    var _getRolesAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref3) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref3.commit;
+              _context2.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/get-roles').then(function (_ref4) {
+                var data = _ref4.data;
+                commit('setRoles', data.data);
+              })["catch"](function (errorResponse) {
+                commit('setRoles', []);
+              });
+
+            case 3:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    function getRolesAsync(_x2) {
+      return _getRolesAsync.apply(this, arguments);
+    }
+
+    return getRolesAsync;
+  }()
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
 
 /***/ }),
 
@@ -7077,19 +7403,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "store": () => (/* binding */ store)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _app_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-store */ "./resources/js/store/app-store.js");
 /* harmony import */ var _auth_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth-store */ "./resources/js/store/auth-store.js");
+/* harmony import */ var _UserManagement_user_management_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserManagement/user-management-store */ "./resources/js/store/UserManagement/user-management-store.js");
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store({
+
+vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_4__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_4__["default"].Store({
   modules: {
     appStore: _app_store__WEBPACK_IMPORTED_MODULE_0__["default"],
-    authStore: _auth_store__WEBPACK_IMPORTED_MODULE_1__["default"]
+    authStore: _auth_store__WEBPACK_IMPORTED_MODULE_1__["default"],
+    userManagementStore: _UserManagement_user_management_store__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -10498,6 +10827,84 @@ component.options.__file = "resources/js/components/Pages/AboutAs/AboutAs.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminPanelMain.vue?vue&type=template&id=15235e02& */ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02&");
+/* harmony import */ var _AdminPanelMain_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminPanelMain.vue?vue&type=script&lang=js& */ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AdminPanelMain_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Pages/AdminPanel/AdminPanelMain.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true& */ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true&");
+/* harmony import */ var _UserManagement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserManagement.vue?vue&type=script&lang=js& */ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserManagement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "54aa00cb",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Pages/Catalog/Catalog.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/components/Pages/Catalog/Catalog.vue ***!
@@ -10789,6 +11196,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanelMain_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdminPanelMain.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanelMain_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserManagement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserManagement.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserManagement_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Pages/Catalog/Catalog.vue?vue&type=script&lang=js&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/Pages/Catalog/Catalog.vue?vue&type=script&lang=js& ***!
@@ -10980,6 +11419,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutAs_vue_vue_type_template_id_8eae316e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AboutAs_vue_vue_type_template_id_8eae316e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AboutAs.vue?vue&type=template&id=8eae316e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AboutAs/AboutAs.vue?vue&type=template&id=8eae316e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminPanelMain_vue_vue_type_template_id_15235e02___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AdminPanelMain.vue?vue&type=template&id=15235e02& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true&":
+/*!*******************************************************************************************************************************!*\
+  !*** ./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true& ***!
+  \*******************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserManagement_vue_vue_type_template_id_54aa00cb_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true&");
 
 
 /***/ }),
@@ -11553,6 +12026,223 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("h1", [_vm._v("AboutAs")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/AdminPanelMain.vue?vue&type=template&id=15235e02& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { attrs: { height: "auto" } },
+    [
+      _c(
+        "v-card-title",
+        { staticClass: "text-center justify-center py-6 gen-ft-style" },
+        [
+          _c("span", { staticClass: "display-0" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t(_vm.trans_prefix + ".title")) +
+                "\n            "
+            ),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card-text",
+        [
+          _c(
+            "v-list",
+            { attrs: { nav: "", dense: "" } },
+            [
+              _c(
+                "v-list-item-group",
+                {
+                  attrs: { "active-class": "deep-purple--text text--accent-4" },
+                  model: {
+                    value: _vm.group,
+                    callback: function ($$v) {
+                      _vm.group = $$v
+                    },
+                    expression: "group",
+                  },
+                },
+                [
+                  _vm._l(_vm.ADMIN_NAV_MENU, function (item, key) {
+                    return [
+                      _c(
+                        "v-list-item",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: item.show,
+                              expression: "item.show",
+                            },
+                          ],
+                          key: key,
+                          attrs: { to: item.to },
+                        },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-list-item-title", [
+                            _vm._v(
+                              _vm._s(_vm.$t(_vm.trans_prefix + "." + item.text))
+                            ),
+                          ]),
+                        ],
+                        1
+                      ),
+                    ]
+                  }),
+                ],
+                2
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pages/AdminPanel/UserManagement/UserManagement.vue?vue&type=template&id=54aa00cb&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    { attrs: { height: "auto" } },
+    [
+      _c(
+        "v-card-title",
+        { staticClass: "text-center justify-center py-6 gen-ft-style" },
+        [
+          _c("span", { staticClass: "display-0" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t(_vm.trans_prefix + ".title")) +
+                "\n            "
+            ),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card-text",
+        [
+          _c("v-text-field", {
+            attrs: {
+              "append-icon": "mdi-magnify",
+              label: _vm.$t(_vm.trans_prefix + ".search"),
+              "single-line": "",
+              "hide-details": "",
+            },
+            model: {
+              value: _vm.search,
+              callback: function ($$v) {
+                _vm.search = $$v
+              },
+              expression: "search",
+            },
+          }),
+          _vm._v(" "),
+          _c("v-data-table", {
+            attrs: {
+              headers: _vm.headers,
+              items: _vm.users,
+              search: _vm.search,
+              "disable-sort": true,
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "header.action",
+                fn: function (ref) {
+                  var props = ref.props
+                  return [
+                    _c("user-form-dialog", {
+                      attrs: { title: _vm.$t(_vm.trans_prefix + ".add") },
+                    }),
+                  ]
+                },
+              },
+              {
+                key: "item.action",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    _c("user-form-dialog", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.showForOwner,
+                          expression: "showForOwner",
+                        },
+                      ],
+                      attrs: {
+                        title: _vm.$t(_vm.trans_prefix + ".edit"),
+                        item: item,
+                      },
+                    }),
+                  ]
+                },
+              },
+            ]),
+          }),
+        ],
+        1
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -74670,6 +75360,72 @@ var index = {
 
 /***/ }),
 
+/***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/AdminPanelMain\\/admin\\-panel\\-main\\.json$":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/locales/ sync ^\.\/.*\/AdminPanelMain\/admin\-panel\-main\.json$ ***!
+  \***************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./rus/AdminPanelMain/admin-panel-main.json": "./resources/js/locales/rus/AdminPanelMain/admin-panel-main.json",
+	"./ukr/AdminPanelMain/admin-panel-main.json": "./resources/js/locales/ukr/AdminPanelMain/admin-panel-main.json"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/locales sync recursive ^\\.\\/.*\\/AdminPanelMain\\/admin\\-panel\\-main\\.json$";
+
+/***/ }),
+
+/***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/UserManagement\\/user\\-management\\.json$":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/locales/ sync ^\.\/.*\/UserManagement\/user\-management\.json$ ***!
+  \*************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./rus/UserManagement/user-management.json": "./resources/js/locales/rus/UserManagement/user-management.json",
+	"./ukr/UserManagement/user-management.json": "./resources/js/locales/ukr/UserManagement/user-management.json"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/js/locales sync recursive ^\\.\\/.*\\/UserManagement\\/user\\-management\\.json$";
+
+/***/ }),
+
 /***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/app\\.json$":
 /*!********************************************************!*\
   !*** ./resources/js/locales/ sync ^\.\/.*\/app\.json$ ***!
@@ -74813,6 +75569,28 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 
 /***/ }),
 
+/***/ "./resources/js/locales/rus/AdminPanelMain/admin-panel-main.json":
+/*!***********************************************************************!*\
+  !*** ./resources/js/locales/rus/AdminPanelMain/admin-panel-main.json ***!
+  \***********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"title":"Панель администратора","userManagement":"Управление пользователями"}');
+
+/***/ }),
+
+/***/ "./resources/js/locales/rus/UserManagement/user-management.json":
+/*!**********************************************************************!*\
+  !*** ./resources/js/locales/rus/UserManagement/user-management.json ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"title":"Управление пользователями","search":"Поиск","tableHeaders":{"name":"Имя","surname":"Фамилия","patronymic":"Отчество","email":"Имейл","phone":"Номер телефона","role":"Роль","password":"Пароль"},"add":"Добавить","edit":"Редактировать"}');
+
+/***/ }),
+
 /***/ "./resources/js/locales/rus/app.json":
 /*!*******************************************!*\
   !*** ./resources/js/locales/rus/app.json ***!
@@ -74820,7 +75598,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"Это тестовая запись на тестовом роуте","login":"Вход","reg":"Регестрация","name":"Имя","email":"Эмайл","password":"Пароль","confirmPassword":"Повторить пароль","phone":"Номер телефона","surname":"Фамилия","patronymic":"Отчество"}');
+module.exports = JSON.parse('{"test":"Это тестовая запись на тестовом роуте","login":"Вход","reg":"Регестрация","name":"Имя","email":"Эмайл","password":"Пароль","confirmPassword":"Повторить пароль","phone":"Номер телефона","surname":"Фамилия","patronymic":"Отчество","role":"Роль"}');
 
 /***/ }),
 
@@ -74853,7 +75631,29 @@ module.exports = JSON.parse('{"fullLocale":"Русский","shortLocale":"РУ�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"home":"Домой","test":"Тест","folder":"Папка","singIn":"Авторизация","login":"Вход","reg":"Регестрация","logout":"Выход","aboutAs":"О нас","upholstery":"Обивочная","wholesaleCustomers":"Оптовым клиентам","catalog":"Наши изделия"}');
+module.exports = JSON.parse('{"home":"Домой","test":"Тест","folder":"Папка","singIn":"Авторизация","login":"Вход","reg":"Регестрация","logout":"Выход","aboutAs":"О нас","upholstery":"Обивочная","wholesaleCustomers":"ОПТ","catalog":"Наши изделия","adminPanel":"Админ панель"}');
+
+/***/ }),
+
+/***/ "./resources/js/locales/ukr/AdminPanelMain/admin-panel-main.json":
+/*!***********************************************************************!*\
+  !*** ./resources/js/locales/ukr/AdminPanelMain/admin-panel-main.json ***!
+  \***********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"title":"Панель адміністратора","userManagement":"Керування користувачами"}');
+
+/***/ }),
+
+/***/ "./resources/js/locales/ukr/UserManagement/user-management.json":
+/*!**********************************************************************!*\
+  !*** ./resources/js/locales/ukr/UserManagement/user-management.json ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"title":"Керування користувачами","search":"Пошук","tableHeaders":{"name":"Ім\'я","surname":"Прізвище","patronymic":"По батькові","email":"Імейл","phone":"Номер телефону","role":"Роль","password":"Пароль"},"add":"Додати","edit":"Редагувати"}');
 
 /***/ }),
 
@@ -74864,7 +75664,7 @@ module.exports = JSON.parse('{"home":"Домой","test":"Тест","folder":"П
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"Це тестовий запис на тестовому роуті","login":"Вхід","reg":"Реєстрація","name":"Ім\'я","email":"Емайл","password":"Пароль","confirmPassword":"Повторити пароль","phone":"Номер телефону","surname":"Прізвище","patronymic":"По батькові"}');
+module.exports = JSON.parse('{"test":"Це тестовий запис на тестовому роуті","login":"Вхід","reg":"Реєстрація","name":"Ім\'я","email":"Емайл","password":"Пароль","confirmPassword":"Повторити пароль","phone":"Номер телефону","surname":"Прізвище","patronymic":"По батькові","role":"Роль"}');
 
 /***/ }),
 
@@ -74897,7 +75697,7 @@ module.exports = JSON.parse('{"fullLocale":"Українська","shortLocale":
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"home":"Додому","test":"Тест","singIn":"Авторизація","folder":"Мамка","login":"Вхід","reg":"Реєстрація","logout":"Вихід","aboutAs":"Про нас","upholstery":"Оббивна","wholesaleCustomers":"Оптовим клієнтам","catalog":"Наші вироби"}');
+module.exports = JSON.parse('{"home":"Додому","test":"Тест","singIn":"Авторизація","folder":"Мамка","login":"Вхід","reg":"Реєстрація","logout":"Вихід","aboutAs":"Про нас","upholstery":"Оббивна","wholesaleCustomers":"ОПТ","catalog":"Наші вироби","adminPanel":"Адмін панель"}');
 
 /***/ })
 
@@ -75013,7 +75813,7 @@ module.exports = JSON.parse('{"home":"Додому","test":"Тест","singIn":"
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Pages_Auth_Login_vue":1,"resources_js_components_Pages_Auth_Registr_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Pages_Auth_Login_vue":1,"resources_js_components_Pages_Auth_Registr_vue":1,"resources_js_components_Pages_AdminPanel_UserManagement_UserFormDialog_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

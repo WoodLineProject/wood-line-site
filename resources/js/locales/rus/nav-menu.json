@@ -8,6 +8,7 @@
     "logout": "Выход",
     "aboutAs": "О нас",
     "upholstery": "Обивочная",
-    "wholesaleCustomers": "Оптовым клиентам",
-    "catalog": "Наши изделия"
+    "wholesaleCustomers": "ОПТ",
+    "catalog": "Наши изделия",
+    "adminPanel": "Админ панель"
 }
