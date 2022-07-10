@@ -29,7 +29,6 @@ export default {
     },
     methods: {
         ...mapActions('userManagementStore',['changePassAsync','getUsersAsync',]),
-
         editPass(){
             this.changePassAsync({
                 id: this.currentId,
@@ -51,6 +50,7 @@ export default {
                 }
                 this.getUsersAsync();
             });
+            this.dialog = false;
         },
     }
 }
