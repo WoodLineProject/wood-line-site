@@ -1,5 +1,5 @@
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 const trans_prefix = 'adminPanel.userManagement';
 export default {
@@ -7,21 +7,25 @@ export default {
     data () {
         return {
             trans_prefix,
+            show: false,
             dialog: false,
+            confirmDialog: false,
             hasItem: false,
             form: {
                 id: '',
                 name: '',
                 surname: '',
                 patronymic: '',
+                password: '',
                 email: '',
                 phone: '+380',
-                role: ''
+                role: 1
             }
         }
     },
     mounted() {
         if(this.item!== undefined){
+            this.form.id = this.item.id
             this.form.name = this.item.name
             this.form.surname = this.item.surname
             this.form.patronymic = this.item.patronymic
@@ -33,21 +37,73 @@ export default {
     },
     computed: {
         ...mapGetters('userManagementStore', ['roles']),
+        disableRunAction(){
+            let result = true
+            if(this.form.name !== '' && this.form.name !== null &&
+                this.form.surname !== '' && this.form.surname !== null &&
+                this.form.patronymic !== '' && this.form.patronymic !== null &&
+                this.form.email !== '' && this.form.email !== null &&
+                this.form.phone !== '' && this.form.phone !== null){
+                if(this.hasItem){
+                    result = false;
+                }else{
+                    if(this.form.password !== '' && this.form.password !== null){
+                        result = false;
+                    }
+                }
+            }
+            return result
+        }
     },
     props:{
         item: Object,
         title: String,
     },
     methods: {
+        ...mapActions('userManagementStore',['editUserAsync','getUsersAsync','addUserAsync']),
         runAction() {
-            /*this.hasItem
+            this.hasItem
                 ? this.edit()
-                : this.saveNewItem();*/
-            this.edit()
+                : this.saveNewItem();
             this.dialog = false
         },
         edit(){
-            console.log(this.form);
+            this.editUserAsync(this.form).then(result => {
+                if(result){
+                    this.$swal({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }else{
+                    this.$swal({
+                        icon: 'error',
+                        title: this.$t(`${trans_prefix}.errorEditUser`),
+                        showConfirmButton: false,
+                        timer: 5000
+                    });
+                }
+                this.getUsersAsync();
+            });
+        },
+        saveNewItem(){
+            this.addUserAsync(this.form).then(result => {
+                if(result){
+                    this.$swal({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }else{
+                    this.$swal({
+                        icon: 'error',
+                        title: this.$t(`${trans_prefix}.errorAddUser`),
+                        showConfirmButton: false,
+                        timer: 5000
+                    });
+                }
+                this.getUsersAsync();
+            });
         },
     }
 }
@@ -105,6 +161,15 @@ export default {
                         :label="$t(`app.patronymic`)"
                         v-model="form.patronymic"/>
                     <v-text-field
+                        outlined
+                        v-show="!hasItem"
+                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="show ? 'text' : 'password'"
+                        counter
+                        @click:append="show = !show"
+                        :label="$t(`app.password`)"
+                        v-model="form.password"/>
+                    <v-text-field
                         maxlength="50"
                         counter
                         outlined
@@ -137,6 +202,7 @@ export default {
                         <v-icon>close</v-icon>
                     </v-btn>
                     <v-btn
+                        :disabled="disableRunAction"
                         color="green darken-1"
                         text
                         @click="runAction"

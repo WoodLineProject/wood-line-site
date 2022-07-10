@@ -2,14 +2,16 @@
 import {mapActions, mapGetters} from "vuex";
 import {CheckUserAndRolesMixin} from "../../../../mixins/check-user-and-role-mixin";
 import {ROLE_OWNER} from "../../../../constants/roles";
+import SetNewPasswordDialog from "./SetNewPasswordDialog";
 
 const trans_prefix = 'adminPanel.userManagement';
 export default {
     name: "UserManagement",
     components: {
+        SetNewPasswordDialog,
         UserFormDialog: () => import('./UserFormDialog'),
     },
-    mixins: [CheckUserAndRolesMixin],
+    mixins: [CheckUserAndRolesMixin,SetNewPasswordDialog],
     data(){
         return {
             trans_prefix,
@@ -21,7 +23,7 @@ export default {
       this.getRolesAsync();
     },
     computed:{
-        ...mapGetters('userManagementStore',['users']),
+        ...mapGetters('userManagementStore',['users','roles']),
         showForOwner(){
             return this.checkUserAndRoles([ROLE_OWNER])
         },
@@ -79,7 +81,26 @@ export default {
         }
     },
     methods:{
-        ...mapActions('userManagementStore',['getUsersAsync','getRolesAsync'])
+        ...mapActions('userManagementStore',['getUsersAsync','getRolesAsync','deleteUserAsync']),
+        deleteUser(item){
+            this.deleteUserAsync({id: item.id}).then(result => {
+                if(result){
+                    this.$swal({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }else{
+                    this.$swal({
+                        icon: 'error',
+                        title: this.$t(`${trans_prefix}.deleteAddUser`),
+                        showConfirmButton: false,
+                        timer: 5000
+                    });
+                }
+                this.getUsersAsync();
+            });
+        }
     }
 }
 </script>
@@ -95,13 +116,20 @@ export default {
                 </span>
         </v-card-title>
         <v-card-text>
-            <v-text-field
-                v-model="search"
-                append-icon="mdi-magnify"
-                :label="$t(`${trans_prefix}.search`)"
-                single-line
-                hide-details
-            ></v-text-field>
+            <v-row class="mb-3">
+                <v-text-field
+                    class="ml-3"
+                    v-model="search"
+                    append-icon="mdi-magnify"
+                    :label="$t(`${trans_prefix}.search`)"
+                    single-line
+                    hide-details
+                ></v-text-field>
+                <user-form-dialog v-if="!$vuetify.breakpoint.mdAndUp"
+                    class="mt-4 ml-10"
+                    v-bind:title="$t(`${trans_prefix}.add`)"
+                />
+            </v-row>
             <v-data-table
                 :headers="headers"
                 :items="users"
@@ -109,16 +137,29 @@ export default {
                 :disable-sort="true"
             >
                 <template v-slot:header.action="{ props }">
-                    <user-form-dialog
+                    <user-form-dialog v-if="$vuetify.breakpoint.mdAndUp"
                         v-bind:title="$t(`${trans_prefix}.add`)"
                     />
                 </template>
-                <template v-slot:item.action="{ item }">
-                    <user-form-dialog
-                        v-show="showForOwner"
-                        v-bind:title="$t(`${trans_prefix}.edit`)"
-                        v-bind:item="item"/>
-                </template>
+                    <template v-slot:item.action="{ item }">
+                        <v-row>
+                            <user-form-dialog
+                                class="mt-0"
+                                v-show="showForOwner"
+                                v-bind:title="$t(`${trans_prefix}.edit`)"
+                                v-bind:item="item"/>
+                            <v-btn
+                                v-show="showForOwner"
+                                @click="deleteUser(item)"
+                                color="red darken-1" text>
+                                <v-icon>close</v-icon>
+                            </v-btn>
+                            <set-new-password-dialog
+                                class="mt-0"
+                                v-show="showForOwner"
+                                v-bind:item="item"/>
+                        </v-row>
+                    </template>
             </v-data-table>
         </v-card-text>
     </v-card>

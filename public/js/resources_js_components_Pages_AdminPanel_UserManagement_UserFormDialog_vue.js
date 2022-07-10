@@ -25,21 +25,25 @@ var trans_prefix = 'adminPanel.userManagement';
   data: function data() {
     return {
       trans_prefix: trans_prefix,
+      show: false,
       dialog: false,
+      confirmDialog: false,
       hasItem: false,
       form: {
         id: '',
         name: '',
         surname: '',
         patronymic: '',
+        password: '',
         email: '',
         phone: '+380',
-        role: ''
+        role: 1
       }
     };
   },
   mounted: function mounted() {
     if (this.item !== undefined) {
+      this.form.id = this.item.id;
       this.form.name = this.item.name;
       this.form.surname = this.item.surname;
       this.form.patronymic = this.item.patronymic;
@@ -49,23 +53,77 @@ var trans_prefix = 'adminPanel.userManagement';
       this.hasItem = true;
     }
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('userManagementStore', ['roles'])),
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('userManagementStore', ['roles'])), {}, {
+    disableRunAction: function disableRunAction() {
+      var result = true;
+
+      if (this.form.name !== '' && this.form.name !== null && this.form.surname !== '' && this.form.surname !== null && this.form.patronymic !== '' && this.form.patronymic !== null && this.form.email !== '' && this.form.email !== null && this.form.phone !== '' && this.form.phone !== null) {
+        if (this.hasItem) {
+          result = false;
+        } else {
+          if (this.form.password !== '' && this.form.password !== null) {
+            result = false;
+          }
+        }
+      }
+
+      return result;
+    }
+  }),
   props: {
     item: Object,
     title: String
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('userManagementStore', ['editUserAsync', 'getUsersAsync', 'addUserAsync'])), {}, {
     runAction: function runAction() {
-      /*this.hasItem
-          ? this.edit()
-          : this.saveNewItem();*/
-      this.edit();
+      this.hasItem ? this.edit() : this.saveNewItem();
       this.dialog = false;
     },
     edit: function edit() {
-      console.log(this.form);
+      var _this = this;
+
+      this.editUserAsync(this.form).then(function (result) {
+        if (result) {
+          _this.$swal({
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+          });
+        } else {
+          _this.$swal({
+            icon: 'error',
+            title: _this.$t("".concat(trans_prefix, ".errorEditUser")),
+            showConfirmButton: false,
+            timer: 5000
+          });
+        }
+
+        _this.getUsersAsync();
+      });
+    },
+    saveNewItem: function saveNewItem() {
+      var _this2 = this;
+
+      this.addUserAsync(this.form).then(function (result) {
+        if (result) {
+          _this2.$swal({
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+          });
+        } else {
+          _this2.$swal({
+            icon: 'error',
+            title: _this2.$t("".concat(trans_prefix, ".errorAddUser")),
+            showConfirmButton: false,
+            timer: 5000
+          });
+        }
+
+        _this2.getUsersAsync();
+      });
     }
-  }
+  })
 });
 
 /***/ }),
@@ -284,6 +342,36 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("v-text-field", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.hasItem,
+                        expression: "!hasItem",
+                      },
+                    ],
+                    attrs: {
+                      outlined: "",
+                      "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
+                      type: _vm.show ? "text" : "password",
+                      counter: "",
+                      label: _vm.$t("app.password"),
+                    },
+                    on: {
+                      "click:append": function ($event) {
+                        _vm.show = !_vm.show
+                      },
+                    },
+                    model: {
+                      value: _vm.form.password,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.form, "password", $$v)
+                      },
+                      expression: "form.password",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
                     attrs: {
                       maxlength: "50",
                       counter: "",
@@ -359,7 +447,11 @@ var render = function () {
                   _c(
                     "v-btn",
                     {
-                      attrs: { color: "green darken-1", text: "" },
+                      attrs: {
+                        disabled: _vm.disableRunAction,
+                        color: "green darken-1",
+                        text: "",
+                      },
                       on: { click: _vm.runAction },
                     },
                     [_c("v-icon", [_vm._v("done")])],

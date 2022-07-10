@@ -42,6 +42,30 @@ const actions = {
                 commit('setRoles', []);
             });
     },
+    editUserAsync: async ({commit},payload) => {
+        return await axios.post('/custom-edit-user', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    addUserAsync: async ({commit},payload) => {
+        return await axios.post('/custom-add-user', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    deleteUserAsync: async ({commit},payload) => {
+        return await axios.post('/custom-delete-user', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    changePassAsync: async ({commit},payload) => {
+        return await axios.post('/custom-change-pass', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
 };
 
 export default {

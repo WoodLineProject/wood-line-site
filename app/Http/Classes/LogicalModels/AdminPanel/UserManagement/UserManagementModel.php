@@ -6,6 +6,7 @@ use App\Http\Classes\LogicalModels\Common\Structure\CacheNames;
 use App\Models\MSSQL\TableModels\Role;
 use App\Models\MSSQL\TableModels\User;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Hash;
 
 class UserManagementModel
 {
@@ -20,6 +21,7 @@ class UserManagementModel
         return $this->users->from($this->users->getTable(),'user')
             ->leftJoin($this->role->getTable(). ' as role','role.id','=','user.role')
             ->select([
+                'user.id',
                 'user.name',
                 'user.surname',
                 'user.patronymic',
@@ -37,4 +39,48 @@ class UserManagementModel
             return $this->role->selectRaw('*')->get()->toArray();
         });
     }
+
+    public function editUser(array $data): bool
+    {
+        return $this->users
+            ->where('id',$data['id'])
+            ->update([
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'patronymic' => $data['patronymic'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'role' => $data['role'],
+            ]);
+    }
+
+    public function deleteUser(array $data): bool
+    {
+        return $this->users
+            ->where('id',$data['id'])
+            ->delete();
+    }
+
+    public function changePass(array $data): bool
+    {
+        return $this->users
+            ->where('id',$data['id'])
+            ->update([
+                'password' => Hash::make($data['password']),
+            ]);
+    }
+
+    public function addUser(array $data): bool
+    {
+        return $this->users->insert([
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'patronymic' => $data['patronymic'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+        ]);
+    }
+
 }

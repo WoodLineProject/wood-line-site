@@ -17,4 +17,24 @@ class UserManagement implements UserManagementInterface
     {
         return $this->model->getAllRoles();
     }
+
+    public function editUser(array $data): bool
+    {
+        return $this->model->editUser($data);
+    }
+
+    public function addUser(array $data): bool
+    {
+        return $this->model->addUser($data);
+    }
+
+    public function deleteUser(array $data): bool
+    {
+        return $this->model->deleteUser($data);
+    }
+
+    public function changePass(array $data): bool
+    {
+        return $this->model->changePass($data);
+    }
 }
