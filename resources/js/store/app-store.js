@@ -56,6 +56,12 @@ const actions = {
 
             });
     },
+    callMyAsync: async ({commit},payload) => {
+        return await axios.post('/call-my', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    }
 };
 
 export default {

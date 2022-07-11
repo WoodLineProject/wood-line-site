@@ -27,6 +27,7 @@ class UserManagementModel
                 'user.patronymic',
                 'user.phone',
                 'user.email',
+                'user.getCallBackResponse',
                 'role.name as role',
                 'role.id as roleId',
             ])->get()
@@ -51,6 +52,7 @@ class UserManagementModel
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'role' => $data['role'],
+                'getCallBackResponse' => $data['getCallBackResponse'],
             ]);
     }
 
@@ -80,6 +82,7 @@ class UserManagementModel
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
+            'getCallBackResponse' => $data['getCallBackResponse'],
         ]);
     }
 

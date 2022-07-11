@@ -19,7 +19,8 @@ export default {
                 password: '',
                 email: '',
                 phone: '+380',
-                role: 1
+                role: 1,
+                getCallBackResponse: false
             }
         }
     },
@@ -32,6 +33,7 @@ export default {
             this.form.email = this.item.email
             this.form.phone = this.item.phone
             this.form.role = this.item.roleId
+            this.form.getCallBackResponse = this.item.getCallBackResponse
             this.hasItem = true;
         }
     },
@@ -43,7 +45,7 @@ export default {
                 this.form.surname !== '' && this.form.surname !== null &&
                 this.form.patronymic !== '' && this.form.patronymic !== null &&
                 this.form.email !== '' && this.form.email !== null &&
-                this.form.phone !== '' && this.form.phone !== null){
+                this.form.phone !== '' && this.form.phone !== null && this.form.phone.length === 13){
                 if(this.hasItem){
                     result = false;
                 }else{
@@ -180,6 +182,8 @@ export default {
                     <v-text-field
                         outlined
                         clearable
+                        counter
+                        maxlength="13"
                         :label="$t(`app.phone`)"
                         v-model="form.phone"/>
                     <v-select
@@ -191,6 +195,7 @@ export default {
                         dense
                         outlined
                     ></v-select>
+                    <v-checkbox v-model="form.getCallBackResponse" :label="$t(`${trans_prefix}.tableHeaders.getCallBackResponse`)"/>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>

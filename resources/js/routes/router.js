@@ -57,5 +57,12 @@ router.beforeEach((to,from,next) =>{
             ? next()
             : next({name: 'home'})
     }
+    if(to.name === 'adminPanel'
+        //add yours admin panel routes
+        || to.name === 'userManagement'){
+        return  token
+            ? next()
+            : next({name: 'login'})
+    }
     next();
 })

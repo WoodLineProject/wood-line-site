@@ -274,6 +274,8 @@ var render = function () {
                 attrs: {
                   outlined: "",
                   clearable: "",
+                  counter: "",
+                  maxlength: "13",
                   label: _vm.$t("app.phone"),
                 },
                 model: {
