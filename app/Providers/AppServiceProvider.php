@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $_SERVER["SERVER_NAME"] = "www.wood-line-factory-stage.s-host.com.ua";
     }
 }
