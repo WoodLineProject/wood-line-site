@@ -15,6 +15,12 @@ export const AdminNavMenu = {
                     text: 'userManagement',
                     show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
                 },
+                {
+                    to: '/orders-call-back-panel',
+                    icon: 'phone_callback',
+                    text: 'OrdersCallBackPanel',
+                    show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
+                },
             ]
         },
     },

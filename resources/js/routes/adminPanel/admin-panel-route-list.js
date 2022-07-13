@@ -1,5 +1,6 @@
 import AdminPanelMain from "../../components/Pages/AdminPanel/AdminPanelMain";
 import UserManagement from "../../components/Pages/AdminPanel/UserManagement/UserManagement";
+import OrdersCallBackPanel from "../../components/Pages/AdminPanel/OrdersCallBackPanel/OrdersCallBackPanel";
 
 export default [
     {
@@ -11,5 +12,10 @@ export default [
         path: '/user-management',
         component: UserManagement,
         name: 'userManagement'
+    },
+    {
+        path: '/orders-call-back-panel',
+        component: OrdersCallBackPanel,
+        name: 'OrdersCallBackPanel'
     },
 ]

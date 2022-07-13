@@ -10,6 +10,7 @@ export default {
     adminPanel:{
         adminPanelMain: require(`../../locales/${main_locale}/AdminPanelMain/admin-panel-main.json`),
         userManagement: require(`../../locales/${main_locale}/UserManagement/user-management.json`),
+        ordersCallBackPanel: require(`../../locales/${main_locale}/OrdersCallBackPanel/orders-call-back-panel.json`),
     },
     pages:{
 
