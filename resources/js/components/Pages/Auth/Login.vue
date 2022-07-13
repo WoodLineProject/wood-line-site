@@ -1,5 +1,6 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
+import rules from "../../../constants/field-validation-rules";
 
 export default {
     name: "Login",
@@ -9,7 +10,8 @@ export default {
             form: {
                 email: '',
                 password: ''
-            }
+            },
+            rules: rules
         }
     },
     computed:{
@@ -54,11 +56,13 @@ export default {
             </v-card-title>
             <v-card-text>
                 <v-text-field
+                    :rules="[rules.required, rules.email]"
                     clearable
                     outlined
                     :label="$t(`app.email`)"
                     v-model="form.email"/>
                 <v-text-field
+                    :rules="[rules.required]"
                     outlined
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"

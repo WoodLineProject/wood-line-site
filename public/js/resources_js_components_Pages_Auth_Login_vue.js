@@ -11,12 +11,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _constants_field_validation_rules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../constants/field-validation-rules */ "./resources/js/constants/field-validation-rules.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -27,11 +29,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form: {
         email: '',
         password: ''
-      }
+      },
+      rules: _constants_field_validation_rules__WEBPACK_IMPORTED_MODULE_0__["default"]
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('authStore', ['currentUser'])),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('authStore', ['loginAsync', 'getCurrentUserAsync'])), {}, {
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('authStore', ['currentUser'])),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('authStore', ['loginAsync', 'getCurrentUserAsync'])), {}, {
     login: function login() {
       var _this = this;
 
@@ -66,6 +69,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   })
 });
+
+/***/ }),
+
+/***/ "./resources/js/constants/field-validation-rules.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/constants/field-validation-rules.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _plugins_i18n_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../plugins/i18n.js */ "./resources/js/plugins/i18n.js");
+
+var rules = {
+  required: function required(value) {
+    return !!value || _plugins_i18n_js__WEBPACK_IMPORTED_MODULE_0__["default"].t('validation.required');
+  },
+  email: function email(value) {
+    return new RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/).test(value) || _plugins_i18n_js__WEBPACK_IMPORTED_MODULE_0__["default"].t('validation.wrongEmail');
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rules);
 
 /***/ }),
 
@@ -176,6 +203,7 @@ var render = function () {
             [
               _c("v-text-field", {
                 attrs: {
+                  rules: [_vm.rules.required, _vm.rules.email],
                   clearable: "",
                   outlined: "",
                   label: _vm.$t("app.email"),
@@ -191,6 +219,7 @@ var render = function () {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
+                  rules: [_vm.rules.required],
                   outlined: "",
                   "append-icon": _vm.show ? "mdi-eye" : "mdi-eye-off",
                   type: _vm.show ? "text" : "password",

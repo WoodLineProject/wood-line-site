@@ -1,5 +1,6 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
+import rules from "../../../constants/field-validation-rules";
 
 export default {
     name: "Registr",
@@ -15,7 +16,8 @@ export default {
                 password: '',
                 password_confirmation: '',
                 phone: '+380',
-            }
+            },
+            rules: rules
         }
     },
 
@@ -55,6 +57,7 @@ export default {
             </v-card-title>
             <v-card-text>
                 <v-text-field
+                    :rules="[rules.required]"
                     maxlength="50"
                     counter
                     outlined
@@ -62,6 +65,7 @@ export default {
                     :label="$t(`app.name`)"
                     v-model="form.name"/>
                 <v-text-field
+                    :rules="[rules.required]"
                     maxlength="50"
                     counter
                     outlined
@@ -69,6 +73,7 @@ export default {
                     :label="$t(`app.surname`)"
                     v-model="form.surname"/>
                 <v-text-field
+                    :rules="[rules.required]"
                     maxlength="50"
                     counter
                     outlined
@@ -76,6 +81,7 @@ export default {
                     :label="$t(`app.patronymic`)"
                     v-model="form.patronymic"/>
                 <v-text-field
+                    :rules="[rules.required, rules.email]"
                     maxlength="50"
                     counter
                     outlined
@@ -84,6 +90,7 @@ export default {
                     :label="$t(`app.email`)"
                     v-model="form.email"/>
                 <v-text-field
+                    :rules="[rules.required]"
                     outlined
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show ? 'text' : 'password'"
@@ -92,6 +99,7 @@ export default {
                     :label="$t(`app.password`)"
                     v-model="form.password"/>
                 <v-text-field
+                    :rules="[rules.required]"
                     outlined
                     clearable
                     :label="$t(`app.phone`)"
