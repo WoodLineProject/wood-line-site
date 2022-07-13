@@ -5,8 +5,9 @@ import NavDrawer from "./Core/NavDrawer";
 import ViewBody from "./Core/ViewBody";
 import Footer from "./Core/Footer";
 import {mapActions} from "vuex";
+import CallMy from "./Core/CallMy";
     export default {
-        components:{Header, NavDrawer,ViewBody,Footer,},
+        components:{Header, NavDrawer,ViewBody,Footer,CallMy},
         mounted() {
             this.getCsrfTokenAsync();
             this.getCurrentUserAsync();
@@ -21,6 +22,7 @@ import {mapActions} from "vuex";
         <Header/>
         <nav-drawer/>
         <view-body/>
+        <call-my/>
         <Footer/>
     </v-app>
 </template>

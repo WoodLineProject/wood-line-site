@@ -8,7 +8,8 @@
         "email": "Имейл",
         "phone": "Номер телефона",
         "role": "Роль",
-        "password": "Пароль"
+        "password": "Пароль",
+        "getCallBackResponse": "Заказ звонка"
     },
     "add": "Добавить",
     "edit":"Редактировать",

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Classes\LogicalModels\Common\Structure\Roles;
+use App\Http\Controllers\CallMyController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Route::get('/{any}', function() {
     return view('welcome');
 });
 Auth::routes();
+Route::post('/call-my',  [CallMyController::class, 'callMy']);
+
 //------------------------
 
 

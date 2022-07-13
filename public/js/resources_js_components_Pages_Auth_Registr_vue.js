@@ -307,6 +307,8 @@ var render = function () {
                   rules: [_vm.rules.required],
                   outlined: "",
                   clearable: "",
+                  counter: "",
+                  maxlength: "13",
                   label: _vm.$t("app.phone"),
                 },
                 model: {

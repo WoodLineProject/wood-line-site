@@ -37,7 +37,8 @@ var trans_prefix = 'adminPanel.userManagement';
         password: '',
         email: '',
         phone: '+380',
-        role: 1
+        role: 1,
+        getCallBackResponse: false
       }
     };
   },
@@ -50,6 +51,7 @@ var trans_prefix = 'adminPanel.userManagement';
       this.form.email = this.item.email;
       this.form.phone = this.item.phone;
       this.form.role = this.item.roleId;
+      this.form.getCallBackResponse = this.item.getCallBackResponse;
       this.hasItem = true;
     }
   },
@@ -57,7 +59,7 @@ var trans_prefix = 'adminPanel.userManagement';
     disableRunAction: function disableRunAction() {
       var result = true;
 
-      if (this.form.name !== '' && this.form.name !== null && this.form.surname !== '' && this.form.surname !== null && this.form.patronymic !== '' && this.form.patronymic !== null && this.form.email !== '' && this.form.email !== null && this.form.phone !== '' && this.form.phone !== null) {
+      if (this.form.name !== '' && this.form.name !== null && this.form.surname !== '' && this.form.surname !== null && this.form.patronymic !== '' && this.form.patronymic !== null && this.form.email !== '' && this.form.email !== null && this.form.phone !== '' && this.form.phone !== null && this.form.phone.length === 13) {
         if (this.hasItem) {
           result = false;
         } else {
@@ -393,6 +395,8 @@ var render = function () {
                     attrs: {
                       outlined: "",
                       clearable: "",
+                      counter: "",
+                      maxlength: "13",
                       label: _vm.$t("app.phone"),
                     },
                     model: {
@@ -419,6 +423,21 @@ var render = function () {
                         _vm.$set(_vm.form, "role", $$v)
                       },
                       expression: "form.role",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("v-checkbox", {
+                    attrs: {
+                      label: _vm.$t(
+                        _vm.trans_prefix + ".tableHeaders.getCallBackResponse"
+                      ),
+                    },
+                    model: {
+                      value: _vm.form.getCallBackResponse,
+                      callback: function ($$v) {
+                        _vm.$set(_vm.form, "getCallBackResponse", $$v)
+                      },
+                      expression: "form.getCallBackResponse",
                     },
                   }),
                 ],

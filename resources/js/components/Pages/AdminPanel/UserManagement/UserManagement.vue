@@ -72,6 +72,13 @@ export default {
                     sortable: true,
                 },
                 {
+                    text: this.$t(`${trans_prefix}.tableHeaders.getCallBackResponse`),
+                    value: 'getCallBackResponse',
+                    align: 'center',
+                    class: 'my-header',
+                    sortable: true,
+                },
+                {
                     value: 'action',
                     align: 'center',
                     class: 'my-header',
@@ -134,7 +141,7 @@ export default {
                 :headers="headers"
                 :items="users"
                 :search="search"
-                :disable-sort="true"
+
             >
                 <template v-slot:header.action="{ props }">
                     <user-form-dialog v-if="$vuetify.breakpoint.mdAndUp"
@@ -159,6 +166,9 @@ export default {
                                 v-show="showForOwner"
                                 v-bind:item="item"/>
                         </v-row>
+                    </template>
+                    <template v-slot:item.getCallBackResponse="{ item }">
+                            <v-checkbox class="ml-10" disabled v-model="!!item.getCallBackResponse"/>
                     </template>
             </v-data-table>
         </v-card-text>

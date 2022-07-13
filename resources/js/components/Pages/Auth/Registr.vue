@@ -104,6 +104,8 @@ export default {
                     :rules="[rules.required]"
                     outlined
                     clearable
+                    counter
+                    maxlength="13"
                     :label="$t(`app.phone`)"
                     v-model="form.phone"/>
             </v-card-text>

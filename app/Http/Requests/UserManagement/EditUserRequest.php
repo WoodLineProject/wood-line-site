@@ -16,6 +16,7 @@ class EditUserRequest extends FormRequest
             'patronymic' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:100'],
             'phone' => ['required', 'regex:/[\+][0-9]{12}/'],
+            'getCallBackResponse' => ['required','boolean'],
         ];
     }
 }
