@@ -17,7 +17,9 @@ class CallBackMail extends Mailable
      * @return void
      */
     public function __construct(
-        private string $text
+        private string $name,
+        private string $surname,
+        private string $phone,
     )
     {}
 
@@ -28,6 +30,10 @@ class CallBackMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mailTemplate',['text' => $this->text]);
+        return $this->view('mailTemplate',[
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'phone' => $this->phone,
+        ]);
     }
 }

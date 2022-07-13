@@ -1,6 +1,10 @@
 <script>
 import {CallMyMixin} from "../../mixins/call-my-mixin";
 import {mapActions} from "vuex";
+import Vue from "vue";
+import { VueReCaptcha } from "vue-recaptcha-v3";
+Vue.use(VueReCaptcha, { siteKey: "6Lfy_OogAAAAAN9UqPizPZMJoq8HM8fvzdZaXWlD" });
+
 export default {
     name: "CallMy",
     data () {
@@ -9,6 +13,7 @@ export default {
             name: '',
             patronymic: '',
             phone: '+380',
+            isSuccess: false,
         }
     },
     mixins:[CallMyMixin],
@@ -26,18 +31,21 @@ export default {
     methods:{
         ...mapActions('appStore',['callMyAsync']),
         callMy(){
-            this.callMyAsync({
-                name: this.name,
-                patronymic: this.patronymic,
-                phone: this.phone,
-            }).then(result => {
-                this.$swal({
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 2000
+            this.$swal.showLoading();
+            this.$recaptcha("login").then((token) => {
+                this.callMyAsync({
+                    name: this.name,
+                    patronymic: this.patronymic,
+                    phone: this.phone,
+                }).then(result => {
+                    this.$swal({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    this.dialog = false;
                 })
-                this.dialog = false;
-            })
+            });
         },
     },
 }

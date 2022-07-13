@@ -24,11 +24,10 @@ class CallMyModel
 
     public function sendMails(array $CallBackUsersEmail, string $name, string $patronymic, string $phone): bool
     {
-        $comment = 'Это сообщение отправлено из формы обратной связи';
         try {
             foreach ($CallBackUsersEmail as $item)
             {
-                Mail::to($item['email'])->send(new CallBackMail($comment));
+                Mail::to($item['email'])->send(new CallBackMail($name,$patronymic,$phone));
             }
         }catch (\Exception $e){dd($e->getMessage());}
         return true;

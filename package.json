@@ -51,7 +51,10 @@
         "apexcharts": "^3.30.0",
         "i18n": "^0.15.0",
         "vue-apexcharts": "^1.6.2",
+        "vue-demi": "^0.13.4",
         "vue-ico": "^1.0.15",
+        "vue-recaptcha": "^2.0.2",
+        "vue-recaptcha-v3": "1.9.0",
         "vue-sweetalert2": "^5",
         "vue2-datepicker": "^3.9.2"
     }
