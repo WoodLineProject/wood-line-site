@@ -24,26 +24,28 @@ export default {
     methods:{
         ...mapActions('authStore',['registerAsync','getCurrentUserAsync']),
         register(){
-            this.form.password_confirmation = this.form.password
-          this.registerAsync(this.form).then((response) => {
-              if(response.result){
-                  this.$swal({
-                      icon: 'success',
-                      title: this.$t(`auth.${response.message}`,{name: response.name}),
-                      showConfirmButton: false,
-                      timer: 2000
-                  })
-                  this.$router.push({path: '/'});
-                  this.getCurrentUserAsync();
-              }else{
-                  this.$swal({
-                      icon: 'error',
-                      title: this.$t(`auth.${response.message}`,{error: response.errors}),
-                      showConfirmButton: false,
-                      timer: 5000
-                  });
-              }
-          })
+            if (this.$refs.form.validate()) {
+                this.form.password_confirmation = this.form.password
+                this.registerAsync(this.form).then((response) => {
+                    if (response.result) {
+                        this.$swal({
+                            icon: 'success',
+                            title: this.$t(`auth.${response.message}`, {name: response.name}),
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        this.$router.push({path: '/'});
+                        this.getCurrentUserAsync();
+                    } else {
+                        this.$swal({
+                            icon: 'error',
+                            title: this.$t(`auth.${response.message}`, {error: response.errors}),
+                            showConfirmButton: false,
+                            timer: 5000
+                        });
+                    }
+                })
+            }
         },
     }
 }

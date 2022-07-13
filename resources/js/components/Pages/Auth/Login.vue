@@ -19,30 +19,32 @@ export default {
     },
     methods:{
         ...mapActions('authStore',['loginAsync','getCurrentUserAsync']),
-        login(){
-            this.loginAsync(this.form).then((response) => {
-                if(response.result){
-                    this.getCurrentUserAsync();
-                    setTimeout(() => {
-                        this.$swal({
-                            icon: 'success',
-                            title: this.$t(`auth.${response.message}`,{name: this.currentUser.name}),
-                            showConfirmButton: false,
-                            timer: 3000
-                        })
-                        this.$router.push({path: '/'});
-                    }, 500);
+        login() {
+            if (this.$refs.form.validate()) {
+                this.loginAsync(this.form).then((response) => {
+                    if (response.result) {
+                        this.getCurrentUserAsync();
+                        setTimeout(() => {
+                            this.$swal({
+                                icon: 'success',
+                                title: this.$t(`auth.${response.message}`, {name: this.currentUser.name}),
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+                            this.$router.push({path: '/'});
+                        }, 500);
 
-                }else{
-                    this.$swal({
-                        //position: 'top-end',
-                        icon: 'error',
-                        title: this.$t(`auth.${response.message}`),
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                }
-            })
+                    } else {
+                        this.$swal({
+                            //position: 'top-end',
+                            icon: 'error',
+                            title: this.$t(`auth.${response.message}`),
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
+                })
+            }
         }
     }
 }

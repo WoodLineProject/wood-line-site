@@ -38,34 +38,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     login: function login() {
       var _this = this;
 
-      this.loginAsync(this.form).then(function (response) {
-        if (response.result) {
-          _this.getCurrentUserAsync();
+      if (this.$refs.form.validate()) {
+        this.loginAsync(this.form).then(function (response) {
+          if (response.result) {
+            _this.getCurrentUserAsync();
 
-          setTimeout(function () {
+            setTimeout(function () {
+              _this.$swal({
+                icon: 'success',
+                title: _this.$t("auth.".concat(response.message), {
+                  name: _this.currentUser.name
+                }),
+                showConfirmButton: false,
+                timer: 3000
+              });
+
+              _this.$router.push({
+                path: '/'
+              });
+            }, 500);
+          } else {
             _this.$swal({
-              icon: 'success',
-              title: _this.$t("auth.".concat(response.message), {
-                name: _this.currentUser.name
-              }),
+              //position: 'top-end',
+              icon: 'error',
+              title: _this.$t("auth.".concat(response.message)),
               showConfirmButton: false,
-              timer: 3000
+              timer: 2000
             });
-
-            _this.$router.push({
-              path: '/'
-            });
-          }, 500);
-        } else {
-          _this.$swal({
-            //position: 'top-end',
-            icon: 'error',
-            title: _this.$t("auth.".concat(response.message)),
-            showConfirmButton: false,
-            timer: 2000
-          });
-        }
-      });
+          }
+        });
+      }
     }
   })
 });
