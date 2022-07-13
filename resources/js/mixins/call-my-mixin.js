@@ -5,7 +5,8 @@ export const CallMyMixin = {
             dialog: false,
             arrayRouteName: [
                 'adminPanel',
-                'userManagement'
+                'userManagement',
+                'OrdersCallBackPanel',
             ]
         }
     },
