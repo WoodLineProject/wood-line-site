@@ -1,5 +1,6 @@
 {
     "title": "Панель администратора",
     "userManagement": "Управление пользователями",
-    "OrdersCallBackPanel": "Обратные звонки"
+    "OrdersCallBackPanel": "Обратные звонки",
+    "EmailSenderPanel": "Отправитель писем"
 }

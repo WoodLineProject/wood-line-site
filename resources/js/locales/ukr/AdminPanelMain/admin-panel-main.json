@@ -1,5 +1,6 @@
 {
     "title": "Панель адміністратора",
     "userManagement": "Керування користувачами",
-    "OrdersCallBackPanel": "Зворотні дзвінки"
+    "OrdersCallBackPanel": "Зворотні дзвінки",
+    "EmailSenderPanel": "Відправник листів"
 }

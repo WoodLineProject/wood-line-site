@@ -1,0 +1,15 @@
+{
+    "title": "Відправник листів",
+    "table": "Список користувачів",
+    "button": "Надіслати",
+    "tableHeaders": {
+        "name": "Ім'я",
+        "patronymic": "По батькові",
+        "email": "Імейл"
+    },
+    "fieldLabels": {
+        "topic": "Тема",
+        "body": "Тіло"
+    },
+    "emailSenderError": "Помилка при надсиланні листа"
+}

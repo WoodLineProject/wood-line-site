@@ -43,34 +43,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     register: function register() {
       var _this = this;
 
-      this.form.password_confirmation = this.form.password;
-      this.registerAsync(this.form).then(function (response) {
-        if (response.result) {
-          _this.$swal({
-            icon: 'success',
-            title: _this.$t("auth.".concat(response.message), {
-              name: response.name
-            }),
-            showConfirmButton: false,
-            timer: 2000
-          });
+      if (this.$refs.form.validate()) {
+        this.form.password_confirmation = this.form.password;
+        this.registerAsync(this.form).then(function (response) {
+          if (response.result) {
+            _this.$swal({
+              icon: 'success',
+              title: _this.$t("auth.".concat(response.message), {
+                name: response.name
+              }),
+              showConfirmButton: false,
+              timer: 2000
+            });
 
-          _this.$router.push({
-            path: '/'
-          });
+            _this.$router.push({
+              path: '/'
+            });
 
-          _this.getCurrentUserAsync();
-        } else {
-          _this.$swal({
-            icon: 'error',
-            title: _this.$t("auth.".concat(response.message), {
-              error: response.errors
-            }),
-            showConfirmButton: false,
-            timer: 5000
-          });
-        }
-      });
+            _this.getCurrentUserAsync();
+          } else {
+            _this.$swal({
+              icon: 'error',
+              title: _this.$t("auth.".concat(response.message), {
+                error: response.errors
+              }),
+              showConfirmButton: false,
+              timer: 5000
+            });
+          }
+        });
+      }
     }
   })
 });

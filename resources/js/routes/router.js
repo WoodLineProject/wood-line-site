@@ -53,15 +53,16 @@ router.beforeEach((to,from,next) =>{
             : next();
     }
     if(to.name === 'logout'){
-        return  token
+        return token
             ? next()
             : next({name: 'home'})
     }
     if(to.name === 'adminPanel'
         //add yours admin panel routes
         || to.name === 'OrdersCallBackPanel'
-        || to.name === 'userManagement'){
-        return  token
+        || to.name === 'userManagement'
+        || to.name === 'EmailSenderPanel'){
+        return token
             ? next()
             : next({name: 'login'})
     }

@@ -7,6 +7,7 @@ export const CallMyMixin = {
                 'adminPanel',
                 'userManagement',
                 'OrdersCallBackPanel',
+                'EmailSenderPanel'
             ]
         }
     },

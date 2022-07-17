@@ -21,6 +21,12 @@ export const AdminNavMenu = {
                     text: 'OrdersCallBackPanel',
                     show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
                 },
+                {
+                    to: '/email-sender-panel',
+                    icon: 'mail',
+                    text: 'EmailSenderPanel',
+                    show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
+                }
             ]
         },
     },

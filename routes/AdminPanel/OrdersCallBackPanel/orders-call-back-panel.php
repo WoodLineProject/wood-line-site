@@ -17,4 +17,3 @@ Route::group(['middleware' => [
         Route::post('/get-orders-call-back',  [OrdersCallBackPanelController::class, 'getOrdersCallBack']);
         Route::post('/orders-call-back-make-complete',  [OrdersCallBackPanelController::class, 'makeComplete']);
 });
-

@@ -2,7 +2,7 @@
     "title": "Обратные звонки",
     "tableHeaders": {
         "name": "Имя",
-        "patronymic":"Отчество",
+        "patronymic": "Отчество",
         "phone": "Номер телефона",
         "order_date":"Дата/Время заказа звонка"
     },

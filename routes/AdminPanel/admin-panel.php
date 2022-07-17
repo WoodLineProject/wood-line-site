@@ -14,3 +14,4 @@ Route::group(['middleware' => [
 });
 include "UserManagement/user-management.php";
 include "OrdersCallBackPanel/orders-call-back-panel.php";
+include "EmailSenderPanel/email-sender-panel.php";

@@ -1,0 +1,15 @@
+{
+    "title": "Отправитель писем",
+    "table": "Список пользователей",
+    "button": "Отправить",
+    "tableHeaders": {
+        "name": "Имя",
+        "patronymic": "Отчество",
+        "email": "Эмейл"
+    },
+    "fieldLabels": {
+        "topic": "Тема",
+        "body": "Тело"
+    },
+    "emailSenderError": "Ошибка при отправке письма"
+}

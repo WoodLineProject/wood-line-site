@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Classes\LogicalModels\Common\Structure\Roles;
+use App\Http\Controllers\AdminPanel\EmailSenderPanel\EmailSenderPanelController;
 use App\Http\Controllers\CallMyController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ Route::get('/{any}', function() {
 });
 Auth::routes();
 Route::post('/call-my',  [CallMyController::class, 'callMy']);
+Route::post('/send-mail-to-simple-users',[EmailSenderPanelController::class, 'sendMailToSimpleUsers']);
 
 //------------------------
 
