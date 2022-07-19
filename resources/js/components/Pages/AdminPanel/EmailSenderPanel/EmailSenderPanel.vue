@@ -18,6 +18,27 @@ export default {
     },
     computed: {
         ...mapGetters('emailSenderPanelStore', ['simpleUsers']),
+        isSmall() {
+          return this.$vuetify.breakpoint.mdAndUp
+              ? 'flex-row'
+              : 'flex-column'
+        },
+        isSmallVCard() {
+            return this.$vuetify.breakpoint.mdAndUp
+                ? 'mr-2'
+                : 'mb-2'
+        },
+        disableRunAction(){
+            let result = true;
+            if (this.topic !== '' && this.topic !== null &&
+                this.body !== '' && this.body !== null &&
+                !!this.selected.length)
+            {
+                result = false;
+            }
+
+            return result
+        },
         headers() {
             return [
                 {
@@ -48,11 +69,14 @@ export default {
         ...mapActions('emailSenderPanelStore', ['getSimpleUsersAsync', 'sendMailToSimpleUsersAsync']),
         sendEmail(){
             this.$swal.showLoading();
-            console.log(this.selected);
+            let emails = [];
+            this.selected.forEach(e => {
+               emails.push(e.email);
+            });
             this.sendMailToSimpleUsersAsync({
                 topic: this.topic,
                 body: this.body,
-                selectedUsers: this.selected
+                selectedUsers: emails
             }).then(result => {
                 this.$swal({
                     icon: 'success',
@@ -75,8 +99,8 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex flex-row">
-    <v-card height="auto" class="mr-2">
+    <div class="d-flex mb-5" :class='isSmall'>
+    <v-card height="auto" :class='isSmallVCard'>
         <v-card-title class="text-center justify-center py-6 gen-ft-style">
             <span class="display-0">
                 {{ $t(`${trans_prefix}.table`) }}
@@ -89,14 +113,6 @@ export default {
                 :items="simpleUsers"
                 show-select
             >
-                <template v-slot:item.action="{ item }">
-                    <v-btn
-                        icon
-                        color="green"
-                    >
-                        <v-icon>done</v-icon>
-                    </v-btn>
-                </template>
             </v-data-table>
         </v-card-text>
     </v-card>
@@ -122,13 +138,15 @@ export default {
                     required
                     v-model="body"
                 ></v-textarea>
-                <v-btn
-                    width="95%"
-                    @click="sendEmail()"
-                    class="ma-2 "
-                    outlined
-                    color="green"
-                >{{ $t(`${trans_prefix}.button`) }}</v-btn>
+
+                <v-card-actions>
+                    <v-btn
+                        :disabled="disableRunAction"
+                        @click="sendEmail()"
+                        outlined
+                        color="green"
+                    >{{ $t(`${trans_prefix}.button`) }}</v-btn>
+                </v-card-actions>
             </v-container>
         </v-form>
     </v-card>

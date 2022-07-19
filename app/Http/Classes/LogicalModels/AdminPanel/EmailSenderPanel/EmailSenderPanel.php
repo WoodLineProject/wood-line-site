@@ -18,7 +18,7 @@ class EmailSenderPanel implements EmailSenderPanelInterface
     public function sendMailToSimpleUsers(array $data): bool
     {
         $this->initParams($data);
-        //$simpleUsers = $this->model->getSimpleUsers();
+        
         return $this->model->sendMailToSimpleUsers($this->selectedUsers, $this->topic, $this->body);
     }
 }

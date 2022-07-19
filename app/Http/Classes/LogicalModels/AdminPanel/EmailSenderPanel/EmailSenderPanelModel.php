@@ -2,16 +2,15 @@
 
 namespace App\Http\Classes\LogicalModels\AdminPanel\EmailSenderPanel;
 
+use App\Http\Classes\LogicalModels\Common\Structure\Roles;
 use App\Mail\EmailSenderMail;
 use App\Models\MSSQL\TableModels\User;
-use App\Models\MSSQL\TableModels\Role;
 use Illuminate\Support\Facades\Mail;
 
 class EmailSenderPanelModel
 {
     public function __construct(
         private User $users,
-        private Role $role,
     ){}
 
     public function getSimpleUsers(): array
@@ -23,7 +22,7 @@ class EmailSenderPanelModel
                 'patronymic',
                 'email',
                 'role'
-            ])->where('role', '=', 1)
+            ])->where('role', Roles::USER)
             ->get()
             ->toArray();
     }
@@ -33,7 +32,8 @@ class EmailSenderPanelModel
         try {
             foreach ($simpleUsers as $item)
             {
-                Mail::to($item['email'])->send(new EmailSenderMail($topic, $body));
+                //Mail::to($item['email'])->send(new EmailSenderMail($topic, $body));
+                Mail::to($item)->send(new EmailSenderMail($topic, $body));
             }
         } catch (\Exception $e) {dd($e->getMessage());}
         return true;

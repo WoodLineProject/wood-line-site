@@ -6069,6 +6069,21 @@ var trans_prefix = 'adminPanel.emailSenderPanel';
     this.getSimpleUsersAsync();
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('emailSenderPanelStore', ['simpleUsers'])), {}, {
+    isSmall: function isSmall() {
+      return this.$vuetify.breakpoint.mdAndUp ? 'flex-row' : 'flex-column';
+    },
+    isSmallVCard: function isSmallVCard() {
+      return this.$vuetify.breakpoint.mdAndUp ? 'mr-2' : 'mb-2';
+    },
+    disableRunAction: function disableRunAction() {
+      var result = true;
+
+      if (this.topic !== '' && this.topic !== null && this.body !== '' && this.body !== null && !!this.selected.length) {
+        result = false;
+      }
+
+      return result;
+    },
     headers: function headers() {
       return [{
         text: this.$t("".concat(trans_prefix, ".tableHeaders.name")),
@@ -6096,11 +6111,14 @@ var trans_prefix = 'adminPanel.emailSenderPanel';
       var _this = this;
 
       this.$swal.showLoading();
-      console.log(this.selected);
+      var emails = [];
+      this.selected.forEach(function (e) {
+        emails.push(e.email);
+      });
       this.sendMailToSimpleUsersAsync({
         topic: this.topic,
         body: this.body,
-        selectedUsers: this.selected
+        selectedUsers: emails
       }).then(function (result) {
         _this.$swal({
           icon: 'success',
@@ -13836,11 +13854,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "d-flex flex-row" },
+    { staticClass: "d-flex mb-5", class: _vm.isSmall },
     [
       _c(
         "v-card",
-        { staticClass: "mr-2", attrs: { height: "auto" } },
+        { class: _vm.isSmallVCard, attrs: { height: "auto" } },
         [
           _c(
             "v-card-title",
@@ -13865,22 +13883,6 @@ var render = function () {
                   items: _vm.simpleUsers,
                   "show-select": "",
                 },
-                scopedSlots: _vm._u([
-                  {
-                    key: "item.action",
-                    fn: function (ref) {
-                      var item = ref.item
-                      return [
-                        _c(
-                          "v-btn",
-                          { attrs: { icon: "", color: "green" } },
-                          [_c("v-icon", [_vm._v("done")])],
-                          1
-                        ),
-                      ]
-                    },
-                  },
-                ]),
                 model: {
                   value: _vm.selected,
                   callback: function ($$v) {
@@ -13951,17 +13953,26 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      staticClass: "ma-2 ",
-                      attrs: { width: "95%", outlined: "", color: "green" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.sendEmail()
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            disabled: _vm.disableRunAction,
+                            outlined: "",
+                            color: "green",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.sendEmail()
+                            },
+                          },
                         },
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".button")))]
+                        [_vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".button")))]
+                      ),
+                    ],
+                    1
                   ),
                 ],
                 1
