@@ -35,12 +35,6 @@ export default {
                     </v-icon>
                 </v-btn>
             </v-card-text>
-
-            <v-divider></v-divider>
-
-            <v-card-text class="white--text">
-                <strong>{{$t(`projectName`)}}</strong>
-            </v-card-text>
         </v-card>
     </v-footer>
 </template>

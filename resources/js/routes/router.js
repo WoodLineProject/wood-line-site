@@ -61,6 +61,7 @@ router.beforeEach((to,from,next) =>{
         //add yours admin panel routes
         || to.name === 'OrdersCallBackPanel'
         || to.name === 'userManagement'
+        || to.name === 'ProductManagement'
         || to.name === 'EmailSenderPanel'){
         return token
             ? next()

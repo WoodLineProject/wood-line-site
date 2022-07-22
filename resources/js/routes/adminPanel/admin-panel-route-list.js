@@ -2,6 +2,7 @@ import AdminPanelMain from "../../components/Pages/AdminPanel/AdminPanelMain";
 import UserManagement from "../../components/Pages/AdminPanel/UserManagement/UserManagement";
 import OrdersCallBackPanel from "../../components/Pages/AdminPanel/OrdersCallBackPanel/OrdersCallBackPanel";
 import EmailSenderPanel from "../../components/Pages/AdminPanel/EmailSenderPanel/EmailSenderPanel";
+import ProductManagement from "../../components/Pages/AdminPanel/ProductManagement/MainProductManagement";
 
 export default [
     {
@@ -23,5 +24,10 @@ export default [
         path: '/email-sender-panel',
         component: EmailSenderPanel,
         name: 'EmailSenderPanel'
+    },
+    {
+        path: '/product-management',
+        component: ProductManagement,
+        name: 'ProductManagement'
     },
 ]

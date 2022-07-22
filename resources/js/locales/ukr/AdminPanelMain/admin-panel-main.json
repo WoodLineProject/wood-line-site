@@ -2,5 +2,6 @@
     "title": "Панель адміністратора",
     "userManagement": "Керування користувачами",
     "OrdersCallBackPanel": "Зворотні дзвінки",
-    "EmailSenderPanel": "Відправник листів"
+    "EmailSenderPanel": "Відправник листів",
+    "ProductManagement": "Керування товарами"
 }

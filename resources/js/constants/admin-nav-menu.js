@@ -26,7 +26,13 @@ export const AdminNavMenu = {
                     icon: 'mail',
                     text: 'EmailSenderPanel',
                     show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
-                }
+                },
+                {
+                    to: '/product-management',
+                    icon: 'bed',
+                    text: 'ProductManagement',
+                    show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
+                },
             ]
         },
     },
