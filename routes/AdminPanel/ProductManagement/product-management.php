@@ -13,7 +13,8 @@ Route::group(['middleware' => [
         Route::get('/product-management', function() {
             return view('welcome');
         });
-        Route::post('/get-product-types',  [ProductManagementController::class, 'getTypes']);
+        Route::post('/add-product-type',  [ProductManagementController::class, 'addType']);
+        Route::post('/edit-product-type',  [ProductManagementController::class, 'editType']);
     });
 
 Route::group(['middleware' => [

@@ -11,10 +11,20 @@ class ProductManagementModel
         private Dic_product_type $productType
     ){}
 
-    public function getTypes(): array
+    public function addType(array $data): bool
+    {
+        return $this->productType->insert([
+            'name_ukr' => $data['name_ukr'],
+            'name_rus' => $data['name_rus'],
+        ]);
+    }
+    public function editType(array $data): bool
     {
         return $this->productType
-            ->get()
-            ->toArray();
+            ->where('id', $data['id'])
+            ->update([
+                'name_ukr' => $data['name_ukr'],
+                'name_rus' => $data['name_rus'],
+            ]);
     }
 }

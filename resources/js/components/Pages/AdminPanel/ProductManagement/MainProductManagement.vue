@@ -16,13 +16,17 @@ export default {
         }
     },
     computed:{
-        ...mapGetters('productManagement',['types']),
+        ...mapGetters('dicStore',['types']),
     },
     mounted() {
         this.getTypesAsync()
     },
     methods:{
-        ...mapActions('productManagement',['getTypesAsync'])
+        ...mapActions('dicStore',['getTypesAsync']),
+        ...mapActions('productManagement',['addTypeAsync','editTypeAsync']),
+        test(item){
+            console.log(item)
+        }
     },
 }
 </script>
@@ -44,6 +48,10 @@ export default {
                     <v-expansion-panel-content>
                         <template-d-i-c
                             v-bind:selected-array="types"
+                            v-bind:addFunc="addTypeAsync"
+                            v-bind:editFunc="editTypeAsync"
+                            v-bind:updateSelectedArrayFunc="getTypesAsync"
+                            v-bind:deleteFunc="test"
                             v-bind:selectTitle="$t(`${trans_prefix}.type.selectType`)"
                         />
                     </v-expansion-panel-content>

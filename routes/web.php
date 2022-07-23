@@ -53,4 +53,5 @@ Route::group(['middleware' => [
 
 
 include "BaseRoute/base-route.php";
+include "BaseRoute/dic-get-route.php";
 include "AdminPanel/admin-panel.php";

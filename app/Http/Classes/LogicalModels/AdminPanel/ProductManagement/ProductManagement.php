@@ -8,8 +8,12 @@ class ProductManagement implements  ProductManagementInterface
         private ProductManagementModel $model
     ){}
 
-    public function getTypes(): array
+    public function addType(array $data): bool
     {
-        return $this->model->getTypes();
+        return $this->model->addType($data);
+    }
+    public function editType(array $data): bool
+    {
+        return $this->model->editType($data);
     }
 }

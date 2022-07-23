@@ -1,33 +1,17 @@
 import axios from "../../modules/axios_module";
 
-const state = {
-    types: [],
-};
-
-const getters = {
-    types: state => {
-        return state.types
-    },
-};
-
-const mutations = {
-    setTypes: (state, payload) => {
-        state.types = payload;
-    },
-};
-
+const state = {};
+const getters = {};
+const mutations = {};
 const actions = {
-    getTypesAsync: async ({commit}) => {
-        return await axios.post('/get-product-types')
+    addTypeAsync: async ({commit},payload) => {
+        return await axios.post('/add-product-type', payload)
             .then(({data}) => {
-                commit('setTypes', data.data);
+                return data.status
             })
-            .catch(errorResponse => {
-                commit('setTypes', []);
-            });
     },
-    makeCompleteAsync: async ({commit},payload) => {
-        return await axios.post('/orders-call-back-make-complete', payload)
+    editTypeAsync: async ({commit},payload) => {
+        return await axios.post('/edit-product-type', payload)
             .then(({data}) => {
                 return data.status
             })

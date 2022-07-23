@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminPanel\ProductManagement;
 
 use App\Http\Classes\LogicalModels\AdminPanel\ProductManagement\ProductManagement;
 use App\Http\Controllers\WebController;
+use App\Http\Requests\ProductManagement\{AddProductTypeRequest, EditProductTypeRequest};
 use Illuminate\Http\JsonResponse;
 
 class ProductManagementController extends WebController
@@ -12,9 +13,14 @@ class ProductManagementController extends WebController
         private ProductManagement $model
     ){}
 
-    public function getTypes(): JsonResponse
+    public function addType(AddProductTypeRequest $request): JsonResponse
     {
-        $result = $this->model->getTypes();
-        return $this->makeGoodResponse($result);
+        $result = $this->model->addType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function editType(EditProductTypeRequest $request): JsonResponse
+    {
+        $result = $this->model->editType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
     }
 }

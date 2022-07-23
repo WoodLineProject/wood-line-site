@@ -1,5 +1,7 @@
 <script>
 import {CheckLocaleMixin} from "../../mixins/check-locale-mixin";
+import {CheckUserAndRolesMixin} from "../../mixins/check-user-and-role-mixin";
+import {ROLE_OWNER} from "../../constants/roles";
 const NAME_UKR = 'Новий запис'
 const NAME_RUS = 'Новая запись'
 const DEF_SELECTED_ID = 0
@@ -19,9 +21,16 @@ export default {
     props:{
         selectedArray: [],
         selectTitle: String,
+        addFunc: Function,
+        editFunc: Function,
+        deleteFunc: Function,
+        updateSelectedArrayFunc: Function,
     },
-    mixins:[CheckLocaleMixin],
+    mixins:[CheckLocaleMixin,CheckUserAndRolesMixin],
     computed:{
+        showForOwner(){
+            return this.checkUserAndRoles([ROLE_OWNER])
+        },
         filterSelectedArray(){
             this.selectedArray.unshift({
                 id: 0,
@@ -76,12 +85,43 @@ export default {
         },
         runAction(){
             this.selectedId === DEF_SELECTED_ID
-                ? console.log('new')
-                : console.log('edit')
+                ? this.addFunc({
+                        name_ukr: this.selectedNameUkr,
+                        name_rus: this.selectedNameRus,
+                    }).then(result => {
+                        this.updateSelectedArrayFunc()
+                        this.alert(result)
+                        this.changeNameField()
+                    })
+                : this.editFunc({
+                        id: this.selectedId,
+                        name_ukr: this.selectedNameUkr,
+                        name_rus: this.selectedNameRus,
+                    }).then(result => {
+                        this.alert(result)
+                        this.updateSelectedArrayFunc()
+                    });
 
         },
+        alert(result){
+            if(result){
+                this.$swal({
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }else{
+                this.$swal({
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 5000
+                });
+            }
+        },
         deleteItem(){
-            console.log('deleteItem')
+           this.deleteFunc({
+               id: this.selectedId,
+           })
         }
     },
     watch:{
@@ -134,6 +174,7 @@ export default {
                 </v-icon>
             </v-btn>
             <v-btn
+                v-if="showForOwner"
                 @click="deleteItem"
                 :disabled="disableDelete"
                 class="mt-3 ml-3"
