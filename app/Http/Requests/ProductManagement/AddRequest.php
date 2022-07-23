@@ -4,7 +4,7 @@ namespace App\Http\Requests\ProductManagement;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddProductTypeRequest extends FormRequest
+class AddRequest extends FormRequest
 {
     public function rules(): array
     {

@@ -13,8 +13,8 @@ export default {
             trans_prefix,
             search: '',
             selectedId: DEF_SELECTED_ID,
-            selectedNameRus: '',
-            selectedNameUkr: '',
+            selectedNameUkr: NAME_UKR,
+            selectedNameRus: NAME_RUS,
             runActionDisable: true,
         }
     },
@@ -121,6 +121,11 @@ export default {
         deleteItem(){
            this.deleteFunc({
                id: this.selectedId,
+           }).then(result => {
+               this.selectedId = DEF_SELECTED_ID
+               this.updateSelectedArrayFunc()
+               this.alert(result)
+               this.changeNameField()
            })
         }
     },
@@ -134,7 +139,6 @@ export default {
 
 <template>
     <div class="mt-5">
-        <v-row>
             <v-select
                 v-model="selectedId"
                 :items="filterSelectedArray"
@@ -153,38 +157,39 @@ export default {
                 </template>
             </v-select>
             <v-text-field
-                class="ml-3"
+                class="ml-2 mr-2"
                 v-model="selectedNameRus"
                 :label="$t(`${trans_prefix}.nameRus`)"
             ></v-text-field>
             <v-text-field
-                class="ml-3"
+                class="ml-2 mr-2"
                 v-model="selectedNameUkr"
                 :label="$t(`${trans_prefix}.nameUkr`)"
             ></v-text-field>
-            <v-btn
-                @click="runAction"
-                :disabled="runActionDisable"
-                class="mt-3 ml-3"
-                text
-                color="green"
-            >
-                <v-icon>
-                    done
-                </v-icon>
-            </v-btn>
-            <v-btn
-                v-if="showForOwner"
-                @click="deleteItem"
-                :disabled="disableDelete"
-                class="mt-3 ml-3"
-                text
-                color="red"
-            >
-                <v-icon>
-                    close
-                </v-icon>
-            </v-btn>
-        </v-row>
+            <v-card-actions>
+                <v-btn
+                    @click="runAction"
+                    :disabled="runActionDisable"
+                    text
+                    color="green"
+                >
+                    <v-icon>
+                        done
+                    </v-icon>
+                </v-btn>
+                <v-spacer/>
+                <v-btn
+                    v-if="showForOwner"
+                    @click="deleteItem"
+                    :disabled="disableDelete"
+                    text
+                    color="red"
+                >
+                    <v-icon>
+                        close
+                    </v-icon>
+                </v-btn>
+            </v-card-actions>
+
     </div>
 </template>

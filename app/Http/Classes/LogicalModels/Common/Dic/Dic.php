@@ -12,4 +12,16 @@ class Dic implements DicInterface
     {
         return $this->model->getTypes();
     }
+    public function getLayoutTypes(): array
+    {
+        return $this->model->getLayoutTypes();
+    }
+    public function getAgeTypes(): array
+    {
+        return $this->model->getAgeTypes();
+    }
+    public function getProducts(): array
+    {
+        return $this->model->getProducts();
+    }
 }

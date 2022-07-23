@@ -16,6 +16,69 @@ const actions = {
                 return data.status
             })
     },
+    deleteTypeAsync: async ({commit},payload) => {
+        return await axios.post('/delete-product-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    //---------------------------------layout
+    addLayoutTypeAsync: async ({commit},payload) => {
+        return await axios.post('/add-layout-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    editLayoutTypeAsync: async ({commit},payload) => {
+        return await axios.post('/edit-layout-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    deleteLayoutTypeAsync: async ({commit},payload) => {
+        return await axios.post('/delete-layout-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    //---------------------------------age
+    addAgeTypeAsync: async ({commit},payload) => {
+        return await axios.post('/add-age-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    editAgeTypeAsync: async ({commit},payload) => {
+        return await axios.post('/edit-age-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    deleteAgeTypeAsync: async ({commit},payload) => {
+        return await axios.post('/delete-age-type', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+
+    addProductItemAsync: async ({commit},payload) => {
+        return await axios.post('/add-product-item', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    editProductItemAsync: async ({commit},payload) => {
+        return await axios.post('/edit-product-item', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    deleteProductItemAsync: async ({commit},payload) => {
+        return await axios.post('/delete-product-item', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
 };
 
 export default {

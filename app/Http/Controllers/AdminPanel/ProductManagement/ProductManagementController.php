@@ -4,7 +4,7 @@ namespace App\Http\Controllers\AdminPanel\ProductManagement;
 
 use App\Http\Classes\LogicalModels\AdminPanel\ProductManagement\ProductManagement;
 use App\Http\Controllers\WebController;
-use App\Http\Requests\ProductManagement\{AddProductTypeRequest, EditProductTypeRequest};
+use App\Http\Requests\ProductManagement\{AddRequest, EditRequest, DeleteRequest, ProductItemRequest};
 use Illuminate\Http\JsonResponse;
 
 class ProductManagementController extends WebController
@@ -13,14 +13,67 @@ class ProductManagementController extends WebController
         private ProductManagement $model
     ){}
 
-    public function addType(AddProductTypeRequest $request): JsonResponse
+    public function addType(AddRequest $request): JsonResponse
     {
         $result = $this->model->addType($request->input());
         return $this->makeGoodResponse(['result' => $result]);
     }
-    public function editType(EditProductTypeRequest $request): JsonResponse
+    public function editType(EditRequest $request): JsonResponse
     {
         $result = $this->model->editType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function deleteType(DeleteRequest $request): JsonResponse
+    {
+        $result = $this->model->deleteType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+
+    public function addLayoutType(AddRequest $request): JsonResponse
+    {
+        $result = $this->model->addLayoutType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function editLayoutType(EditRequest $request): JsonResponse
+    {
+        $result = $this->model->editLayoutType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function deleteLayoutType(DeleteRequest $request): JsonResponse
+    {
+        $result = $this->model->deleteLayoutType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+
+    public function addAgeType(AddRequest $request): JsonResponse
+    {
+        $result = $this->model->addAgeType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function editAgeType(EditRequest $request): JsonResponse
+    {
+        $result = $this->model->editAgeType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function deleteAgeType(DeleteRequest $request): JsonResponse
+    {
+        $result = $this->model->deleteAgeType($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+
+    public function addProductItem(ProductItemRequest $request): JsonResponse
+    {
+        $result = $this->model->addProductItem($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function editProductItem(ProductItemRequest $request): JsonResponse
+    {
+        $result = $this->model->editProductItem($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+    public function deleteProductItem(DeleteRequest $request): JsonResponse
+    {
+        $result = $this->model->deleteProductItem($request->input());
         return $this->makeGoodResponse(['result' => $result]);
     }
 }
