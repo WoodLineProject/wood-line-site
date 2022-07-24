@@ -2,7 +2,7 @@
 
 namespace App\Http\Classes\LogicalModels\AdminPanel\ProductManagement;
 
-use App\Models\MSSQL\TableModels\{Dic_age_type, Dic_layout_type, Dic_product_type, Product};
+use App\Models\MSSQL\TableModels\{Dic_age_type, Dic_layout_type, Dic_product_type, Product, Product_photo_path};
 
 class ProductManagementModel
 {
@@ -12,6 +12,7 @@ class ProductManagementModel
         private Product $product,
         private Dic_layout_type $layoutType,
         private Dic_age_type $ageType,
+        private Product_photo_path $photoPath,
     ){}
 
     public function addType(array $data): bool
@@ -136,5 +137,13 @@ class ProductManagementModel
         return $this->product
             ->where('id', $data['id'])
             ->delete();
+    }
+
+    public function getPhotoById(array $data): array
+    {
+        return $this->photoPath
+            ->where('product_id', $data['id'])
+            ->get('name')
+            ->toArray();
     }
 }

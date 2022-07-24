@@ -59,4 +59,9 @@ class ProductManagement implements  ProductManagementInterface
     {
         return $this->model->deleteProductItem($data);
     }
+
+    public function getPhotoById(array $data): array
+    {
+        return $this->model->getPhotoById($data);
+    }
 }

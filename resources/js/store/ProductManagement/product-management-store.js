@@ -1,8 +1,18 @@
 import axios from "../../modules/axios_module";
 
-const state = {};
-const getters = {};
-const mutations = {};
+const state = {
+    photo: [],
+};
+const getters = {
+    photo: state => {
+        return state.photo
+    },
+};
+const mutations = {
+    setPhoto: (state, payload) => {
+        state.photo = payload;
+    },
+};
 const actions = {
     addTypeAsync: async ({commit},payload) => {
         return await axios.post('/add-product-type', payload)
@@ -60,7 +70,7 @@ const actions = {
                 return data.status
             })
     },
-
+    //---------------------------- product item
     addProductItemAsync: async ({commit},payload) => {
         return await axios.post('/add-product-item', payload)
             .then(({data}) => {
@@ -79,6 +89,15 @@ const actions = {
                 return data.status
             })
     },
+    getPhotoAsync: async ({commit},payload) => {
+        return await axios.post('/get-photo-by-id', payload)
+            .then(({data}) => {
+                commit('setPhoto', data.data);
+            })
+            .catch(errorResponse => {
+                commit('setPhoto', []);
+            });
+    }
 };
 
 export default {

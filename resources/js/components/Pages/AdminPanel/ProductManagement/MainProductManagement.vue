@@ -2,12 +2,13 @@
 import {mapActions, mapGetters} from "vuex";
 import TemplateDIC from "../../../common/TemplateDIC";
 import ProductManagement from "./components/ProductManagement";
+import PhotoManager from "./components/PhotoManager";
 
 const trans_prefix = 'adminPanel.productManagement';
 export default {
     name: "MainProductManagement",
     components: {
-        TemplateDIC, ProductManagement
+        TemplateDIC, ProductManagement, PhotoManager
     },
     data(){
         return {
@@ -52,6 +53,16 @@ export default {
                         <product-management/>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
+
+                <v-expansion-panel>
+                    <v-expansion-panel-header class="align-content-center">
+                        {{ $t(`${trans_prefix}.photo.title`) }}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <photo-manager/>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+
                 <v-expansion-panel>
                     <v-expansion-panel-header class="align-content-center">
                         {{ $t(`${trans_prefix}.type.title`) }}

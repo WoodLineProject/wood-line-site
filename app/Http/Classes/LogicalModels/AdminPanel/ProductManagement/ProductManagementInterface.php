@@ -19,4 +19,6 @@ interface ProductManagementInterface
     public function addProductItem(array $data): bool;
     public function editProductItem(array $data): bool;
     public function deleteProductItem(array $data): bool;
+
+    public function getPhotoById(array $data): array;
 }

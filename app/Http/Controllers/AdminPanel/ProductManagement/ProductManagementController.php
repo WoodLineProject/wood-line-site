@@ -76,4 +76,10 @@ class ProductManagementController extends WebController
         $result = $this->model->deleteProductItem($request->input());
         return $this->makeGoodResponse(['result' => $result]);
     }
+
+    public function getPhotoById(DeleteRequest $request): JsonResponse
+    {
+        $result = $this->model->getPhotoById($request->input());
+        return $this->makeGoodResponse($result);
+    }
 }
