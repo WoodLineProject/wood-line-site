@@ -6308,7 +6308,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
- //import t from '../../../../../../image/bg-3.jpg'
 
 var trans_prefix = 'adminPanel.productManagement';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6340,7 +6339,8 @@ var trans_prefix = 'adminPanel.productManagement';
         _this2.$swal.close();
       });
     }
-  })
+  }) //v-if="!$vuetify.breakpoint.mdAndUp"
+
 });
 
 /***/ }),
@@ -16026,49 +16026,69 @@ var render = function () {
     "div",
     { staticClass: "mt-5" },
     [
-      _c("v-select", {
-        attrs: {
-          items: _vm.filterProduct,
-          label: _vm.$t(_vm.trans_prefix + ".product.select"),
-          "item-value": "id",
-          "item-text": "name",
-        },
-        on: { change: _vm.getPhoto },
-        scopedSlots: _vm._u([
-          {
-            key: "prepend-item",
-            fn: function () {
-              return [
-                _c(
-                  "v-list-item",
-                  [
-                    _c("v-text-field", {
-                      staticClass: "mx-4",
-                      attrs: { label: _vm.$t("app.search") },
-                      model: {
-                        value: _vm.search,
-                        callback: function ($$v) {
-                          _vm.search = $$v
-                        },
-                        expression: "search",
-                      },
-                    }),
-                  ],
-                  1
-                ),
-              ]
+      _c(
+        "v-row",
+        [
+          _c("v-select", {
+            attrs: {
+              items: _vm.filterProduct,
+              label: _vm.$t(_vm.trans_prefix + ".product.select"),
+              "item-value": "id",
+              "item-text": "name",
             },
-            proxy: true,
-          },
-        ]),
-        model: {
-          value: _vm.selectedId,
-          callback: function ($$v) {
-            _vm.selectedId = $$v
-          },
-          expression: "selectedId",
-        },
-      }),
+            on: { change: _vm.getPhoto },
+            scopedSlots: _vm._u([
+              {
+                key: "prepend-item",
+                fn: function () {
+                  return [
+                    _c(
+                      "v-list-item",
+                      [
+                        _c("v-text-field", {
+                          staticClass: "mx-4",
+                          attrs: { label: _vm.$t("app.search") },
+                          model: {
+                            value: _vm.search,
+                            callback: function ($$v) {
+                              _vm.search = $$v
+                            },
+                            expression: "search",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]
+                },
+                proxy: true,
+              },
+            ]),
+            model: {
+              value: _vm.selectedId,
+              callback: function ($$v) {
+                _vm.selectedId = $$v
+              },
+              expression: "selectedId",
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              class: _vm.$vuetify.breakpoint.mdAndUp ? "mt-4" : "mt-4",
+              attrs: {
+                color: "blue darken-1",
+                text: "",
+                disabled: _vm.selectedId === undefined,
+              },
+            },
+            [_c("v-icon", [_vm._v("add")])],
+            1
+          ),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "v-row",

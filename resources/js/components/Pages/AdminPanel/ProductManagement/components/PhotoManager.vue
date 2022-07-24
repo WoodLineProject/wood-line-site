@@ -1,9 +1,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
-//import t from '../../../../../../image/bg-3.jpg'
 
 const trans_prefix = 'adminPanel.productManagement';
-
 export default {
     name: "PhotoManager",
     data(){
@@ -31,28 +29,40 @@ export default {
             });
         }
     }
+    //v-if="!$vuetify.breakpoint.mdAndUp"
 }
 </script>
 <template>
     <div class="mt-5">
-        <v-select
-            v-model="selectedId"
-            :items="filterProduct"
-            :label="$t(`${trans_prefix}.product.select`)"
-            item-value="id"
-            item-text="name"
-            @change="getPhoto"
-        >
-            <template v-slot:prepend-item>
-                <v-list-item>
-                    <v-text-field
-                        v-model="search"
-                        :label="$t('app.search')"
-                        class="mx-4"
-                    ></v-text-field>
-                </v-list-item>
-            </template>
-        </v-select>
+        <v-row>
+            <v-select
+                v-model="selectedId"
+                :items="filterProduct"
+                :label="$t(`${trans_prefix}.product.select`)"
+                item-value="id"
+                item-text="name"
+                @change="getPhoto"
+            >
+                <template v-slot:prepend-item>
+                    <v-list-item>
+                        <v-text-field
+                            v-model="search"
+                            :label="$t('app.search')"
+                            class="mx-4"
+                        ></v-text-field>
+                    </v-list-item>
+                </template>
+            </v-select>
+            <v-btn
+                :class="$vuetify.breakpoint.mdAndUp ? 'mt-4' : 'mt-4'"
+                color="blue darken-1"
+                text
+                :disabled="selectedId === undefined"
+            >
+                <v-icon>add</v-icon>
+            </v-btn>
+        </v-row>
+
         <v-row>
             <v-col
                 v-for="(p, i) in photo"
