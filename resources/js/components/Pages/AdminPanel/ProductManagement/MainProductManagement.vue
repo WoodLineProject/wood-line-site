@@ -53,7 +53,6 @@ export default {
                         <product-management/>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
-
                 <v-expansion-panel>
                     <v-expansion-panel-header class="align-content-center">
                         {{ $t(`${trans_prefix}.photo.title`) }}
@@ -62,7 +61,6 @@ export default {
                         <photo-manager/>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
-
                 <v-expansion-panel>
                     <v-expansion-panel-header class="align-content-center">
                         {{ $t(`${trans_prefix}.type.title`) }}

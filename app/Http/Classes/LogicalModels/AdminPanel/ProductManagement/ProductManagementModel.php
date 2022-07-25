@@ -2,10 +2,15 @@
 
 namespace App\Http\Classes\LogicalModels\AdminPanel\ProductManagement;
 
+use App\Http\Classes\LogicalModels\Common\Structure\CDateTime;
 use App\Models\MSSQL\TableModels\{Dic_age_type, Dic_layout_type, Dic_product_type, Product, Product_photo_path};
+use Illuminate\Support\Facades\Storage;
 
 class ProductManagementModel
 {
+    private const PHOTO_PATH = 'public/image/productPhoto';
+    private const FORMAT = '.jpeg';
+
 
     public function __construct(
         private Dic_product_type $productType,
@@ -143,7 +148,37 @@ class ProductManagementModel
     {
         return $this->photoPath
             ->where('product_id', $data['id'])
-            ->get('name')
+            ->get([
+                'id',
+                'name'
+            ])
             ->toArray();
+    }
+    public function deletePhoto(array $data): bool
+    {
+        Storage::disk('local')->delete(self::PHOTO_PATH.'/'.$data["name"]);
+        return $this->photoPath
+            ->where('id', $data['id'])
+            ->delete();
+    }
+    public function uploadPhoto(array $data, array $files): bool
+    {
+        try {
+            foreach ($files as $key => $file) {
+                $newFilaName = 'id_'.$data['id'].'_'.CDateTime::getCurrentDateTimeStamp().'_'.$key.self::FORMAT;
+                Storage::disk('local')->putFileAs(
+                    self::PHOTO_PATH,
+                    $file,
+                    $newFilaName
+                );
+                $this->photoPath
+                    ->insert([
+                        'product_id' => $data['id'],
+                        'name' => $newFilaName
+                    ]);
+            }
+            return true;
+        }catch (\Exception $e){return false;}
+
     }
 }

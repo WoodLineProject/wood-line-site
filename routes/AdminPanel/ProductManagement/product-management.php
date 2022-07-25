@@ -27,6 +27,7 @@ Route::group(['middleware' => [
         Route::post('/edit-product-item',  [ProductManagementController::class, 'editProductItem']);
 
         Route::post('/get-photo-by-id',  [ProductManagementController::class, 'getPhotoById']);
+        Route::post('/upload-photo',  [ProductManagementController::class, 'uploadPhoto']);
     });
 
 Route::group(['middleware' => [
@@ -43,4 +44,6 @@ Route::group(['middleware' => [
         Route::post('/delete-age-type',  [ProductManagementController::class, 'deleteAgeType']);
 
         Route::post('/delete-product-item',  [ProductManagementController::class, 'deleteProductItem']);
+
+        Route::post('/delete-photo',  [ProductManagementController::class, 'deletePhoto']);
     });

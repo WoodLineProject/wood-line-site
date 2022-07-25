@@ -5988,9 +5988,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.current_bg = this.ARRAY_BG_IMG[Math.floor(Math.random() * _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__.ARRAY_BG_IMG.length)]; //this.current_bg = this.ARRAY_BG_IMG[4]
-
-    console.log(this.current_bg);
+    this.current_bg = this.ARRAY_BG_IMG[Math.floor(Math.random() * _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__.ARRAY_BG_IMG.length)];
   }
 });
 
@@ -6301,12 +6299,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _constants_roles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../constants/roles */ "./resources/js/constants/roles.js");
+/* harmony import */ var _mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../mixins/check-user-and-role-mixin */ "./resources/js/mixins/check-user-and-role-mixin.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 var trans_prefix = 'adminPanel.productManagement';
@@ -6316,19 +6318,25 @@ var trans_prefix = 'adminPanel.productManagement';
     return {
       trans_prefix: trans_prefix,
       search: '',
-      selectedId: undefined
+      selectedId: undefined,
+      currentIndex: 0,
+      uploadPhotoArray: []
     };
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('dicStore', ['products'])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('productManagement', ['photo'])), {}, {
+  mixins: [_mixins_check_user_and_role_mixin__WEBPACK_IMPORTED_MODULE_1__.CheckUserAndRolesMixin],
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('dicStore', ['products'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)('productManagement', ['photo'])), {}, {
     filterProduct: function filterProduct() {
       var _this = this;
 
       return this.products.filter(function (item) {
         return item.name.toUpperCase().includes(_this.search.toUpperCase());
       });
+    },
+    showForOwner: function showForOwner() {
+      return this.checkUserAndRoles([_constants_roles__WEBPACK_IMPORTED_MODULE_0__.ROLE_OWNER]);
     }
   }),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('productManagement', ['getPhotoAsync'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)('productManagement', ['getPhotoAsync', 'deletePhotoAsync', 'uploadPhotoAsync'])), {}, {
     getPhoto: function getPhoto() {
       var _this2 = this;
 
@@ -6338,9 +6346,59 @@ var trans_prefix = 'adminPanel.productManagement';
       }).then(function (res) {
         _this2.$swal.close();
       });
-    }
-  }) //v-if="!$vuetify.breakpoint.mdAndUp"
+    },
+    deleteImage: function deleteImage() {
+      var _this3 = this;
 
+      this.$swal.showLoading();
+      this.deletePhotoAsync({
+        id: this.photo[this.currentIndex].id,
+        name: this.photo[this.currentIndex].name
+      }).then(function (res) {
+        _this3.$swal.close();
+
+        _this3.alert(res);
+
+        _this3.getPhotoAsync({
+          id: _this3.selectedId
+        });
+      });
+    },
+    alert: function alert(result) {
+      if (result) {
+        this.$swal({
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      } else {
+        this.$swal({
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 5000
+        });
+      }
+    },
+    uploadPhotos: function uploadPhotos() {
+      var _this4 = this;
+
+      this.$swal.showLoading();
+      this.uploadPhotoAsync(this.getObjectData()).then(function (res) {
+        _this4.$swal.close();
+
+        _this4.alert(res); //this.getPhotoAsync({id: this.selectedId}).then(() => {console.log(this.photo)})
+
+      });
+    },
+    getObjectData: function getObjectData() {
+      var formData = new FormData();
+      formData.append('id', this.selectedId);
+      this.uploadPhotoArray.forEach(function (photo) {
+        return formData.append('image[]', photo);
+      });
+      return formData;
+    }
+  })
 });
 
 /***/ }),
@@ -7255,25 +7313,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ARRAY_BG_IMG": () => (/* binding */ ARRAY_BG_IMG)
 /* harmony export */ });
-/* harmony import */ var _image_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../image/bg-2.jpg */ "./resources/image/bg-2.jpg");
-/* harmony import */ var _image_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_image_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _image_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../image/bg-3.jpg */ "./resources/image/bg-3.jpg");
-/* harmony import */ var _image_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_image_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _image_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../image/bg-4.jpg */ "./resources/image/bg-4.jpg");
-/* harmony import */ var _image_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_image_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _image_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../image/bg-5.jpg */ "./resources/image/bg-5.jpg");
-/* harmony import */ var _image_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_image_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _image_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../image/bg-6.jpg */ "./resources/image/bg-6.jpg");
-/* harmony import */ var _image_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_image_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _image_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../image/bg-7.jpg */ "./resources/image/bg-7.jpg");
-/* harmony import */ var _image_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_image_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _storage_app_public_image_bg_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-2.jpg */ "./storage/app/public/image/bg/bg-2.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _storage_app_public_image_bg_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-3.jpg */ "./storage/app/public/image/bg/bg-3.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _storage_app_public_image_bg_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-4.jpg */ "./storage/app/public/image/bg/bg-4.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _storage_app_public_image_bg_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-5.jpg */ "./storage/app/public/image/bg/bg-5.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _storage_app_public_image_bg_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-6.jpg */ "./storage/app/public/image/bg/bg-6.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _storage_app_public_image_bg_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../storage/app/public/image/bg/bg-7.jpg */ "./storage/app/public/image/bg/bg-7.jpg");
+/* harmony import */ var _storage_app_public_image_bg_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_storage_app_public_image_bg_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
 
-var ARRAY_BG_IMG = [(_image_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0___default()), (_image_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1___default()), (_image_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2___default()), (_image_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3___default()), (_image_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4___default()), (_image_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5___default())];
+var ARRAY_BG_IMG = [(_storage_app_public_image_bg_bg_2_jpg__WEBPACK_IMPORTED_MODULE_0___default()), (_storage_app_public_image_bg_bg_3_jpg__WEBPACK_IMPORTED_MODULE_1___default()), (_storage_app_public_image_bg_bg_4_jpg__WEBPACK_IMPORTED_MODULE_2___default()), (_storage_app_public_image_bg_bg_5_jpg__WEBPACK_IMPORTED_MODULE_3___default()), (_storage_app_public_image_bg_bg_6_jpg__WEBPACK_IMPORTED_MODULE_4___default()), (_storage_app_public_image_bg_bg_7_jpg__WEBPACK_IMPORTED_MODULE_5___default())];
 
 /***/ }),
 
@@ -8642,6 +8700,68 @@ var actions = {
     }
 
     return getPhotoAsync;
+  }(),
+  deletePhotoAsync: function () {
+    var _deletePhotoAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(_ref27, payload) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              commit = _ref27.commit;
+              _context14.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/delete-photo', payload).then(function (_ref28) {
+                var data = _ref28.data;
+                return data.status;
+              });
+
+            case 3:
+              return _context14.abrupt("return", _context14.sent);
+
+            case 4:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14);
+    }));
+
+    function deletePhotoAsync(_x27, _x28) {
+      return _deletePhotoAsync.apply(this, arguments);
+    }
+
+    return deletePhotoAsync;
+  }(),
+  uploadPhotoAsync: function () {
+    var _uploadPhotoAsync = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(_ref29, payload) {
+      var commit;
+      return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              commit = _ref29.commit;
+              _context15.next = 3;
+              return _modules_axios_module__WEBPACK_IMPORTED_MODULE_0__["default"].post('/upload-photo', payload).then(function (_ref30) {
+                var data = _ref30.data;
+                return data.status;
+              });
+
+            case 3:
+              return _context15.abrupt("return", _context15.sent);
+
+            case 4:
+            case "end":
+              return _context15.stop();
+          }
+        }
+      }, _callee15);
+    }));
+
+    function uploadPhotoAsync(_x29, _x30) {
+      return _uploadPhotoAsync.apply(this, arguments);
+    }
+
+    return uploadPhotoAsync;
   }()
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -9673,7 +9793,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#bg {\n    background-size: cover;\n    /*background-size: contain;*/\n    background-repeat:no-repeat;\n    background-position:center center;\n    background-attachment: fixed;\n    height: 100%;\n}\n/*div[data-app='true'] {\n    background: url(./../../../image/bg-3.jpg) no-repeat center center fixed !important;*\n    background-size: cover;\n    -moz-background-size: 100%; !* Firefox 3.6+ *!\n    -webkit-background-size: 100%; !* Safari 3.1+ и Chrome 4.0+ *!\n    -o-background-size: 100%; !* Opera 9.6+ *!\n    background-size: 100%; !* Современные браузеры *!\n    width: 100%;\n    height: auto;\n    position: absolute;\n}*/\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#bg {\n    background-size: cover;\n    background-repeat:no-repeat;\n    background-position:center center;\n    background-attachment: fixed;\n    height: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9756,120 +9876,120 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
-/***/ "./resources/image/bg-2.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-2.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-2.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-2.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-2.jpg?03d223b71a65ee41981bfaa1cfa8beb9";
 
 /***/ }),
 
-/***/ "./resources/image/bg-3.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-3.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-3.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-3.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-3.jpg?b491a8b1ee11d884d05e7395ab9f09f3";
 
 /***/ }),
 
-/***/ "./resources/image/bg-4.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-4.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-4.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-4.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-4.jpg?7dc6da8b237f21f9b9e73001bbecfa28";
 
 /***/ }),
 
-/***/ "./resources/image/bg-5.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-5.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-5.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-5.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-5.jpg?dc965385b75ee18cf99961d1c2425362";
 
 /***/ }),
 
-/***/ "./resources/image/bg-6.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-6.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-6.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-6.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-6.jpg?10a24597b372c97e8a184e97b6686697";
 
 /***/ }),
 
-/***/ "./resources/image/bg-7.jpg":
-/*!**********************************!*\
-  !*** ./resources/image/bg-7.jpg ***!
-  \**********************************/
+/***/ "./storage/app/public/image/bg/bg-7.jpg":
+/*!**********************************************!*\
+  !*** ./storage/app/public/image/bg/bg-7.jpg ***!
+  \**********************************************/
 /***/ ((module) => {
 
 module.exports = "/images/bg-7.jpg?05c0ba0d16ef5376bbcbfe5ae92dc556";
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto/id_1_222222.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_1_222222.jpeg ***!
-  \*******************************************************/
+/***/ "./storage/app/public/image/productPhoto/id_1_1658786583_0.jpeg":
+/*!**********************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_1_1658786583_0.jpeg ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+module.exports = "/images/id_1_1658786583_0.jpeg?872d3fd237b29006ff317f1ee5eb21ae";
+
+/***/ }),
+
+/***/ "./storage/app/public/image/productPhoto/id_1_222222.jpeg":
+/*!****************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_1_222222.jpeg ***!
+  \****************************************************************/
 /***/ ((module) => {
 
 module.exports = "/images/id_1_222222.jpeg?3b01d97a404d85e2ecc6930664dfde1b";
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto/id_1_222225.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_1_222225.jpeg ***!
-  \*******************************************************/
-/***/ ((module) => {
-
-module.exports = "/images/id_1_222225.jpeg?aa869d93e050300643d7c1ef18a752d9";
-
-/***/ }),
-
-/***/ "./resources/image/productPhoto/id_1_222227.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_1_222227.jpeg ***!
-  \*******************************************************/
+/***/ "./storage/app/public/image/productPhoto/id_1_222227.jpeg":
+/*!****************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_1_222227.jpeg ***!
+  \****************************************************************/
 /***/ ((module) => {
 
 module.exports = "/images/id_1_222227.jpeg?107b6e4a562181cfb43abf837ecf0464";
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto/id_2_222222.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_2_222222.jpeg ***!
-  \*******************************************************/
+/***/ "./storage/app/public/image/productPhoto/id_2_222222.jpeg":
+/*!****************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_2_222222.jpeg ***!
+  \****************************************************************/
 /***/ ((module) => {
 
 module.exports = "/images/id_2_222222.jpeg?f4f8beeec032504d59c6985843a75873";
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto/id_2_222225.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_2_222225.jpeg ***!
-  \*******************************************************/
+/***/ "./storage/app/public/image/productPhoto/id_2_222225.jpeg":
+/*!****************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_2_222225.jpeg ***!
+  \****************************************************************/
 /***/ ((module) => {
 
 module.exports = "/images/id_2_222225.jpeg?53126e118f6ed2bf270f8c12fa71b585";
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto/id_2_222227.jpeg":
-/*!*******************************************************!*\
-  !*** ./resources/image/productPhoto/id_2_222227.jpeg ***!
-  \*******************************************************/
+/***/ "./storage/app/public/image/productPhoto/id_2_222227.jpeg":
+/*!****************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/id_2_222227.jpeg ***!
+  \****************************************************************/
 /***/ ((module) => {
 
 module.exports = "/images/id_2_222227.jpeg?8b4e7395453a7dbd74eb3b4a9baea63c";
@@ -16072,18 +16192,51 @@ var render = function () {
               expression: "selectedId",
             },
           }),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.photo.length,
+              expression: "photo.length",
+            },
+          ],
+        },
+        [
+          _c("v-file-input", {
+            attrs: {
+              label: _vm.$t("app.uploadPhoto"),
+              multiple: "",
+              "truncate-length": "50",
+              color: "blue darken-1",
+            },
+            model: {
+              value: _vm.uploadPhotoArray,
+              callback: function ($$v) {
+                _vm.uploadPhotoArray = $$v
+              },
+              expression: "uploadPhotoArray",
+            },
+          }),
           _vm._v(" "),
           _c(
             "v-btn",
             {
-              class: _vm.$vuetify.breakpoint.mdAndUp ? "mt-4" : "mt-4",
+              staticClass: "mt-5",
               attrs: {
                 color: "blue darken-1",
                 text: "",
-                disabled: _vm.selectedId === undefined,
+                disabled: !_vm.uploadPhotoArray.length,
               },
+              on: { click: _vm.uploadPhotos },
             },
-            [_c("v-icon", [_vm._v("add")])],
+            [_c("v-icon", [_vm._v("upload")])],
             1
           ),
         ],
@@ -16091,26 +16244,104 @@ var render = function () {
       ),
       _vm._v(" "),
       _c(
-        "v-row",
-        _vm._l(_vm.photo, function (p, i) {
-          return _c(
-            "v-col",
-            { key: i, staticClass: "d-flex child-flex", attrs: { cols: "4" } },
-            [
-              _c("v-img", {
-                key: i,
-                staticClass: "grey lighten-2",
-                attrs: {
-                  width: "auto",
-                  height: "auto",
-                  src: __webpack_require__("./resources/image/productPhoto sync recursive ^\\.\\/.*$")("./" +
-                    p.name),
+        "v-card",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.photo.length,
+              expression: "photo.length",
+            },
+          ],
+          staticClass: "mx-auto",
+          attrs: { elevation: "24" },
+        },
+        [
+          _c(
+            "v-carousel",
+            {
+              staticClass: "mt-3",
+              attrs: {
+                height: "400",
+                "hide-delimiter-background": "",
+                "show-arrows-on-hover": "",
+              },
+              model: {
+                value: _vm.currentIndex,
+                callback: function ($$v) {
+                  _vm.currentIndex = $$v
                 },
-              }),
-            ],
+                expression: "currentIndex",
+              },
+            },
+            _vm._l(_vm.photo, function (p, i) {
+              return _c(
+                "v-carousel-item",
+                { key: i },
+                [
+                  _c(
+                    "v-sheet",
+                    { attrs: { height: "100%" } },
+                    [
+                      _c(
+                        "v-row",
+                        {
+                          staticClass: "fill-height",
+                          attrs: { align: "center", justify: "center" },
+                        },
+                        [
+                          _c("v-img", {
+                            staticClass: "grey lighten-2",
+                            attrs: {
+                              contain: "",
+                              width: "400",
+                              height: "400",
+                              src: __webpack_require__("./storage/app/public/image/productPhoto sync recursive ^\\.\\/.*$")("./" +
+                                p.name),
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              )
+            }),
             1
-          )
-        }),
+          ),
+          _vm._v(" "),
+          _vm.showForOwner
+            ? _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "", color: "red" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.deleteImage()
+                        },
+                      },
+                    },
+                    [
+                      _c("v-icon", [
+                        _vm._v("\n                    close\n                "),
+                      ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              )
+            : _vm._e(),
+        ],
         1
       ),
     ],
@@ -80482,43 +80713,6 @@ var index = {
 
 /***/ }),
 
-/***/ "./resources/image/productPhoto sync recursive ^\\.\\/.*$":
-/*!*****************************************************!*\
-  !*** ./resources/image/productPhoto/ sync ^\.\/.*$ ***!
-  \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var map = {
-	"./id_1_222222.jpeg": "./resources/image/productPhoto/id_1_222222.jpeg",
-	"./id_1_222225.jpeg": "./resources/image/productPhoto/id_1_222225.jpeg",
-	"./id_1_222227.jpeg": "./resources/image/productPhoto/id_1_222227.jpeg",
-	"./id_2_222222.jpeg": "./resources/image/productPhoto/id_2_222222.jpeg",
-	"./id_2_222225.jpeg": "./resources/image/productPhoto/id_2_222225.jpeg",
-	"./id_2_222227.jpeg": "./resources/image/productPhoto/id_2_222227.jpeg"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./resources/image/productPhoto sync recursive ^\\.\\/.*$";
-
-/***/ }),
-
 /***/ "./resources/js/locales sync recursive ^\\.\\/.*\\/AdminPanelMain\\/admin\\-panel\\-main\\.json$":
 /*!***************************************************************************************!*\
   !*** ./resources/js/locales/ sync ^\.\/.*\/AdminPanelMain\/admin\-panel\-main\.json$ ***!
@@ -80882,6 +81076,43 @@ webpackContext.id = "./resources/js/locales sync recursive ^\\.\\/.*\\/validatio
 
 /***/ }),
 
+/***/ "./storage/app/public/image/productPhoto sync recursive ^\\.\\/.*$":
+/*!**************************************************************!*\
+  !*** ./storage/app/public/image/productPhoto/ sync ^\.\/.*$ ***!
+  \**************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./id_1_1658786583_0.jpeg": "./storage/app/public/image/productPhoto/id_1_1658786583_0.jpeg",
+	"./id_1_222222.jpeg": "./storage/app/public/image/productPhoto/id_1_222222.jpeg",
+	"./id_1_222227.jpeg": "./storage/app/public/image/productPhoto/id_1_222227.jpeg",
+	"./id_2_222222.jpeg": "./storage/app/public/image/productPhoto/id_2_222222.jpeg",
+	"./id_2_222225.jpeg": "./storage/app/public/image/productPhoto/id_2_222225.jpeg",
+	"./id_2_222227.jpeg": "./storage/app/public/image/productPhoto/id_2_222227.jpeg"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./storage/app/public/image/productPhoto sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
 /***/ "./node_modules/axios/package.json":
 /*!*****************************************!*\
   !*** ./node_modules/axios/package.json ***!
@@ -80955,7 +81186,7 @@ module.exports = JSON.parse('{"title":"Управление пользовате
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"Это тестовая запись на тестовом роуте","login":"Вход","reg":"Регестрация","name":"Имя","email":"Эмайл","password":"Пароль","confirmPassword":"Повторить пароль","phone":"Номер телефона","surname":"Фамилия","patronymic":"Отчество","role":"Роль","callMy":"Заказать звонок","order":"Заказать","call":"звонок","search":"Поиск","add":"Добавить","edit":"Редактировать"}');
+module.exports = JSON.parse('{"test":"Это тестовая запись на тестовом роуте","login":"Вход","reg":"Регестрация","name":"Имя","email":"Эмайл","password":"Пароль","confirmPassword":"Повторить пароль","phone":"Номер телефона","surname":"Фамилия","patronymic":"Отчество","role":"Роль","callMy":"Заказать звонок","order":"Заказать","call":"звонок","search":"Поиск","add":"Добавить","edit":"Редактировать","uploadPhoto":"Загрузить фотографии"}');
 
 /***/ }),
 
@@ -81076,7 +81307,7 @@ module.exports = JSON.parse('{"title":"Керування користувача
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"Це тестовий запис на тестовому роуті","login":"Вхід","reg":"Реєстрація","name":"Ім\'я","email":"Емайл","password":"Пароль","confirmPassword":"Повторити пароль","phone":"Номер телефону","surname":"Прізвище","patronymic":"По батькові","role":"Роль","callMy":"Замовити дзвінок","order":"Замовити","call":"дзвінок","search":"Пошук","add":"Додати","edit":"Редагувати"}');
+module.exports = JSON.parse('{"test":"Це тестовий запис на тестовому роуті","login":"Вхід","reg":"Реєстрація","name":"Ім\'я","email":"Емайл","password":"Пароль","confirmPassword":"Повторити пароль","phone":"Номер телефону","surname":"Прізвище","patronymic":"По батькові","role":"Роль","callMy":"Замовити дзвінок","order":"Замовити","call":"дзвінок","search":"Пошук","add":"Додати","edit":"Редагувати","uploadPhoto":"Завантажити фотографії"}');
 
 /***/ }),
 

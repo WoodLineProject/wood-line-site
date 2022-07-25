@@ -97,7 +97,19 @@ const actions = {
             .catch(errorResponse => {
                 commit('setPhoto', []);
             });
-    }
+    },
+    deletePhotoAsync: async ({commit},payload) => {
+        return await axios.post('/delete-photo', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
+    uploadPhotoAsync: async ({commit},payload) => {
+        return await axios.post('/upload-photo', payload)
+            .then(({data}) => {
+                return data.status
+            })
+    },
 };
 
 export default {

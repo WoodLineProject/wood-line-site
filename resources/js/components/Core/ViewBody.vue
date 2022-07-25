@@ -10,8 +10,6 @@ export default {
     },
     mounted() {
         this.current_bg = this.ARRAY_BG_IMG[Math.floor(Math.random() * ARRAY_BG_IMG.length)]
-        //this.current_bg = this.ARRAY_BG_IMG[4]
-        console.log(this.current_bg)
     },
 }
 </script>
@@ -40,21 +38,9 @@ export default {
 <style>
 #bg {
     background-size: cover;
-    /*background-size: contain;*/
     background-repeat:no-repeat;
     background-position:center center;
     background-attachment: fixed;
     height: 100%;
 }
-/*div[data-app='true'] {
-    background: url(./../../../image/bg-3.jpg) no-repeat center center fixed !important;*
-    background-size: cover;
-    -moz-background-size: 100%; !* Firefox 3.6+ *!
-    -webkit-background-size: 100%; !* Safari 3.1+ и Chrome 4.0+ *!
-    -o-background-size: 100%; !* Opera 9.6+ *!
-    background-size: 100%; !* Современные браузеры *!
-    width: 100%;
-    height: auto;
-    position: absolute;
-}*/
 </style>

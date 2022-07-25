@@ -4,7 +4,12 @@ namespace App\Http\Controllers\AdminPanel\ProductManagement;
 
 use App\Http\Classes\LogicalModels\AdminPanel\ProductManagement\ProductManagement;
 use App\Http\Controllers\WebController;
-use App\Http\Requests\ProductManagement\{AddRequest, EditRequest, DeleteRequest, ProductItemRequest};
+use App\Http\Requests\ProductManagement\{AddRequest,
+    DeletePhotoRequest,
+    EditRequest,
+    DeleteRequest,
+    ProductItemRequest,
+    UploadPhotoRequest};
 use Illuminate\Http\JsonResponse;
 
 class ProductManagementController extends WebController
@@ -81,5 +86,18 @@ class ProductManagementController extends WebController
     {
         $result = $this->model->getPhotoById($request->input());
         return $this->makeGoodResponse($result);
+    }
+
+    public function deletePhoto(DeletePhotoRequest $request): JsonResponse
+    {
+        $result = $this->model->deletePhoto($request->input());
+        return $this->makeGoodResponse(['result' => $result]);
+    }
+
+    public function uploadPhoto(UploadPhotoRequest $request): JsonResponse
+    {
+        //dd($request->file('image'));
+        $result = $this->model->uploadPhoto($request->input(),$request->file('image'));
+        return $this->makeGoodResponse(['result' => $result]);
     }
 }

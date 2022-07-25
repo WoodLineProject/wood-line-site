@@ -1,9 +1,9 @@
-import bg_2 from '../../image/bg-2.jpg'
-import bg_3 from '../../image/bg-3.jpg'
-import bg_4 from '../../image/bg-4.jpg'
-import bg_5 from '../../image/bg-5.jpg'
-import bg_6 from '../../image/bg-6.jpg'
-import bg_7 from '../../image/bg-7.jpg'
+import bg_2 from '../../../storage/app/public/image/bg/bg-2.jpg'
+import bg_3 from '../../../storage/app/public/image/bg/bg-3.jpg'
+import bg_4 from '../../../storage/app/public/image/bg/bg-4.jpg'
+import bg_5 from '../../../storage/app/public/image/bg/bg-5.jpg'
+import bg_6 from '../../../storage/app/public/image/bg/bg-6.jpg'
+import bg_7 from '../../../storage/app/public/image/bg/bg-7.jpg'
 
 export const ARRAY_BG_IMG = [
     bg_2,

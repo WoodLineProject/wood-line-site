@@ -21,4 +21,6 @@ interface ProductManagementInterface
     public function deleteProductItem(array $data): bool;
 
     public function getPhotoById(array $data): array;
+    public function deletePhoto(array $data): bool;
+    public function uploadPhoto(array $data, array $files): bool;
 }

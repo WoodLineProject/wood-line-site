@@ -64,4 +64,13 @@ class ProductManagement implements  ProductManagementInterface
     {
         return $this->model->getPhotoById($data);
     }
+    public function deletePhoto(array $data): bool
+    {
+        return $this->model->deletePhoto($data);
+    }
+
+    public function uploadPhoto(array $data, array $files): bool
+    {
+        return $this->model->uploadPhoto($data,$files);
+    }
 }
