@@ -139,20 +139,36 @@ class ProductManagementModel
     }
     public function deleteProductItem(array $data): bool
     {
+        $this->deletePhotoByProductItem($data);
         return $this->product
             ->where('id', $data['id'])
             ->delete();
     }
 
+    private function deletePhotoByProductItem(array $data): void
+    {
+        $photoArray = $this->photoPath
+            ->where('product_id',$data['id'])
+            ->get()
+            ->toArray();
+        foreach ($photoArray as $photo)
+        {
+            $this->deletePhoto($photo);
+        }
+    }
+
     public function getPhotoById(array $data): array
     {
-        return $this->photoPath
+        $dbArray =  $this->photoPath
             ->where('product_id', $data['id'])
             ->get([
                 'id',
-                'name'
+                'name',
+                'path'
             ])
             ->toArray();
+
+        return $dbArray;
     }
     public function deletePhoto(array $data): bool
     {
@@ -174,11 +190,11 @@ class ProductManagementModel
                 $this->photoPath
                     ->insert([
                         'product_id' => $data['id'],
-                        'name' => $newFilaName
+                        'name' => $newFilaName,
+                        'path' => Storage::url(self::PHOTO_PATH.'/'.$newFilaName)
                     ]);
             }
             return true;
         }catch (\Exception $e){return false;}
-
     }
 }

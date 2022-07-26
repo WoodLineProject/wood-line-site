@@ -2,6 +2,7 @@
 import {mapActions, mapGetters} from "vuex";
 import {ROLE_OWNER} from "../../../../../constants/roles";
 import {CheckUserAndRolesMixin} from "../../../../../mixins/check-user-and-role-mixin";
+
 const trans_prefix = 'adminPanel.productManagement';
 export default {
     name: "PhotoManager",
@@ -64,9 +65,12 @@ export default {
         uploadPhotos(){
             this.$swal.showLoading();
             this.uploadPhotoAsync(this.getObjectData()).then(res => {
-                this.$swal.close()
-                this.alert(res)
-                //this.getPhotoAsync({id: this.selectedId}).then(() => {console.log(this.photo)})
+                this.uploadPhotoArray = []
+                this.$nextTick(function () {
+                    this.getPhotoAsync({id: this.selectedId})
+                    this.$swal.close()
+                    this.alert(res)
+                });
             });
 
         },
@@ -101,7 +105,7 @@ export default {
                 </template>
             </v-select>
         </v-row>
-        <v-row v-show="photo.length">
+        <v-row v-if="!!selectedId">
             <v-file-input
                 v-model="uploadPhotoArray"
                 :label="$t('app.uploadPhoto')"
@@ -149,7 +153,7 @@ export default {
                                 width="400"
                                 height="400"
                                 class="grey lighten-2"
-                                :src="require(`../../../../../../../storage/app/public/image/productPhoto/${p.name}`)"
+                                :src="p.path"
                             ></v-img>
                         </v-row>
                     </v-sheet>
