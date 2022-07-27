@@ -10,7 +10,8 @@ class UploadPhotoRequest extends FormRequest
     {
         return [
             'id' => ['required', 'int', 'min:1'],
-            'image' => ['required', 'array'],
+            'image' => ['required', 'array', 'max:10'],
+            'image.*' => ['mimes:jpg,jpeg,png,bmp']
         ];
     }
 }

@@ -5,7 +5,7 @@
     "name": "Имя",
     "email":"Эмайл",
     "password": "Пароль",
-    "confirmPassword":"Повторить пароль",
+    "confirmPassword": "Повторить пароль",
     "phone": "Номер телефона",
     "surname": "Фамилия",
     "patronymic":"Отчество",

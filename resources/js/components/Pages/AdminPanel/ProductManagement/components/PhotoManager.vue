@@ -112,6 +112,7 @@ export default {
                 multiple
                 truncate-length="50"
                 color="blue darken-1"
+                truncate-length="25"
             >
             </v-file-input>
             <v-btn
