@@ -10,6 +10,7 @@ class ProductManagementModel
 {
     private const PHOTO_PATH = 'public/image/productPhoto';
     private const FORMAT = '.jpeg';
+    private const PHOTO_URL = '/storage/app/public/image/productPhoto';
 
 
     public function __construct(
@@ -191,7 +192,7 @@ class ProductManagementModel
                     ->insert([
                         'product_id' => $data['id'],
                         'name' => $newFilaName,
-                        'path' => Storage::url(self::PHOTO_PATH.'/'.$newFilaName)
+                        'path' => self::PHOTO_URL.'/'.$newFilaName
                     ]);
             }
             return true;
