@@ -25,6 +25,7 @@ export default {
         editFunc: Function,
         deleteFunc: Function,
         updateSelectedArrayFunc: Function,
+        getItemsCatalog: Function,
     },
     mixins:[CheckLocaleMixin,CheckUserAndRolesMixin],
     computed:{
@@ -32,12 +33,13 @@ export default {
             return this.checkUserAndRoles([ROLE_OWNER])
         },
         filterSelectedArray(){
-            this.selectedArray.unshift({
+            let arr = this.selectedArray;
+            arr.unshift({
                 id: 0,
                 name_ukr: NAME_UKR,
                 name_rus: NAME_RUS,
             })
-            return this.selectedArray.filter((item) => {
+            return arr.filter((item) => {
                 return this.isUkrLocale
                     ? item.name_ukr
                         ? item.name_ukr.toUpperCase().includes(this.search.toUpperCase())
@@ -126,6 +128,7 @@ export default {
                this.updateSelectedArrayFunc()
                this.alert(result)
                this.changeNameField()
+               this.getItemsCatalog()
            })
         }
     },

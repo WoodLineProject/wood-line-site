@@ -72,6 +72,7 @@ export default {
                             v-bind:editFunc="editTypeAsync"
                             v-bind:deleteFunc="deleteTypeAsync"
                             v-bind:updateSelectedArrayFunc="getTypesAsync"
+                            v-bind:getItemsCatalog="getProductsAsync"
                             v-bind:selectTitle="$t(`${trans_prefix}.type.select`)"
                         />
                     </v-expansion-panel-content>
@@ -87,6 +88,7 @@ export default {
                             v-bind:editFunc="editLayoutTypeAsync"
                             v-bind:deleteFunc="deleteLayoutTypeAsync"
                             v-bind:updateSelectedArrayFunc="getLayoutAsync"
+                            v-bind:getItemsCatalog="getProductsAsync"
                             v-bind:selectTitle="$t(`${trans_prefix}.layout.select`)"
                         />
                     </v-expansion-panel-content>
@@ -102,6 +104,7 @@ export default {
                             v-bind:editFunc="editAgeTypeAsync"
                             v-bind:deleteFunc="deleteAgeTypeAsync"
                             v-bind:updateSelectedArrayFunc="getAgeAsync"
+                            v-bind:getItemsCatalog="getProductsAsync"
                             v-bind:selectTitle="$t(`${trans_prefix}.age.select`)"
                         />
                     </v-expansion-panel-content>

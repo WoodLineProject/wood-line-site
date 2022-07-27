@@ -110,9 +110,8 @@ export default {
                 v-model="uploadPhotoArray"
                 :label="$t('app.uploadPhoto')"
                 multiple
-                truncate-length="50"
                 color="blue darken-1"
-                truncate-length="25"
+                truncate-length="10"
             >
             </v-file-input>
             <v-btn

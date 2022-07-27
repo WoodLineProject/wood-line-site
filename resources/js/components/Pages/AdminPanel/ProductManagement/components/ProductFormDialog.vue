@@ -106,9 +106,9 @@ export default {
         setProp(){
             this.form.id = this.item.id
             this.form.name = this.item.name
-            this.form.product_type_id = this.item.product_type_id
-            this.form.layout_type_id = this.item.layout_type_id
-            this.form.age_type_id = this.item.age_type_id
+            this.form.product_type_id = this.item.product_type_id ?? 1
+            this.form.layout_type_id = this.item.layout_type_id ?? 1
+            this.form.age_type_id = this.item.age_type_id ?? 1
             this.form.is_angular = this.item.is_angular
             this.form.all_sizes = this.item.all_sizes
             this.form.sleep_sizes = this.item.sleep_sizes
@@ -139,6 +139,9 @@ export default {
                         : true
             })
         },
+    },
+    watch:{
+        item: 'setProp',
     }
 }
 </script>
