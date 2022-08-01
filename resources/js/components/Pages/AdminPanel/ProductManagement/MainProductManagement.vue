@@ -19,16 +19,20 @@ export default {
         ...mapGetters('dicStore',['types','layout','age']),
     },
     mounted() {
-        this.getTypesAsync()
-        this.getLayoutAsync()
-        this.getAgeAsync()
-        this.getProductsAsync()
+        this.updateMethods()
     },
     methods:{
-        ...mapActions('dicStore',['getTypesAsync','getLayoutAsync','getAgeAsync','getProductsAsync']),
+        ...mapActions('dicStore',['getTypesAsync','getLayoutAsync','getAgeAsync','getProductsAsync','getProductsAndPhotoAsync']),
         ...mapActions('productManagement',['addTypeAsync','editTypeAsync','deleteTypeAsync']),
         ...mapActions('productManagement',['addLayoutTypeAsync','editLayoutTypeAsync','deleteLayoutTypeAsync']),
         ...mapActions('productManagement',['addAgeTypeAsync','editAgeTypeAsync','deleteAgeTypeAsync']),
+        updateMethods(){
+            this.getTypesAsync()
+            this.getLayoutAsync()
+            this.getAgeAsync()
+            this.getProductsAsync()
+            this.getProductsAndPhotoAsync()
+        }
     },
 }
 </script>
@@ -72,7 +76,7 @@ export default {
                             v-bind:editFunc="editTypeAsync"
                             v-bind:deleteFunc="deleteTypeAsync"
                             v-bind:updateSelectedArrayFunc="getTypesAsync"
-                            v-bind:getItemsCatalog="getProductsAsync"
+                            v-bind:getItemsCatalog="updateMethods"
                             v-bind:selectTitle="$t(`${trans_prefix}.type.select`)"
                         />
                     </v-expansion-panel-content>
@@ -88,7 +92,7 @@ export default {
                             v-bind:editFunc="editLayoutTypeAsync"
                             v-bind:deleteFunc="deleteLayoutTypeAsync"
                             v-bind:updateSelectedArrayFunc="getLayoutAsync"
-                            v-bind:getItemsCatalog="getProductsAsync"
+                            v-bind:getItemsCatalog="updateMethods"
                             v-bind:selectTitle="$t(`${trans_prefix}.layout.select`)"
                         />
                     </v-expansion-panel-content>
@@ -104,7 +108,7 @@ export default {
                             v-bind:editFunc="editAgeTypeAsync"
                             v-bind:deleteFunc="deleteAgeTypeAsync"
                             v-bind:updateSelectedArrayFunc="getAgeAsync"
-                            v-bind:getItemsCatalog="getProductsAsync"
+                            v-bind:getItemsCatalog="updateMethods"
                             v-bind:selectTitle="$t(`${trans_prefix}.age.select`)"
                         />
                     </v-expansion-panel-content>

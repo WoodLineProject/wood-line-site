@@ -8,4 +8,5 @@ interface DicInterface
     public function getLayoutTypes(): array;
     public function getAgeTypes(): array;
     public function getProducts(): array;
+    public function getProductsMergePhoto(): array;
 }

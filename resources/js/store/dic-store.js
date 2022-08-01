@@ -5,6 +5,7 @@ const state = {
     layout: [],
     age: [],
     products: [],
+    productsAndPhoto: [],
 };
 
 const getters = {
@@ -20,6 +21,9 @@ const getters = {
     products: state => {
         return state.products
     },
+    productsAndPhoto: state => {
+        return state.productsAndPhoto
+    },
 };
 
 const mutations = {
@@ -34,6 +38,9 @@ const mutations = {
     },
     setProducts: (state, payload) => {
         state.products = payload;
+    },
+    setProductsAndPhoto: (state, payload) => {
+        state.productsAndPhoto = payload;
     },
 };
 
@@ -72,6 +79,16 @@ const actions = {
             })
             .catch(errorResponse => {
                 commit('setProducts', []);
+            });
+    },
+
+    getProductsAndPhotoAsync: async ({commit}) => {
+        return await axios.post('/get-products-and-photo')
+            .then(({data}) => {
+                commit('setProductsAndPhoto', data.data);
+            })
+            .catch(errorResponse => {
+                commit('setProductsAndPhoto', []);
             });
     },
 };

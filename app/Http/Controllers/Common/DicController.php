@@ -32,4 +32,10 @@ class DicController extends WebController
         $result = $this->model->getProducts();
         return $this->makeGoodResponse($result);
     }
+
+    public function getProductsMergePhoto(): JsonResponse
+    {
+        $result = $this->model->getProductsMergePhoto();
+        return $this->makeGoodResponse($result);
+    }
 }
