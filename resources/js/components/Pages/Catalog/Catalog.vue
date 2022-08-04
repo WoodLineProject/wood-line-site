@@ -150,22 +150,6 @@ export default {
                     v-for="(item, i) in filterProductsAndPhoto"
                     :key="i"
                     v-bind:item="item"/>
-
-                <item-card
-                    class="mb-5 ml-2 mr-2 align-self-start"
-                    v-for="(item, i) in filterProductsAndPhoto"
-                    :key="i"
-                    v-bind:item="item"/>
-                <item-card
-                    class="mb-5 ml-2 mr-2 align-self-start"
-                    v-for="(item, i) in filterProductsAndPhoto"
-                    :key="i"
-                    v-bind:item="item"/>
-                <item-card
-                    class="mb-5 ml-2 mr-2 align-self-start"
-                    v-for="(item, i) in filterProductsAndPhoto"
-                    :key="i"
-                    v-bind:item="item"/>
             </div>
         </div>
     </div>
