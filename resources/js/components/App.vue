@@ -18,7 +18,7 @@ import CallMy from "./Core/CallMy";
     }
 </script>
 <template>
-    <v-app>
+    <v-app id="title">
         <Header/>
         <nav-drawer/>
         <view-body/>
@@ -26,3 +26,9 @@ import CallMy from "./Core/CallMy";
         <Footer/>
     </v-app>
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Playfair Display');
+#title {
+    font-family: 'Playfair Display';
+}
+</style>

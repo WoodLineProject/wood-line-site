@@ -11,6 +11,7 @@ import VueAlertify from 'vue-alertify';
 import {useProp} from './plugins/alertify'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import './filters/main'
 
 
 Vue.use(VueSweetalert2);
