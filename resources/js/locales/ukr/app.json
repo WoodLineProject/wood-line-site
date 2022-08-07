@@ -18,5 +18,6 @@
     "edit":"Редагувати",
     "uploadPhoto": "Завантажити фотографії",
     "filterShow": "показати фільтр",
-    "filterNotShow": "сховати фільтр"
+    "filterNotShow": "сховати фільтр",
+    "countItem": "Знайдено: {count}"
 }

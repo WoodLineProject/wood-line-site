@@ -6,6 +6,8 @@ const state = {
     age: [],
     products: [],
     productsAndPhoto: [],
+    productById: [],
+    photoById: []
 };
 
 const getters = {
@@ -24,6 +26,12 @@ const getters = {
     productsAndPhoto: state => {
         return state.productsAndPhoto
     },
+    productById: state => {
+        return state.productById
+    },
+    photoById: state => {
+        return state.photoById
+    },
 };
 
 const mutations = {
@@ -41,6 +49,12 @@ const mutations = {
     },
     setProductsAndPhoto: (state, payload) => {
         state.productsAndPhoto = payload;
+    },
+    setProductById: (state, payload) => {
+        state.productById = payload;
+    },
+    setPhotoById: (state, payload) => {
+        state.photoById = payload;
     },
 };
 
@@ -89,6 +103,24 @@ const actions = {
             })
             .catch(errorResponse => {
                 commit('setProductsAndPhoto', []);
+            });
+    },
+    getProductByIdAsync: async ({commit},payload) => {
+        return await axios.post('/get-product-by-id',payload)
+            .then(({data}) => {
+                commit('setProductById', data.data);
+            })
+            .catch(errorResponse => {
+                commit('setProductById', []);
+            });
+    },
+    getPhotoByIdAsync: async ({commit}, payload) => {
+        return await axios.post('/get-photo-by-id',payload)
+            .then(({data}) => {
+                commit('setPhotoById', data.data);
+            })
+            .catch(errorResponse => {
+                commit('setPhotoById', []);
             });
     },
 };

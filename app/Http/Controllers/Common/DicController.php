@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Common;
 
 use App\Http\Classes\LogicalModels\Common\Dic\Dic;
 use App\Http\Controllers\WebController;
+use App\Http\Requests\common\GetByIdRequest;
 use Illuminate\Http\JsonResponse;
 
 class DicController extends WebController
@@ -38,4 +39,16 @@ class DicController extends WebController
         $result = $this->model->getProductsMergePhoto();
         return $this->makeGoodResponse($result);
     }
+    public function getProductById(GetByIdRequest $request): JsonResponse
+    {
+        $result = $this->model->getProductById($request->validated());
+        return $this->makeGoodResponse($result);
+    }
+
+    public function getPhotoById(GetByIdRequest $request): JsonResponse
+    {
+        $result = $this->model->getPhotoById($request->validated());
+        return $this->makeGoodResponse($result);
+    }
+
 }

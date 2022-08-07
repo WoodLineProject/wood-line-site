@@ -57,7 +57,6 @@ class DicModel
             ->get()
             ->toArray();
     }
-
     private function getProductQuery(): Builder
     {
         return $this->product->from($this->product->getTable(),'product')
@@ -65,11 +64,27 @@ class DicModel
             ->leftJoin($this->layoutType->getTable(). ' as layoutType','layoutType.id','=','product.layout_type_id')
             ->leftJoin($this->ageType->getTable(). ' as ageType','ageType.id','=','product.age_type_id');
     }
-
     public function getProductsMergePhoto(): array
     {
         return $this->getProductQuery()
             ->leftJoin($this->photoPath->getTable() . ' as photoPath', 'photoPath.product_id', '=', 'product.id')
+            ->select([
+                'product.id',
+                'product.name',
+                'product.product_type_id',
+                'product.layout_type_id',
+                'product.age_type_id',
+                'product.description',
+                'photoPath.path'
+            ])
+            ->groupBy('product.id')
+            ->get()
+            ->toArray();
+    }
+
+    public function getProductById(array $data): array
+    {
+        return $this->getProductQuery()
             ->select([
                 'product.id',
                 'product.name',
@@ -87,9 +102,15 @@ class DicModel
                 'product.sleep_sizes',
                 'product.count_pillow',
                 'product.description',
-                'photoPath.path'
             ])
-            ->groupBy('product.id')
+            ->where('product.id',$data['id'])
+            ?->first()
+            ->toArray() ?? [];
+    }
+    public function getPhotoById(array $data): array
+    {
+        return $this->photoPath
+            ->where('product_id',$data['id'])
             ->get()
             ->toArray();
     }

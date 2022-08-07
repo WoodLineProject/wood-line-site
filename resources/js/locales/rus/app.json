@@ -18,5 +18,6 @@
     "edit":"Редактировать",
     "uploadPhoto": "Загрузить фотографии",
     "filterShow": "показать фильтр",
-    "filterNotShow": "спрятать фильтр"
+    "filterNotShow": "спрятать фильтр",
+    "countItem": "Найдено: {count}"
 }

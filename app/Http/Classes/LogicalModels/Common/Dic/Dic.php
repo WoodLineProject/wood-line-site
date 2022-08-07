@@ -28,4 +28,12 @@ class Dic implements DicInterface
     {
         return $this->model->getProductsMergePhoto();
     }
+    public function getProductById(array $data): array
+    {
+        return $this->model->getProductById($data);
+    }
+    public function getPhotoById(array $data): array
+    {
+        return $this->model->getPhotoById($data);
+    }
 }

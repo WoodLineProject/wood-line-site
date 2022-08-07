@@ -63,6 +63,12 @@ export default {
         },
         showFilter(){
             this.filters = !this.filters
+        },
+        clearFilters(){
+            this.$refs.form.reset()
+            this.filterTypeArray = [];
+            this.filterLayoutArray = [];
+            this.filterAgeArray = [];
         }
     },
 }
@@ -86,70 +92,85 @@ export default {
                         :width="$vuetify.breakpoint.mdAndUp ? '210' : '100%'"
                         class="white align-self-start mb-3 mr-1"
                     >
-                        <v-card-title>
-                            {{$t(`adminPanel.productManagement.type.select`)}}
-                        </v-card-title>
-                        <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
-                            <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
-                                <v-checkbox class="ml-3" v-for="(item,index) in types"
-                                    v-bind:key="index"
-                                    @change="changeCheckbox(item, filterTypeArray)"
-                                    :label="showItemText(item)"
-                                    color="success"
-                                    value="success"
-                                    hide-details
-                                ></v-checkbox>
-                            </v-row>
-                        </v-card-text>
+                        <v-form ref="form">
+                            <v-card-title>
+                                {{$t(`app.countItem`,{count: filterProductsAndPhoto.length})}}
+                                <v-spacer/>
+                                <v-btn
+                                    @click="clearFilters"
+                                    color="blue"
+                                    text>
+                                    <v-icon>refresh</v-icon>
+                                </v-btn>
+                            </v-card-title>
+                            <v-card-title>
+                                {{$t(`adminPanel.productManagement.type.select`)}}
+                            </v-card-title>
+                            <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
+                                <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
+                                    <v-checkbox class="ml-3" v-for="(item,index) in types"
+                                                v-bind:key="index"
+                                                @change="changeCheckbox(item, filterTypeArray)"
+                                                :label="showItemText(item)"
+                                                color="success"
+                                                value="success"
+                                                hide-details
+                                    ></v-checkbox>
+                                </v-row>
+                            </v-card-text>
 
-                        <v-card-title>
-                            {{$t(`adminPanel.productManagement.layout.select`)}}
-                        </v-card-title>
-                        <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
-                            <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
-                                <v-checkbox class="ml-3" v-for="(item,index) in layout"
-                                    v-bind:key="index"
-                                    @change="changeCheckbox(item, filterLayoutArray)"
-                                    :label="showItemText(item)"
-                                    color="success"
-                                    value="success"
-                                    hide-details
-                                ></v-checkbox>
-                            </v-row>
-                        </v-card-text>
+                            <v-card-title>
+                                {{$t(`adminPanel.productManagement.layout.select`)}}
+                            </v-card-title>
+                            <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
+                                <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
+                                    <v-checkbox class="ml-3" v-for="(item,index) in layout"
+                                                v-bind:key="index"
+                                                @change="changeCheckbox(item, filterLayoutArray)"
+                                                :label="showItemText(item)"
+                                                color="success"
+                                                value="success"
+                                                hide-details
+                                    ></v-checkbox>
+                                </v-row>
+                            </v-card-text>
 
-                        <v-card-title v-if="isUkrLocale">
-                            {{$t(`adminPanel.productManagement.age.select`)}}
-                        </v-card-title>
-                        <v-card-title v-else>
-                            <span>{{$t(`adminPanel.productManagement.age.age`)}}</span>
-                            <br>
-                            <span>{{$t(`adminPanel.productManagement.age.age2`)}}</span>
-                        </v-card-title>
+                            <v-card-title v-if="isUkrLocale">
+                                {{$t(`adminPanel.productManagement.age.select`)}}
+                            </v-card-title>
+                            <v-card-title v-else>
+                                <span>{{$t(`adminPanel.productManagement.age.age`)}}</span>
+                                <br>
+                                <span>{{$t(`adminPanel.productManagement.age.age2`)}}</span>
+                            </v-card-title>
 
-                        <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
-                            <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
-                                <v-checkbox class="ml-3" v-for="(item,index) in age"
-                                            v-bind:key="index"
-                                    @change="changeCheckbox(item, filterAgeArray)"
-                                    :label="showItemText(item)"
-                                    color="success"
-                                    value="success"
-                                    hide-details
-                                ></v-checkbox>
-                            </v-row>
-                        </v-card-text>
+                            <v-card-text :class="$vuetify.breakpoint.mdAndUp ? '' : 'd-flex flex-wrap'">
+                                <v-row :class="$vuetify.breakpoint.mdAndUp ? 'd-flex flex-column' : ''">
+                                    <v-checkbox class="ml-3" v-for="(item,index) in age"
+                                                v-bind:key="index"
+                                                @change="changeCheckbox(item, filterAgeArray)"
+                                                :label="showItemText(item)"
+                                                color="success"
+                                                value="success"
+                                                hide-details
+                                    ></v-checkbox>
+                                </v-row>
+                            </v-card-text>
+                        </v-form>
+
                     </v-card>
                 </v-expand-x-transition>
             </div>
             <div class="d-flex flex-wrap justify-space-around"
                 :style="'width:'+ filters ? '90%' : '100%;'">
+                <router-link :to="{ name: 'aboutProductItem', params: {id: item.id}}"
+                             v-for="(item, i) in filterProductsAndPhoto"
+                             :key="i">
+                    <item-card
+                        class="mb-5 ml-2 mr-2 align-self-start"
+                        v-bind:item="item"/>
+                </router-link>
 
-                <item-card
-                    class="mb-5 ml-2 mr-2 align-self-start"
-                    v-for="(item, i) in filterProductsAndPhoto"
-                    :key="i"
-                    v-bind:item="item"/>
             </div>
         </div>
     </div>

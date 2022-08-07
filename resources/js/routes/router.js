@@ -6,6 +6,7 @@ import AboutAs from "../components/Pages/AboutAs/AboutAs";
 import Upholstery from '../components/Pages/Upholstery/Upholstery'
 import WholesaleCustomers from '../components/Pages/WholesaleCustomers/WholesaleCustomers'
 import Catalog from '../components/Pages/Catalog/Catalog'
+import AboutProductItem from '../components/Pages/Catalog/components/AboutProductItem'
 import AdminPanel from './adminPanel/admin-panel-route-list'
 
 const BaseRoute = [
@@ -33,7 +34,12 @@ const BaseRoute = [
         path: '/catalog',
         component: Catalog,
         name: 'catalog'
-    }
+    },
+    {
+        path: '/catalog/about-product-item/:id',
+        component: AboutProductItem,
+        name: 'aboutProductItem'
+    },
 ]
 const routes = BaseRoute.concat(
     Test,

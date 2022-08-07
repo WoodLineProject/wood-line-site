@@ -14,3 +14,6 @@ Route::get('/wholesale-customers', function() {
 Route::get('/catalog', function() {
     return view('welcome');
 });
+Route::get('/catalog/about-product-item/{id}', function() {
+    return view('welcome');
+});
