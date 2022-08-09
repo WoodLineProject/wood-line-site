@@ -64,11 +64,19 @@ export default {
     },
     methods: {
         ...mapActions('productManagement',['addProductItemAsync','editProductItemAsync']),
-        ...mapActions('dicStore',['getProductsAsync']),
+        ...mapActions('dicStore',['getTypesAsync','getLayoutAsync','getAgeAsync','getProductsAsync','getProductsAndPhotoAsync']),
+        updateMethods(){
+            this.getTypesAsync()
+            this.getLayoutAsync()
+            this.getAgeAsync()
+            this.getProductsAsync()
+            this.getProductsAndPhotoAsync()
+        },
         runAction() {
             this.hasItem
                 ? this.edit()
                 : this.saveNewItem();
+            this.updateMethods();
         },
         edit(){
             this.editProductItemAsync(this.form).then(result => {

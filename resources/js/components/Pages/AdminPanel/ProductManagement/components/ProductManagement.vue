@@ -99,13 +99,14 @@ export default {
         },
     },
     methods:{
-        ...mapActions('dicStore',['getProductsAsync']),
+        ...mapActions('dicStore',['getTypesAsync','getLayoutAsync','getAgeAsync','getProductsAsync','getProductsAndPhotoAsync']),
         ...mapActions('productManagement',['deleteProductItemAsync']),
         deleteItem(item){
             this.deleteProductItemAsync({id:item.id}).then(result => {
                 this.alert(result)
                 this.getProductsAsync();
             });
+            this.updateMethods();
         },
         alert(result){
             if(result){
@@ -122,6 +123,13 @@ export default {
                 });
             }
         },
+        updateMethods(){
+            this.getTypesAsync()
+            this.getLayoutAsync()
+            this.getAgeAsync()
+            this.getProductsAsync()
+            this.getProductsAndPhotoAsync()
+        }
     },
 }
 </script>

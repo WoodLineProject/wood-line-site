@@ -115,7 +115,7 @@ const actions = {
             });
     },
     getPhotoByIdAsync: async ({commit}, payload) => {
-        return await axios.post('/get-photo-by-id',payload)
+        return await axios.post('/get-photo-by-id-user',payload)
             .then(({data}) => {
                 commit('setPhotoById', data.data);
             })
