@@ -117,19 +117,29 @@ export default {
             </v-carousel>
         </v-card>
         <v-card
-            class="ml-5"
+            class="ml-5 align-self-start"
             :style="$vuetify.breakpoint.mdAndUp ? 'width: 30%' : 'width: 95%'">
             <v-card-title v-for="(item, key) in aboutArray"
                 v-bind:key="key">
-                <span>
-                    {{item.header}}
-                </span>
-                <v-divider class="mt-3"/>
-                <strong>
-                    {{item.value}}
-                </strong>
+                <v-row v-if="$vuetify.breakpoint.mdAndUp">
+                    <span class="ml-2">
+                        {{item.header}}
+                    </span>
+                    <v-spacer/>
+                    <strong class="mr-2">
+                        {{item.value}}
+                    </strong>
+                </v-row>
+                <div v-else>
+                    <span class="ml-1">
+                        {{item.header}}
+                    </span>
+                    <v-spacer/>
+                    <strong class="mr-5">
+                        {{item.value}}
+                    </strong>
+                </div>
             </v-card-title>
-
         </v-card>
         <big-image-dialog
             v-bind:dialog="dialog"

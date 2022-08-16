@@ -14,6 +14,7 @@ export default {
             patronymic: '',
             phone: '+380',
             isSuccess: false,
+            showText: false
         }
     },
     mixins:[CallMyMixin],
@@ -53,10 +54,19 @@ export default {
 <template>
     <v-row justify="center">
         <div v-show="showCallMy" @click.stop="dialog = true" type="button" class="callback-bt">
-            <div class="text-call">
+<!--            <div class="text-call">
                 <i class="fa fa-phone"></i>
                 <span>{{$t(`app.order`)}}<br>{{$t(`app.call`)}}</span>
-            </div>
+            </div>-->
+            <v-btn
+                @mouseover="showText = true"
+                @mouseleave="showText = false"
+                fab
+                elevation="24"
+                color="blue"
+               >
+                <v-icon>call</v-icon>
+            </v-btn>
         </div>
 
         <v-dialog
@@ -118,14 +128,9 @@ export default {
 /*кнопка звонка*/
 
 .callback-bt {
-    background:#38a3fd;
-    border:2px solid #38a3fd;
     border-radius:50%;
-    box-shadow:0 8px 10px rgba(56,163,253,0.3);
     cursor:pointer;
-    height:68px;
     text-align:center;
-    width:68px;
     position: fixed;
     right: 8%;
     bottom: 18%;
@@ -133,49 +138,6 @@ export default {
     transition:.3s;
     -webkit-animation:hoverWave linear 1s infinite;
     animation:hoverWave linear 1s infinite;
-}
-
-.callback-bt .text-call{
-    height:68px;
-    width:68px;
-    border-radius:50%;
-    position:relative;
-    overflow:hidden;
-}
-
-.callback-bt .text-call span {
-    text-align: center;
-    color:#38a3fd;
-    opacity: 0;
-    font-size: 0;
-    position:absolute;
-    right: 4px;
-    top: 22px;
-    line-height: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: opacity .3s linear;
-    font-family: 'montserrat', Arial, Helvetica, sans-serif;
-}
-
-.callback-bt .text-call:hover span {
-    opacity: 1;
-    font-size: 11px;
-}
-.callback-bt:hover i {
-    display:none;
-}
-
-.callback-bt:hover {
-    z-index:1;
-    background:#fff;
-    color:transparent;
-    transition:.3s;
-}
-.callback-bt:hover i {
-    color:#38a3fd;
-    font-size:40px;
-    transition:.3s;
 }
 .callback-bt i {
     color:#fff;
@@ -336,5 +298,5 @@ export default {
         -webkit-transform: rotateZ(0deg);
     }
 }
-/* конец кнопки звонка */
+/*!* конец кнопки звонка *!*/
 </style>
