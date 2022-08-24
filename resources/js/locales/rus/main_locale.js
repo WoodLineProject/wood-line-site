@@ -18,6 +18,6 @@ export default {
         productManagement: require(`../../locales/${main_locale}/ProductManagement/product-management.json`),
     },
     pages:{
-
+        aboutAs: require(`../../locales/${main_locale}/AboutAs/about-as.json`),
     }
 }

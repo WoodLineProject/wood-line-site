@@ -75,8 +75,8 @@ export default {
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="login">
-                   <v-icon>mdi-check-outline</v-icon>
+                <v-btn color="green darken-1" text @click="login">
+                   <v-icon>done</v-icon>
                 </v-btn>
             </v-card-actions>
         </v-card>

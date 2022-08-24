@@ -48,7 +48,7 @@ export default {
         v-model="drawer"
         absolute
         temporary
-        src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+        color="#4F53B1"
         :width="$vuetify.breakpoint.mdAndUp ? '30%' : '50%'"
     >
         <v-list
@@ -57,7 +57,7 @@ export default {
         >
             <v-list-item-group
                 v-model="group"
-                active-class="deep-purple--text text--accent-4"
+                active-class="white--text text--accent-4"
             >
                 <v-list-item link v-show="showUser">
                     <v-list-item-content>

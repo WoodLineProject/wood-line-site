@@ -1,6 +1,5 @@
 import VueRouter from 'vue-router'
 import HomePage from "../components/Pages/HomePage/HomePage";
-import Test from './test/test-route-list'
 import Auth from './auth/auth-route-list'
 import AboutAs from "../components/Pages/AboutAs/AboutAs";
 import Upholstery from '../components/Pages/Upholstery/Upholstery'
@@ -42,7 +41,6 @@ const BaseRoute = [
     },
 ]
 const routes = BaseRoute.concat(
-    Test,
     Auth,
     AdminPanel,
 )

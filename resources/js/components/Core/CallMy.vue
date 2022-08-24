@@ -54,18 +54,14 @@ export default {
 <template>
     <v-row justify="center">
         <div v-show="showCallMy" @click.stop="dialog = true" type="button" class="callback-bt">
-<!--            <div class="text-call">
-                <i class="fa fa-phone"></i>
-                <span>{{$t(`app.order`)}}<br>{{$t(`app.call`)}}</span>
-            </div>-->
             <v-btn
                 @mouseover="showText = true"
                 @mouseleave="showText = false"
                 fab
                 elevation="24"
-                color="blue"
+                color="#4F53B1"
                >
-                <v-icon>call</v-icon>
+                <v-icon color="white">call</v-icon>
             </v-btn>
         </div>
 

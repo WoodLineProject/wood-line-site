@@ -3,9 +3,6 @@ export default {
     name: "Footer",
     data: () => ({
         icons: [
-            'mdi-facebook',
-            'mdi-twitter',
-            'mdi-linkedin',
             'mdi-instagram',
         ],
     }),
@@ -21,7 +18,8 @@ export default {
             width="100%"
             flat
             tile
-            class="indigo lighten-1 white--text text-center"
+            class="lighten-1 white--text text-center"
+            color="#4F53B1"
         >
             <v-card-text>
                 <v-btn

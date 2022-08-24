@@ -63,12 +63,6 @@ export const Menu = {
                     text: 'aboutAs',
                     show: true
                 },
-                {
-                    to: '/test',
-                    icon: 'bug_report',
-                    text: 'test',
-                    show: true
-                }
             ]
         },
     },
