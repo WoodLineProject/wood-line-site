@@ -77,8 +77,9 @@ export default {
     <div style="width: 100%">
         <v-btn
             :class="$vuetify.breakpoint.mdAndUp ? 'ma-2 ml-12' : 'ma-1'"
-            color="blue"
+            color="#4F53B1"
             @click="showFilter()"
+            style="color: white"
         >
             <span v-if="filters">{{$t(`app.filterNotShow`)}}</span>
             <span v-else>{{$t(`app.filterShow`)}}</span>
@@ -163,11 +164,12 @@ export default {
             </div>
             <div class="d-flex flex-wrap justify-space-around"
                 :style="'width:'+ filters ? '90%' : '100%;'">
-                <router-link :to="{ name: 'aboutProductItem', params: {id: item.id}}"
+                <router-link style="text-decoration: none;"
+                             :to="{ name: 'aboutProductItem', params: {id: item.id}}"
                              v-for="(item, i) in filterProductsAndPhoto"
                              :key="i">
                     <item-card
-                        class="mb-5 ml-2 mr-2 align-self-start"
+                        class="mb-5 ml-2 mr-2 align-self-start text-center"
                         v-bind:item="item"/>
                 </router-link>
 

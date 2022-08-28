@@ -2,13 +2,20 @@
 import {CallMyMixin} from "../../mixins/call-my-mixin";
 import {mapActions} from "vuex";
 import Vue from "vue";
+import moment from 'moment'
+import {BEGIN_WORK, END_WORK} from '../../constants/time-working'
 import { VueReCaptcha } from "vue-recaptcha-v3";
 Vue.use(VueReCaptcha, { siteKey: "6Lfy_OogAAAAAN9UqPizPZMJoq8HM8fvzdZaXWlD" });
 
+const NOT_WORK_DAYS_MOMENT = [0,6];
 export default {
     name: "CallMy",
     data () {
         return {
+            NOT_WORK_DAYS_MOMENT,
+            dateNow: moment(),
+            beginWork: moment(BEGIN_WORK, 'HH:mm'),
+            endWork: moment(END_WORK, 'HH:mm'),
             show: false,
             name: '',
             patronymic: '',
@@ -19,6 +26,13 @@ export default {
         }
     },
     mixins:[CallMyMixin],
+    mounted() {
+        this.isShowNotWorkingTime = (
+            this.dateNow.isAfter(this.endWork)
+            && this.dateNow.isBefore(this.beginWork)
+            || this.NOT_WORK_DAYS_MOMENT.includes(this.dateNow.weekday())
+        )
+    },
     computed:{
         disableRunAction(){
             let result = true
@@ -68,13 +82,20 @@ export default {
 
         <v-dialog
             v-model="dialog"
-            max-width="290"
+            max-width="300"
         >
             <v-card>
                 <v-card-title class="text-h5">
                     {{$t(`app.callMy`)}}
                 </v-card-title>
-
+                <v-alert
+                    v-show="isShowNotWorkingTime"
+                    dense
+                    outlined
+                    color="orange"
+                >
+                    {{$t(`app.alertNotWorkTime`)}}
+                </v-alert>
                 <v-card-text>
                     <v-text-field
                         maxlength="50"
