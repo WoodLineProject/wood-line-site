@@ -19,5 +19,6 @@ export default {
     },
     pages:{
         aboutAs: require(`../../locales/${main_locale}/AboutAs/about-as.json`),
+        wholesaleCustomers: require(`../../locales/${main_locale}/WholesaleCustomers/wholesale-customers.json`),
     }
 }

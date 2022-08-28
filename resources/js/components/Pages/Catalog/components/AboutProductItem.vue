@@ -48,8 +48,10 @@ export default {
                       : this.productById.ageTypeRus
               },
               {
-                  header : this.$t(`${trans_prefix}.product.tableHeaders.is_angular`)+':',
+                  header : this.$t(`${trans_prefix}.product.tableHeaders.form`),
                   value : this.productById.is_angular
+                      ?  this.$t(`${trans_prefix}.product.tableHeaders.is_angular`)
+                      :  this.$t(`${trans_prefix}.product.tableHeaders.straight`),
               },
               {
                   header : this.$t(`${trans_prefix}.product.tableHeaders.all_sizes`)+':',

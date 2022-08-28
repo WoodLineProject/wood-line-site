@@ -16,8 +16,10 @@
         "title": "Керування товарами",
         "select": "Товари",
         "tableHeaders": {
+            "form": "Форма",
             "name": "Назва",
             "is_angular": "Кутовий",
+            "straight": "Прямий",
             "all_sizes": "Загальні розміри",
             "sleep_sizes": "Розміри спального місця",
             "count_pillow": "Кількість подушок",

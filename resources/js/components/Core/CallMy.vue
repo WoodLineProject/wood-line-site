@@ -14,7 +14,8 @@ export default {
             patronymic: '',
             phone: '+380',
             isSuccess: false,
-            showText: false
+            showText: false,
+            isShowNotWorkingTime: false
         }
     },
     mixins:[CallMyMixin],
