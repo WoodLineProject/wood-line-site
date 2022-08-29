@@ -31,9 +31,9 @@ export default {
                 @click="changeIsShowDrawer()">
             </v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            <h1 :style="$vuetify.breakpoint.mdAndUp ? 'word-spacing: 5px;' : 'font-size: 30pt;'"
-                id="projectName"
-                class="mt-2 ">
+            <h1 :class="$vuetify.breakpoint.mdAndUp ? 'mt-2' : 'mt-5'"
+                :style="$vuetify.breakpoint.mdAndUp ? 'word-spacing: 5px;' : 'font-size: 20pt;'"
+                id="projectName">
                 {{$t(`projectName`)}}
             </h1>
             <v-spacer></v-spacer>

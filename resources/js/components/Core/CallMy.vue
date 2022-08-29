@@ -29,7 +29,7 @@ export default {
     mounted() {
         this.isShowNotWorkingTime = (
             this.dateNow.isAfter(this.endWork)
-            && this.dateNow.isBefore(this.beginWork)
+            || this.dateNow.isBefore(this.beginWork)
             || this.NOT_WORK_DAYS_MOMENT.includes(this.dateNow.weekday())
         )
     },
