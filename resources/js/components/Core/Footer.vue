@@ -23,7 +23,7 @@ export default {
         >
             <v-card-text>
                 <div
-                    style="margin-left: 35%"
+                    style="margin-left: 25%"
                     v-if="!$vuetify.breakpoint.mdAndUp"
                     class="mt-2 d-flex flex-column">
                     <v-row>
