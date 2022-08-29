@@ -49,7 +49,7 @@ export default {
         absolute
         temporary
         color="#4F53B1"
-        :width="$vuetify.breakpoint.mdAndUp ? '30%' : '50%'"
+        :width="$vuetify.breakpoint.mdAndUp ? '30%' : '60%'"
     >
         <v-list
             nav
