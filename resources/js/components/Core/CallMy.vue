@@ -47,8 +47,8 @@ export default {
     methods:{
         ...mapActions('appStore',['callMyAsync']),
         callMy(){
-            this.$swal.showLoading();
             this.$recaptcha("login").then((token) => {
+                this.$swal.showLoading();
                 this.callMyAsync({
                     name: this.name,
                     patronymic: this.patronymic,
