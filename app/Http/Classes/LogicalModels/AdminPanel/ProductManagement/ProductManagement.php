@@ -2,7 +2,7 @@
 
 namespace App\Http\Classes\LogicalModels\AdminPanel\ProductManagement;
 
-class ProductManagement implements  ProductManagementInterface
+class ProductManagement implements ProductManagementInterface
 {
     public function __construct(
         private ProductManagementModel $model
@@ -68,9 +68,8 @@ class ProductManagement implements  ProductManagementInterface
     {
         return $this->model->deletePhoto($data);
     }
-
     public function uploadPhoto(array $data, array $files): bool
     {
-        return $this->model->uploadPhoto($data,$files);
+        return $this->model->uploadPhoto($data, $files);
     }
 }

@@ -3,5 +3,6 @@
     "userManagement": "Управление пользователями",
     "OrdersCallBackPanel": "Обратные звонки",
     "EmailSenderPanel": "Отправитель писем",
-    "ProductManagement": "Управление товарами"
+    "ProductManagement": "Управление товарами",
+    "TextileManagement": "Управление тканями"
 }

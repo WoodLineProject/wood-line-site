@@ -3,6 +3,7 @@ import UserManagement from "../../components/Pages/AdminPanel/UserManagement/Use
 import OrdersCallBackPanel from "../../components/Pages/AdminPanel/OrdersCallBackPanel/OrdersCallBackPanel";
 import EmailSenderPanel from "../../components/Pages/AdminPanel/EmailSenderPanel/EmailSenderPanel";
 import ProductManagement from "../../components/Pages/AdminPanel/ProductManagement/MainProductManagement";
+import TextileManagement from "../../components/Pages/AdminPanel/TextileManagement/MainTextileManagement";
 
 export default [
     {
@@ -29,5 +30,10 @@ export default [
         path: '/product-management',
         component: ProductManagement,
         name: 'ProductManagement'
+    },
+    {
+        path: '/textile-management',
+        component: TextileManagement,
+        name: 'TextileManagement'
     },
 ]

@@ -22,4 +22,5 @@ Route::post('/send-mail-to-simple-users',[EmailSenderPanelController::class, 'se
 
 include "BaseRoute/base-route.php";
 include "BaseRoute/dic-get-route.php";
+include "BaseRoute/textile-get-route.php";
 include "AdminPanel/admin-panel.php";

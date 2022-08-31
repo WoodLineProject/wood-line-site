@@ -33,6 +33,12 @@ export const AdminNavMenu = {
                     text: 'ProductManagement',
                     show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
                 },
+                {
+                    to: '/textile-management',
+                    icon: 'checkroom',
+                    text: 'TextileManagement',
+                    show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
+                },
             ]
         },
     },

@@ -160,7 +160,7 @@ class ProductManagementModel
 
     public function getPhotoById(array $data): array
     {
-        $dbArray =  $this->photoPath
+        $dbArray = $this->photoPath
             ->where('product_id', $data['id'])
             ->get([
                 'id',

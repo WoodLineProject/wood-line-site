@@ -16,6 +16,7 @@ export default {
         ordersCallBackPanel: require(`../../locales/${main_locale}/OrdersCallBackPanel/orders-call-back-panel.json`),
         emailSenderPanel: require(`../../locales/${main_locale}/EmailSenderPanel/email-sender-panel.json`),
         productManagement: require(`../../locales/${main_locale}/ProductManagement/product-management.json`),
+        textileManagement: require(`../../locales/${main_locale}/TextileManagement/textile-management.json`),
     },
     pages:{
         aboutAs: require(`../../locales/${main_locale}/AboutAs/about-as.json`),

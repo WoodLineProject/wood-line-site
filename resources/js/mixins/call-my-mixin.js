@@ -9,6 +9,7 @@ export const CallMyMixin = {
                 'OrdersCallBackPanel',
                 'ProductManagement',
                 'EmailSenderPanel',
+                'TextileManagement',
                 'login',
                 'registry',
             ]

@@ -77,8 +77,9 @@ export default {
     <div style="width: 100%">
         <v-btn
             :class="$vuetify.breakpoint.mdAndUp ? 'ma-2 ml-12' : 'ma-1'"
-            color="blue"
+            color="#4F53B1"
             @click="showFilter()"
+            class="white--text"
         >
             <span v-if="filters">{{$t(`app.filterNotShow`)}}</span>
             <span v-else>{{$t(`app.filterShow`)}}</span>

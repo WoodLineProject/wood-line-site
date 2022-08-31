@@ -1,7 +1,7 @@
 <script>
 const MAX_E = 22;
 const MIN_E = 0;
-const BG_HOVER = '#1289de';
+const BG_HOVER = '#4F53B1';
 const BG_LEAVE = '#FFFFFF';
 
 
