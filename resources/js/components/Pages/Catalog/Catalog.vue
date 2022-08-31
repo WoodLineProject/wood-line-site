@@ -164,7 +164,8 @@ export default {
             </div>
             <div class="d-flex flex-wrap justify-space-around"
                 :style="'width:'+ filters ? '90%' : '100%;'">
-                <router-link :to="{ name: 'aboutProductItem', params: {id: item.id}}"
+                <router-link style="text-decoration: none;"
+                             :to="{ name: 'aboutProductItem', params: {id: item.id}}"
                              v-for="(item, i) in filterProductsAndPhoto"
                              :key="i">
                     <item-card

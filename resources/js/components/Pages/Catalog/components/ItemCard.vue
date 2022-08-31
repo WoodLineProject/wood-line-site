@@ -63,7 +63,7 @@ export default {
     </v-card>
 </template>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
 #img {
     background-size: cover;
     background-repeat:no-repeat;
@@ -72,8 +72,8 @@ export default {
     height: 100%;
 }
 #HeaderCardProduct {
-    font-family: 'Bad Script', cursive;
+    font-family: 'Rubik Moonrocks', cursive;
     word-spacing: 3px;
-    font-size: 20pt;
+    font-size: 15pt;
 }
 </style>
