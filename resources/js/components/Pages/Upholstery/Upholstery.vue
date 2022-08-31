@@ -133,13 +133,12 @@ export default {
             </div>
             <div class="d-flex flex-wrap justify-space-around"
                  :style="'width:'+ filters ? '90%' : '100%;'">
-                <router-link :to="{ name: 'aboutProductItem', params: {id: item.id}}"
-                             v-for="(item, i) in filterTextilesAndPhoto"
+                <div v-for="(item, i) in filterTextilesAndPhoto"
                              :key="i">
                     <item-card
                         class="mb-5 ml-2 mr-2 align-self-start"
                         v-bind:item="item"/>
-                </router-link>
+                </div>
 
             </div>
         </div>
