@@ -66,7 +66,7 @@ class TextileManagementModel
     }
     public function deleteType(array $data): bool
     {
-        return $this->textile
+        $this->textile
             ->where('type_id', $data['id'])
             ->update([
                'type_id' => null
@@ -95,7 +95,7 @@ class TextileManagementModel
     }
     public function deleteMakerType(array $data): bool
     {
-        return $this->textileMaker
+        $this->textileMaker
             ->where('maker_id', $data['id'])
             ->update([
                 'maker_id' => null
@@ -124,7 +124,7 @@ class TextileManagementModel
     }
     public function deleteColorType(array $data): bool
     {
-        return $this->textileColor
+        $this->textileColor
             ->where('color_id', $data['id'])
             ->update([
                 'color_id' => null
