@@ -9,4 +9,4 @@ Route::post('/get-age-types',  [DicController::class, 'getAgeTypes']);
 Route::post('/get-products',  [DicController::class, 'getProducts']);
 Route::post('/get-products-and-photo',  [DicController::class, 'getProductsMergePhoto']);
 Route::post('/get-product-by-id',  [DicController::class, 'getProductById']);
-Route::post('/get-photo-by-id-user',  [DicController::class, 'getPhotoById']);
+Route::post('/get-product-photo-by-id-user',  [DicController::class, 'getPhotoById']);
