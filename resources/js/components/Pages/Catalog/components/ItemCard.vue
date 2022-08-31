@@ -57,17 +57,23 @@ export default {
             :src="item.path"
         >
         </v-img>
-        <span class="ml-5">
+        <span class="ml-5" id="HeaderCardProduct">
             {{item.name | UPPERCASE}}
         </span>
     </v-card>
 </template>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 #img {
     background-size: cover;
     background-repeat:no-repeat;
     background-position:center center;
     background-attachment: fixed;
     height: 100%;
+}
+#HeaderCardProduct {
+    font-family: 'Bad Script', cursive;
+    word-spacing: 3px;
+    font-size: 20pt;
 }
 </style>

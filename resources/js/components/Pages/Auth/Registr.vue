@@ -111,8 +111,8 @@ export default {
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="register">
-                    <v-icon>mdi-check-outline</v-icon>
+                <v-btn color="green" text @click="register">
+                    <v-icon>done</v-icon>
                 </v-btn>
             </v-card-actions>
         </v-card>

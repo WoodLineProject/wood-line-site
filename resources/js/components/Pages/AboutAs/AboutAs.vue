@@ -11,7 +11,7 @@ export default {
 </script>
 <template>
     <v-card
-        id="myCard"
+        id="myCardAboutAs"
         class="d-flex flex-column pl-5 "
         elevation="24"
         :width="$vuetify.breakpoint.mdAndUp ? '50%' : '100%'"
@@ -28,9 +28,13 @@ export default {
                 <v-icon class="mr-3" color="green">done</v-icon>
             </div>
             <h3>{{ $t(`${trans_prefix}.check_1`) }}
-            <br/>
+                <br/>
                 <span :class="$vuetify.breakpoint.mdAndUp ? 'ml-10' : ''">
                     {{ $t(`${trans_prefix}.check_1_1`) }}
+                </span>
+                <br/>
+                <span :class="$vuetify.breakpoint.mdAndUp ? 'ml-10' : ''">
+                    {{ $t(`${trans_prefix}.check_1_2`) }}
                 </span>
             </h3>
         </div>
@@ -53,8 +57,8 @@ export default {
     </v-card>
 </template>
 <style>
-#myCard{
-    font-size: 17pt;
+#myCardAboutAs{
+    font-size: 15pt;
 }
 #check_list{
     width: 80%;

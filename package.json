@@ -21,7 +21,7 @@
         "laravel-mix": "^6.0.6",
         "laravel-mix-alias": "^1.0.3",
         "lodash": "^4.17.19",
-        "moment": "^2.29.1",
+        "moment": "^2.29.4",
         "popper.js": "^1.12",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^2.3.1",
@@ -48,6 +48,7 @@
         "webpack-clean": "^1.2.5"
     },
     "dependencies": {
+        "@expo-google-fonts/dancing-script": "^0.2.2",
         "apexcharts": "^3.30.0",
         "i18n": "^0.15.0",
         "vue-apexcharts": "^1.6.2",

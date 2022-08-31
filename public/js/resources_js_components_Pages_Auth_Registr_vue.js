@@ -333,10 +333,10 @@ var render = function () {
               _c(
                 "v-btn",
                 {
-                  attrs: { color: "blue darken-1", text: "" },
+                  attrs: { color: "green", text: "" },
                   on: { click: _vm.register },
                 },
-                [_c("v-icon", [_vm._v("mdi-check-outline")])],
+                [_c("v-icon", [_vm._v("done")])],
                 1
               ),
             ],
