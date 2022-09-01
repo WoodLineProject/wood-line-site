@@ -50,26 +50,30 @@ export default {
         :style="$vuetify.breakpoint.mdAndUp ? 'background-color:'+ bg : 'background-color:'+ BG_HOVER"
         :elevation="elevation"
         :max-width="$vuetify.breakpoint.mdAndUp ? '400' : '350'"
-        :max-height="$vuetify.breakpoint.mdAndUp ? '400' : '350'"
     >
         <v-img id="img"
                class="mt-0 ml-0 mr-0"
                height="200px"
-               width="200px"
                :src="item.path"
         >
         </v-img>
-        <span class="ml-5">
+        <span class="ml-5" id="HeaderCardProduct">
             {{item.name | UPPERCASE}}
         </span>
     </v-card>
 </template>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
 #img {
     background-size: cover;
     background-repeat:no-repeat;
     background-position:center center;
     background-attachment: fixed;
     height: 100%;
+}
+#HeaderCardProduct {
+    font-family: 'Rubik Moonrocks', cursive;
+    word-spacing: 3px;
+    font-size: 15pt;
 }
 </style>
