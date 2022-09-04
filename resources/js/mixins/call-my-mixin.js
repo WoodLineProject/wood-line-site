@@ -12,6 +12,7 @@ export const CallMyMixin = {
                 'TextileManagement',
                 'login',
                 'registry',
+                'HomePageCarousel',
             ]
         }
     },

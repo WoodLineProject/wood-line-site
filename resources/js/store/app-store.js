@@ -1,17 +1,24 @@
 import axios from "../modules/axios_module";
 const state = {
-    isShowDrawer: false
+    isShowDrawer: false,
+    carouselImage: [],
 };
 
 const getters = {
     isShowDrawer: state => {
         return state.isShowDrawer
     },
+    carouselImage: state => {
+        return state.carouselImage
+    },
 };
 
 const mutations = {
     setIsShowDrawer: (state, payload) => {
         state.isShowDrawer = payload;
+    },
+    setCarouselImage: (state, payload) => {
+        state.carouselImage = payload;
     },
 
 };
@@ -20,40 +27,13 @@ const actions = {
     changeIsShowDrawer: ({commit,state}) => {
         commit('setIsShowDrawer', !state.isShowDrawer);
     },
-    testAxios: async ({commit},payload) => {
-        return await axios.post('/test2', payload)
+    getCarouselImageAsync: async ({commit}) => {
+        return await axios.post('/get-carousel-image-public')
             .then(({data}) => {
-                //console.log(data)
+                commit('setCarouselImage', data.data.result);
             })
             .catch(errorResponse => {
-
-            });
-    },
-    user: async ({commit},payload) => {
-        return await axios.post('/test3', payload)
-            .then(({data}) => {
-                //console.log(data)
-            })
-            .catch(errorResponse => {
-
-            });
-    },
-    admin: async ({commit},payload) => {
-        return await axios.post('/test4', payload)
-            .then(({data}) => {
-                //console.log(data)
-            })
-            .catch(errorResponse => {
-
-            });
-    },
-    owner: async ({commit},payload) => {
-        return await axios.post('/test5', payload)
-            .then(({data}) => {
-                //console.log(data)
-            })
-            .catch(errorResponse => {
-
+                commit('setCarouselImage', []);
             });
     },
     callMyAsync: async ({commit},payload) => {

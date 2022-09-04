@@ -1,19 +1,90 @@
 <script>
-import {mapActions} from "vuex";
-import {CheckUserAndRolesMixin} from "../../../mixins/check-user-and-role-mixin";
-import {ROLE_USER,ROLE_OWNER,ROLE_ADMIN} from "../../../constants/roles";
+import {mapActions, mapGetters} from "vuex";
+
+const trans_prefix = 'pages.homePage';
+
 export default {
     name: "HomePage",
-    mixins: [CheckUserAndRolesMixin],
+    data(){
+      return {
+          trans_prefix,
+      }
+    },
+    mounted() {
+        this.getCarouselImageAsync();
+    },
     computed:{
-
+        ...mapGetters('appStore',['carouselImage'])
     },
     methods:{
-        ...mapActions('appStore',['testAxios','user','admin','owner']),
+        ...mapActions('appStore',['getCarouselImageAsync'])
     },
 }
 </script>
 
 <template>
- <h1>HomePage</h1>
+    <v-card class="d-flex flex-row align-self-start pl-5" style="width: 90%">
+        <div style="width: 55%">
+            <div>
+                <span class="textInHomePage" >{{$t(`${trans_prefix}.title`)}}</span>
+            </div>
+            <div>
+                <span id="projectName" class="textInHomePage">{{$t(`projectName`)}}</span>
+            </div>
+            <div>
+                <router-link style="text-decoration: none;" :to="{ name: 'catalog'}">
+                    <v-btn
+                        rounded
+                        color="#4F53B1"
+                        dark
+                        elevation="24"
+                        x-large
+                    >
+                        <span class="textInHomePage">{{ $t(`${trans_prefix}.lincToCatalog`) }}</span>
+                    </v-btn>
+                </router-link>
+            </div>
+            <div>
+                <span class="textInHomePage">{{$t(`${trans_prefix}.title2`)}}</span>
+            </div>
+            <div class="d-flex flex-row">
+                <v-icon
+                    size="100"
+                    color="#4F53B1"
+                >
+                    bed
+                </v-icon>
+                <v-card-title>
+                    <span class="textInHomePage">{{$t(`${trans_prefix}.sofa`)}}</span>
+                </v-card-title>
+                <div id="lineInHomePage" class="my-auto"></div>
+            </div>
+        </div>
+
+        <v-carousel
+            hide-delimiters
+            style="width: 45%;">
+            <v-carousel-item
+                v-for="i in carouselImage"
+                :key="i.id"
+                :src="i.path"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+            ></v-carousel-item>
+        </v-carousel>
+    </v-card>
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@1,700&display=swap');
+.textInHomePage {
+    word-break: keep-all;
+    font-size: 20pt;
+    font-family: 'Overpass', sans-serif;
+
+}
+#lineInHomePage{
+    background-color: #4F53B1;
+    width: 100%;
+    height: 5pt;
+}
+</style>

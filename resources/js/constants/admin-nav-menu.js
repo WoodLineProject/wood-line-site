@@ -39,6 +39,12 @@ export const AdminNavMenu = {
                     text: 'TextileManagement',
                     show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
                 },
+                {
+                    to: '/home-page-carousel',
+                    icon: 'photo_library',
+                    text: 'HomePageCarousel',
+                    show: this.checkUserAndRoles([ROLE_ADMIN, ROLE_OWNER])
+                },
             ]
         },
     },

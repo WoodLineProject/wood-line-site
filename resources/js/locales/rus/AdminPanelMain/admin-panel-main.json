@@ -4,5 +4,6 @@
     "OrdersCallBackPanel": "Обратные звонки",
     "EmailSenderPanel": "Отправитель писем",
     "ProductManagement": "Управление товарами",
-    "TextileManagement": "Управление тканями"
+    "TextileManagement": "Управление тканями",
+    "HomePageCarousel": "Управление фотографиями на главной странице"
 }

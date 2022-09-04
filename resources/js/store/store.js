@@ -9,6 +9,7 @@ import OrdersCallBackPanelStore from "./OrdersCallBackPanel/orders-call-back-pan
 import EmailSenderPanelStore from "./EmailSenderPanel/email-sender-panel-store";
 import ProductManagement from "./ProductManagement/product-management-store";
 import TextileManagement from "./TextileManagement/textile-management-store";
+import HomePageCarousel from "./HomePageCarousel/home-page-carousel-store";
 
 Vue.use(Vuex)
 
@@ -23,6 +24,7 @@ Vue.use(Vuex)
         emailSenderPanelStore: EmailSenderPanelStore,
         productManagement: ProductManagement,
         textileManagement: TextileManagement,
+        homePageCarousel: HomePageCarousel,
     },
 })
 

@@ -96,7 +96,6 @@ class ProductManagementController extends WebController
 
     public function uploadPhoto(UploadPhotoRequest $request): JsonResponse
     {
-        //dd($request->file('image'));
         $result = $this->model->uploadPhoto($request->input(),$request->file('image'));
         return $this->makeGoodResponse(['result' => $result]);
     }

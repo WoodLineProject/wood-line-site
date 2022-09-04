@@ -17,3 +17,4 @@ include "OrdersCallBackPanel/orders-call-back-panel.php";
 include "EmailSenderPanel/email-sender-panel.php";
 include "ProductManagement/product-management.php";
 include "TextileManagement/textile-management.php";
+include "HomePageCarousel/home-page-carousel.php";

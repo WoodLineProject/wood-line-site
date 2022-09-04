@@ -67,6 +67,7 @@ router.beforeEach((to,from,next) =>{
         || to.name === 'userManagement'
         || to.name === 'ProductManagement'
         || to.name === 'EmailSenderPanel'
+        || to.name === 'HomePageCarousel'
         || to.name === 'TextileManagement'){
         return token
             ? next()

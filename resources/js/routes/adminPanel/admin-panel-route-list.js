@@ -4,6 +4,7 @@ import OrdersCallBackPanel from "../../components/Pages/AdminPanel/OrdersCallBac
 import EmailSenderPanel from "../../components/Pages/AdminPanel/EmailSenderPanel/EmailSenderPanel";
 import ProductManagement from "../../components/Pages/AdminPanel/ProductManagement/MainProductManagement";
 import TextileManagement from "../../components/Pages/AdminPanel/TextileManagement/MainTextileManagement";
+import HomePageCarousel from "../../components/Pages/AdminPanel/HomePageCarousel/HomePageCarousel"
 
 export default [
     {
@@ -35,5 +36,10 @@ export default [
         path: '/textile-management',
         component: TextileManagement,
         name: 'TextileManagement'
+    },
+    {
+        path: '/home-page-carousel',
+        component: HomePageCarousel,
+        name: 'HomePageCarousel'
     },
 ]

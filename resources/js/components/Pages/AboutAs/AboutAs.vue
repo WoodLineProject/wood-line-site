@@ -58,7 +58,7 @@ export default {
 </template>
 <style>
 #myCardAboutAs{
-    font-size: 15pt;
+    font-size: 13pt;
 }
 #check_list{
     width: 80%;

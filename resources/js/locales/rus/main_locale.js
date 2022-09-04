@@ -17,9 +17,11 @@ export default {
         emailSenderPanel: require(`../../locales/${main_locale}/EmailSenderPanel/email-sender-panel.json`),
         productManagement: require(`../../locales/${main_locale}/ProductManagement/product-management.json`),
         textileManagement: require(`../../locales/${main_locale}/TextileManagement/textile-management.json`),
+        adminHomePageCarousel: require(`../../locales/${main_locale}/AdminHomePageCarousel/admin-home-page-carousel.json`),
     },
     pages:{
         aboutAs: require(`../../locales/${main_locale}/AboutAs/about-as.json`),
         wholesaleCustomers: require(`../../locales/${main_locale}/WholesaleCustomers/wholesale-customers.json`),
+        homePage: require(`../../locales/${main_locale}/HomePage/home-page.json`),
     }
 }
