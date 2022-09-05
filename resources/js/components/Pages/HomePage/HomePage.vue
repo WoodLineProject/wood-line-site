@@ -17,14 +17,21 @@ export default {
         ...mapGetters('appStore', ['carouselImage'])
     },
     methods: {
-        ...mapActions('appStore', ['getCarouselImageAsync'])
+        ...mapActions('appStore', ['getCarouselImageAsync']),
+
     },
 }
 </script>
 
 <template>
-    <div class="d-flex flex-row" style="width: 90%; height: 100%;">
-        <v-card class="d-flex flex-row align-self-start pl-5" style="width: 50%" shaped>
+    <div class="d-flex flex-row" style="width: 98%; height: auto;">
+        <v-card
+            class="d-flex flex-row align-self-start pl-5"
+            style="
+             width: 45%;
+             height: 500pt
+            "
+            shaped>
             <div style="width: 100%">
                 <v-card-title class="justify-center">
                     <span class="textInHomePage">{{ $t(`${trans_prefix}.title`) }}</span>
@@ -70,7 +77,6 @@ export default {
                         <v-card-title>
                             <span class="textInIcons">{{ $t(`${trans_prefix}.bed`) }}</span>
                         </v-card-title>
-
                     </div>
                     <div class="d-flex flex-row">
                         <v-icon
@@ -82,7 +88,6 @@ export default {
                         <v-card-title>
                             <span class="textInIcons">{{ $t(`${trans_prefix}.drawer`) }}</span>
                         </v-card-title>
-
                     </div>
                     <div class="d-flex flex-row">
                         <v-icon
@@ -107,12 +112,11 @@ export default {
                             <span class="textInIcons">{{ $t(`${trans_prefix}.poof`) }}</span>
                         </v-card-title>
                     </div>
-
                 </div>
 
                 <div class="d-flex flex-row my-2">
                     <div class="mx-auto" style="width: 50%">
-                        <router-link style="text-decoration: none;" :to="{ name: 'catalog'}">
+                        <router-link style="text-decoration: none;" :to="{ name: 'upholstery'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
                                    color="#4F53B1"
@@ -128,7 +132,7 @@ export default {
                 </div>
                 <div class="d-flex flex-row my-2">
                     <div class="mx-auto" style="width: 50%">
-                        <router-link style="text-decoration: none;" :to="{ name: 'catalog'}">
+                        <router-link style="text-decoration: none;" :to="{ name: 'wholesaleCustomers'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
                                    color="#4F53B1"
@@ -144,7 +148,7 @@ export default {
                 </div>
                 <div class="d-flex flex-row my-2">
                     <div class="mx-auto" style="width: 50%">
-                        <router-link style="text-decoration: none;" :to="{ name: 'catalog'}">
+                        <router-link style="text-decoration: none;" :to="{ name: 'aboutAs'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
                                    color="#4F53B1"
@@ -178,38 +182,24 @@ export default {
                 </div>
             </div>
         </v-card>
-        <div class="d-flex flex-row align-self-start ml-5" style="width: 45%; top: 1%; position: sticky;" shaped>
+        <div class="d-flex flex-row align-self-start ml-5" style="width: 55%;">
             <v-carousel
-                continuous
+                :continuous="true"
+                height="500pt"
                 cycle
-                hide-delimiters
-                style="width: 100%;"
-                class="my-auto">
-<!--                <v-carousel-item-->
-<!--                    v-for="i in carouselImage"-->
-<!--                    :key="i.id"-->
-<!--                    :src="i.path"-->
-<!--                    reverse-transition="fade-transition"-->
-<!--                    transition="fade-transition"-->
-<!--                ></v-carousel-item>-->
-                                <v-carousel-item
-                                    v-for="i in carouselImage"
-                                    :key="i.id"
-                                    reverse-transition="fade-transition"
-                                    transition="fade-transition"
-                                >
-                                        <v-img id="imgInHomePage"
-                                               contain
-                                               height="100%"
-                                               width="100%"
-                                               max-height="100%"
-                                               max-width="100%"
-                                               min-height="100%"
-                                               min-width="100%"
-                                               :src="i.path"
-                                        ></v-img>
-
-                                </v-carousel-item>
+                show-arrows-on-hover
+                hide-delimiters>
+                <v-carousel-item
+                    v-for="i in carouselImage"
+                    :key="i.id"
+                    reverse-transition="fade-transition"
+                    transition="fade-transition"
+                >
+                    <img
+                        height="670pt"
+                        width="100%"
+                        :src="i.path"/>
+                </v-carousel-item>
             </v-carousel>
         </div>
     </div>
@@ -219,18 +209,18 @@ export default {
 
 .textInHomePage {
     word-break: keep-all;
-    font-size: 20pt;
+    font-size: 13pt;
     font-family: 'Overpass', sans-serif;
 }
 
 .textInIcons {
     word-break: keep-all;
-    font-size: 13pt;
+    font-size: 9pt;
     font-family: 'Overpass', sans-serif;
 }
 
 .textBtn {
-    font-size: 13pt;
+    font-size: 9pt;
     font-weight: bold;
     font-family: 'Overpass', sans-serif;
 }
