@@ -62,15 +62,37 @@ export default {
         </div>
 
         <v-carousel
+            continuous
+            cycle
             hide-delimiters
             style="width: 45%;">
+<!--            <v-carousel-item-->
+<!--                v-for="i in carouselImage"-->
+<!--                :key="i.id"-->
+<!--                :src="i.path"-->
+<!--                reverse-transition="fade-transition"-->
+<!--                transition="fade-transition"-->
+<!--            ></v-carousel-item>-->
             <v-carousel-item
                 v-for="i in carouselImage"
                 :key="i.id"
-                :src="i.path"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
-            ></v-carousel-item>
+            >
+                <v-sheet
+                    height="100%"
+                >
+                        <v-img id="imgInHomePage"
+                               height="100%"
+                               width="100%"
+                               max-height="100%"
+                               max-width="100%"
+                               min-width="100%"
+                               min-height="100%"
+                               :src="i.path"
+                        ></v-img>
+                </v-sheet>
+            </v-carousel-item>
         </v-carousel>
     </v-card>
 </template>

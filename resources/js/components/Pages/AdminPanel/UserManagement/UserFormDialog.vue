@@ -121,7 +121,8 @@ export default {
             <template v-slot:activator="{ on, attrs }">
                 <v-btn
                     v-if="hasItem"
-                    color="green darken-1" text
+                    color="#4F53B1"
+                    text
                     v-bind="attrs"
                     v-on="on"
                 >
@@ -129,7 +130,8 @@ export default {
                 </v-btn>
                 <v-btn
                     v-else
-                    color="blue darken-1" text
+                    color="#4F53B1"
+                    text
                     v-bind="attrs"
                     v-on="on"
                 >

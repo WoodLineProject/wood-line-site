@@ -242,7 +242,7 @@ var render = function () {
                         "v-btn",
                         _vm._g(
                           _vm._b(
-                            { attrs: { color: "green darken-1", text: "" } },
+                            { attrs: { color: "#4F53B1", text: "" } },
                             "v-btn",
                             attrs,
                             false
@@ -256,7 +256,7 @@ var render = function () {
                         "v-btn",
                         _vm._g(
                           _vm._b(
-                            { attrs: { color: "blue darken-1", text: "" } },
+                            { attrs: { color: "#4F53B1", text: "" } },
                             "v-btn",
                             attrs,
                             false
