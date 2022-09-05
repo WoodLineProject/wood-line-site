@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <div class="d-flex flex-row" style="width: 90%">
+    <div class="d-flex flex-row" style="width: 90%; height: 100%;">
         <v-card class="d-flex flex-row align-self-start pl-5" style="width: 50%" shaped>
             <div style="width: 100%">
                 <v-card-title class="justify-center">
@@ -59,7 +59,7 @@ export default {
                     <span class="textInHomePage">{{ $t(`${trans_prefix}.title4`) }}</span>
                 </div>
 
-                <div class="d-flex flex-row justify-center" >
+                <div class="d-flex flex-row justify-center">
                     <div class="d-flex flex-row">
                         <v-icon
                             size="75"
@@ -178,43 +178,40 @@ export default {
                 </div>
             </div>
         </v-card>
-
-        <v-card class="d-flex flex-row align-self-start ml-5" style="width: 45%; height: 100%;" shaped>
+        <div class="d-flex flex-row align-self-start ml-5" style="width: 45%; top: 1%; position: sticky;" shaped>
             <v-carousel
                 continuous
                 cycle
                 hide-delimiters
-                style="width: 100%; height: 50%"
+                style="width: 100%;"
                 class="my-auto">
-                <!--            <v-carousel-item-->
-                <!--                v-for="i in carouselImage"-->
-                <!--                :key="i.id"-->
-                <!--                :src="i.path"-->
-                <!--                reverse-transition="fade-transition"-->
-                <!--                transition="fade-transition"-->
-                <!--            ></v-carousel-item>-->
-                <v-carousel-item
-                    v-for="i in carouselImage"
-                    :key="i.id"
-                    reverse-transition="fade-transition"
-                    transition="fade-transition"
-                >
-                    <v-sheet
-                        height="100%"
-                    >
-                        <v-img id="imgInHomePage"
-                               height="100%"
-                               width="100%"
-                               max-height="100%"
-                               max-width="100%"
-                               min-height="100%"
-                               min-width="100%"
-                               :src="i.path"
-                        ></v-img>
-                    </v-sheet>
-                </v-carousel-item>
+<!--                <v-carousel-item-->
+<!--                    v-for="i in carouselImage"-->
+<!--                    :key="i.id"-->
+<!--                    :src="i.path"-->
+<!--                    reverse-transition="fade-transition"-->
+<!--                    transition="fade-transition"-->
+<!--                ></v-carousel-item>-->
+                                <v-carousel-item
+                                    v-for="i in carouselImage"
+                                    :key="i.id"
+                                    reverse-transition="fade-transition"
+                                    transition="fade-transition"
+                                >
+                                        <v-img id="imgInHomePage"
+                                               contain
+                                               height="100%"
+                                               width="100%"
+                                               max-height="100%"
+                                               max-width="100%"
+                                               min-height="100%"
+                                               min-width="100%"
+                                               :src="i.path"
+                                        ></v-img>
+
+                                </v-carousel-item>
             </v-carousel>
-        </v-card>
+        </div>
     </div>
 </template>
 <style>
@@ -228,12 +225,12 @@ export default {
 
 .textInIcons {
     word-break: keep-all;
-    font-size: 15pt;
+    font-size: 13pt;
     font-family: 'Overpass', sans-serif;
 }
 
 .textBtn {
-    font-size: 15pt;
+    font-size: 13pt;
     font-weight: bold;
     font-family: 'Overpass', sans-serif;
 }
