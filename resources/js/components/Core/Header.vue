@@ -31,11 +31,14 @@ export default {
                 @click="changeIsShowDrawer()">
             </v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            <h1 :class="$vuetify.breakpoint.mdAndUp ? 'ml-2 mt-2' : 'ml-2 mt-6'"
-                :style="$vuetify.breakpoint.mdAndUp ? 'word-spacing: 5px;' : 'font-size: 17pt;'"
-                id="projectName">
-                {{$t(`projectName`)}}
-            </h1>
+            <router-link style="text-decoration: none; color: white" :to="{ name: 'home'}">
+                <h1 :class="$vuetify.breakpoint.mdAndUp ? 'ml-2 mt-2' : 'ml-2 mt-6'"
+                    :style="$vuetify.breakpoint.mdAndUp ? 'word-spacing: 5px;' : 'font-size: 17pt;'"
+                    id="projectName">
+                    {{$t(`projectName`)}}
+                </h1>
+            </router-link>
+
             <v-spacer></v-spacer>
             <div v-if="$vuetify.breakpoint.mdAndUp" class="mt-2 d-flex flex-column">
                 <v-row>

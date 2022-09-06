@@ -16,9 +16,17 @@ export default {
         elevation="24"
         :width="$vuetify.breakpoint.mdAndUp ? '50%' : '100%'"
         shaped>
-        <div class="text-center mt-5">
-            <h1>{{ $t(`${trans_prefix}.title`) }}</h1>
+        <div class="d-flex flex-row my-2">
+            <div id="lineInHomePage" class="my-auto"></div>
+            <div class="mx-auto"  :style="$vuetify.breakpoint.mdAndUp ? 'width: 15%' : 'width: 30%'">
+                <h1 v-if="$vuetify.breakpoint.mdAndUp">{{ $t(`${trans_prefix}.title`) }}</h1>
+                <h2 v-else>{{ $t(`${trans_prefix}.title`) }}</h2>
+            </div>
+            <div id="lineInHomePage" class="my-auto"></div>
         </div>
+<!--        <div class="text-center mt-5">-->
+<!--            <h1>{{ $t(`${trans_prefix}.title`) }}</h1>-->
+<!--        </div>-->
         <div class="text-center">
             <h2>{{ $t(`${trans_prefix}.miniTitle1`) }}</h2>
             <h2>{{ $t(`${trans_prefix}.miniTitle2`) }}</h2>
@@ -70,6 +78,7 @@ export default {
                 {{ $t(`${trans_prefix}.route`) }}
             </h2>
         </router-link>
+        <div id="lineInHomePage" class="mb-5"></div>
     </v-card>
 </template>
 <style>
