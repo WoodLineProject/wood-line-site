@@ -24,9 +24,6 @@ export default {
             </div>
             <div id="lineInHomePage" class="my-auto"></div>
         </div>
-<!--        <div class="text-center mt-5">-->
-<!--            <h1>{{ $t(`${trans_prefix}.title`) }}</h1>-->
-<!--        </div>-->
         <div class="text-center">
             <h2>{{ $t(`${trans_prefix}.miniTitle1`) }}</h2>
             <h2>{{ $t(`${trans_prefix}.miniTitle2`) }}</h2>

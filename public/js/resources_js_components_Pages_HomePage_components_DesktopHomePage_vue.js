@@ -11,7 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../constants/bg-image */ "./resources/js/constants/bg-image.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -19,19 +20,21 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
 var trans_prefix = 'pages.homePage';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "DesktopHomePage",
   data: function data() {
     return {
+      loading: _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__.loading,
       trans_prefix: trans_prefix
     };
   },
   mounted: function mounted() {
     this.getCarouselImageAsync();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('appStore', ['carouselImage'])),
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('appStore', ['getCarouselImageAsync']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('appStore', ['carouselImage'])),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('appStore', ['getCarouselImageAsync']))
 });
 
 /***/ }),
@@ -135,374 +138,366 @@ var render = function () {
           attrs: { shaped: "" },
         },
         [
-          _c(
-            "div",
-            { staticStyle: { width: "100%" } },
-            [
-              _c("v-card-title", { staticClass: "justify-center" }, [
-                _c("span", { staticClass: "textInHomePage" }, [
-                  _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title"))),
-                ]),
+          _c("div", { staticStyle: { width: "100%" } }, [
+            _c("div", { staticClass: "text-center mt-2" }, [
+              _c("span", { staticClass: "textInHomePage" }, [
+                _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title"))),
               ]),
-              _vm._v(" "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "d-flex flex-row" },
+              [
+                _c("div", {
+                  staticClass: "my-auto",
+                  attrs: { id: "lineInHomePage" },
+                }),
+                _vm._v(" "),
+                _c("v-card-title", { staticClass: "text-center" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "textInHomePage",
+                      attrs: { id: "projectName" },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("projectName")))]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "my-auto",
+                  attrs: { id: "lineInHomePage" },
+                }),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+              [
+                _c(
+                  "div",
+                  { staticStyle: { float: "left", clear: "left" } },
+                  [
+                    _c(
+                      "v-icon",
+                      { staticClass: "mr-3", attrs: { color: "green" } },
+                      [_vm._v("done")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "textInHomePage" }, [
+                  _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title2"))),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+              [
+                _c(
+                  "div",
+                  { staticStyle: { float: "left", clear: "left" } },
+                  [
+                    _c(
+                      "v-icon",
+                      { staticClass: "mr-3", attrs: { color: "green" } },
+                      [_vm._v("done")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "textInHomePage" }, [
+                  _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title3"))),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+              [
+                _c(
+                  "div",
+                  { staticStyle: { float: "left", clear: "left" } },
+                  [
+                    _c(
+                      "v-icon",
+                      { staticClass: "mr-3", attrs: { color: "green" } },
+                      [_vm._v("done")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "textInHomePage" }, [
+                  _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title4"))),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-row justify-center" }, [
               _c(
                 "div",
                 { staticClass: "d-flex flex-row" },
                 [
-                  _c("div", {
-                    staticClass: "my-auto",
-                    attrs: { id: "lineInHomePage" },
-                  }),
-                  _vm._v(" "),
-                  _c("v-card-title", { staticClass: "text-center" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "textInHomePage",
-                        attrs: { id: "projectName" },
-                      },
-                      [_vm._v(_vm._s(_vm.$t("projectName")))]
+                  _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
+                    _vm._v(
+                      "\n                        bed\n                    "
                     ),
                   ]),
                   _vm._v(" "),
-                  _c("div", {
-                    staticClass: "my-auto",
-                    attrs: { id: "lineInHomePage" },
-                  }),
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "textInIcons" }, [
+                      _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".bed"))),
+                    ]),
+                  ]),
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+                { staticClass: "d-flex flex-row" },
                 [
-                  _c(
-                    "div",
-                    { staticStyle: { float: "left", clear: "left" } },
-                    [
-                      _c(
-                        "v-icon",
-                        { staticClass: "mr-3", attrs: { color: "green" } },
-                        [_vm._v("done")]
-                      ),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "textInHomePage" }, [
-                    _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title2"))),
+                  _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
+                    _vm._v(
+                      "\n                        sensor_window\n                    "
+                    ),
                   ]),
-                ]
+                  _vm._v(" "),
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "textInIcons" }, [
+                      _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".drawer"))),
+                    ]),
+                  ]),
+                ],
+                1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+                { staticClass: "d-flex flex-row" },
                 [
-                  _c(
-                    "div",
-                    { staticStyle: { float: "left", clear: "left" } },
-                    [
-                      _c(
-                        "v-icon",
-                        { staticClass: "mr-3", attrs: { color: "green" } },
-                        [_vm._v("done")]
-                      ),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "textInHomePage" }, [
-                    _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title3"))),
+                  _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
+                    _vm._v(
+                      "\n                        weekend\n                    "
+                    ),
                   ]),
-                ]
+                  _vm._v(" "),
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "textInIcons" }, [
+                      _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".sofa"))),
+                    ]),
+                  ]),
+                ],
+                1
               ),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "mx-auto my-3", attrs: { id: "check_list" } },
+                { staticClass: "d-flex flex-row" },
+                [
+                  _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
+                    _vm._v(
+                      "\n                        panorama_vertical\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "textInIcons" }, [
+                      _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".poof"))),
+                    ]),
+                  ]),
+                ],
+                1
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-row my-2" }, [
+              _c(
+                "div",
+                { staticClass: "mx-auto", staticStyle: { width: "50%" } },
                 [
                   _c(
-                    "div",
-                    { staticStyle: { float: "left", clear: "left" } },
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: { name: "upholstery" } },
+                    },
                     [
                       _c(
-                        "v-icon",
-                        { staticClass: "mr-3", attrs: { color: "green" } },
-                        [_vm._v("done")]
+                        "v-btn",
+                        {
+                          staticClass: "mx-auto",
+                          staticStyle: { width: "100%" },
+                          attrs: {
+                            rounded: "",
+                            color: "#4F53B1",
+                            dark: "",
+                            elevation: "12",
+                            large: "",
+                            outlined: "",
+                          },
+                        },
+                        [
+                          _c("span", { staticClass: "textBtn" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.$t(_vm.trans_prefix + ".lincToTextile")
+                              )
+                            ),
+                          ]),
+                        ]
                       ),
                     ],
                     1
                   ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "textInHomePage" }, [
-                    _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".title4"))),
-                  ]),
-                ]
+                ],
+                1
               ),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex flex-row justify-center" }, [
-                _c(
-                  "div",
-                  { staticClass: "d-flex flex-row" },
-                  [
-                    _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
-                      _vm._v(
-                        "\n                        bed\n                    "
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("v-card-title", [
-                      _c("span", { staticClass: "textInIcons" }, [
-                        _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".bed"))),
-                      ]),
-                    ]),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "d-flex flex-row" },
-                  [
-                    _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
-                      _vm._v(
-                        "\n                        sensor_window\n                    "
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("v-card-title", [
-                      _c("span", { staticClass: "textInIcons" }, [
-                        _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".drawer"))),
-                      ]),
-                    ]),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "d-flex flex-row" },
-                  [
-                    _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
-                      _vm._v(
-                        "\n                        weekend\n                    "
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("v-card-title", [
-                      _c("span", { staticClass: "textInIcons" }, [
-                        _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".sofa"))),
-                      ]),
-                    ]),
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "d-flex flex-row" },
-                  [
-                    _c("v-icon", { attrs: { size: "75", color: "#4F53B1" } }, [
-                      _vm._v(
-                        "\n                        panorama_vertical\n                    "
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("v-card-title", [
-                      _c("span", { staticClass: "textInIcons" }, [
-                        _vm._v(_vm._s(_vm.$t(_vm.trans_prefix + ".poof"))),
-                      ]),
-                    ]),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex flex-row my-2" }, [
-                _c(
-                  "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "50%" } },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticStyle: { "text-decoration": "none" },
-                        attrs: { to: { name: "upholstery" } },
-                      },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            staticClass: "mx-auto",
-                            staticStyle: { width: "100%" },
-                            attrs: {
-                              rounded: "",
-                              color: "#4F53B1",
-                              dark: "",
-                              elevation: "12",
-                              large: "",
-                              outlined: "",
-                            },
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-row my-2" }, [
+              _c(
+                "div",
+                { staticClass: "mx-auto", staticStyle: { width: "50%" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: { name: "wholesaleCustomers" } },
+                    },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-auto",
+                          staticStyle: { width: "100%" },
+                          attrs: {
+                            rounded: "",
+                            color: "#4F53B1",
+                            dark: "",
+                            elevation: "12",
+                            large: "",
+                            outlined: "",
                           },
-                          [
-                            _c("span", { staticClass: "textBtn" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$t(_vm.trans_prefix + ".lincToTextile")
-                                )
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex flex-row my-2" }, [
-                _c(
-                  "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "50%" } },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticStyle: { "text-decoration": "none" },
-                        attrs: { to: { name: "wholesaleCustomers" } },
-                      },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            staticClass: "mx-auto",
-                            staticStyle: { width: "100%" },
-                            attrs: {
-                              rounded: "",
-                              color: "#4F53B1",
-                              dark: "",
-                              elevation: "12",
-                              large: "",
-                              outlined: "",
-                            },
+                        },
+                        [
+                          _c("span", { staticClass: "textBtn" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.$t(_vm.trans_prefix + ".lincToWholesale")
+                              )
+                            ),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-row my-2" }, [
+              _c(
+                "div",
+                { staticClass: "mx-auto", staticStyle: { width: "50%" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: { name: "aboutAs" } },
+                    },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-auto",
+                          staticStyle: { width: "100%" },
+                          attrs: {
+                            rounded: "",
+                            color: "#4F53B1",
+                            dark: "",
+                            elevation: "12",
+                            large: "",
+                            outlined: "",
                           },
-                          [
-                            _c("span", { staticClass: "textBtn" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$t(_vm.trans_prefix + ".lincToWholesale")
-                                )
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex flex-row my-2" }, [
-                _c(
-                  "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "50%" } },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticStyle: { "text-decoration": "none" },
-                        attrs: { to: { name: "aboutAs" } },
-                      },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            staticClass: "mx-auto",
-                            staticStyle: { width: "100%" },
-                            attrs: {
-                              rounded: "",
-                              color: "#4F53B1",
-                              dark: "",
-                              elevation: "12",
-                              large: "",
-                              outlined: "",
-                            },
+                        },
+                        [
+                          _c("span", { staticClass: "textBtn" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.$t(_vm.trans_prefix + ".lincToAboutAs")
+                              )
+                            ),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-row my-2" }, [
+              _c(
+                "div",
+                { staticClass: "mx-auto", staticStyle: { width: "50%" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: { name: "catalog" } },
+                    },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-auto",
+                          staticStyle: { width: "100%" },
+                          attrs: {
+                            rounded: "",
+                            color: "#4F53B1",
+                            dark: "",
+                            elevation: "12",
+                            large: "",
+                            outlined: "",
                           },
-                          [
-                            _c("span", { staticClass: "textBtn" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$t(_vm.trans_prefix + ".lincToAboutAs")
-                                )
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex flex-row my-2" }, [
-                _c(
-                  "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "50%" } },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticStyle: { "text-decoration": "none" },
-                        attrs: { to: { name: "catalog" } },
-                      },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            staticClass: "mx-auto",
-                            staticStyle: { width: "100%" },
-                            attrs: {
-                              rounded: "",
-                              color: "#4F53B1",
-                              dark: "",
-                              elevation: "12",
-                              large: "",
-                              outlined: "",
-                            },
-                          },
-                          [
-                            _c("span", { staticClass: "textBtn" }, [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.$t(_vm.trans_prefix + ".lincToCatalog")
-                                )
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", {
-                staticClass: "mb-5",
-                attrs: { id: "lineInHomePage" },
-              }),
-            ],
-            1
-          ),
+                        },
+                        [
+                          _c("span", { staticClass: "textBtn" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.$t(_vm.trans_prefix + ".lincToCatalog")
+                              )
+                            ),
+                          ]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-5", attrs: { id: "lineInHomePage" } }),
+          ]),
         ]
       ),
       _vm._v(" "),
@@ -539,7 +534,12 @@ var render = function () {
                     },
                     [
                       _c("img", {
-                        attrs: { height: "670pt", width: "100%", src: i.path },
+                        attrs: {
+                          alt: _vm.loading.img,
+                          height: "670pt",
+                          width: "100%",
+                          src: i.path,
+                        },
                       }),
                     ]
                   )

@@ -1,4 +1,5 @@
 <script>
+import {loading} from '../../../../constants/bg-image'
 const MAX_E = 22;
 const MIN_E = 0;
 const BG_HOVER = '#4F53B1';
@@ -9,6 +10,7 @@ export default {
     name: "ItemCard",
     data(){
         return {
+            loading,
             BG_HOVER,
             BG_LEAVE,
             MAX_E,
@@ -52,6 +54,7 @@ export default {
         :max-width="$vuetify.breakpoint.mdAndUp ? '400' : '350'"
     >
         <v-img id="img"
+               :lazy-src="loading.img"
                class="mt-0 ml-0 mr-0"
                height="200px"
                :src="item.path"

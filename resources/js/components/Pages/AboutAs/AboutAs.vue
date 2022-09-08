@@ -18,10 +18,15 @@ export default {
         shaped>
         <div class="d-flex flex-row my-2">
             <div id="lineInHomePage" class="my-auto"></div>
-            <div class="mx-auto"  :style="$vuetify.breakpoint.mdAndUp ? 'width: 37%' : 'width: 80%'">
-                <h1 v-if="$vuetify.breakpoint.mdAndUp">{{ $t(`${trans_prefix}.title`) }}</h1>
-                <h2 v-else>{{ $t(`${trans_prefix}.title`) }}</h2>
-            </div>
+                <h1 style="white-space: nowrap"
+                    v-if="$vuetify.breakpoint.mdAndUp">
+                    {{ $t(`${trans_prefix}.title`) }}
+                </h1>
+                <h2 style="white-space: nowrap"
+                    v-else>
+                    {{ $t(`${trans_prefix}.title`) }}
+                </h2>
+
             <div id="lineInHomePage" class="my-auto"></div>
         </div>
 

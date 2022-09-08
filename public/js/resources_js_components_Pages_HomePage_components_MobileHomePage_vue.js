@@ -11,7 +11,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../constants/bg-image */ "./resources/js/constants/bg-image.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -19,19 +20,21 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
 var trans_prefix = 'pages.homePage';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "MobileHomePage",
   data: function data() {
     return {
+      loading: _constants_bg_image__WEBPACK_IMPORTED_MODULE_0__.loading,
       trans_prefix: trans_prefix
     };
   },
   mounted: function mounted() {
     this.getCarouselImageAsync();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)('appStore', ['carouselImage'])),
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)('appStore', ['getCarouselImageAsync']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('appStore', ['carouselImage'])),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('appStore', ['getCarouselImageAsync']))
 });
 
 /***/ }),
@@ -122,14 +125,14 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticStyle: { width: "98%", height: "auto" } },
+    {
+      staticClass: "d-flex flex-column",
+      staticStyle: { width: "98%", height: "auto" },
+    },
     [
       _c(
         "div",
-        {
-          staticClass: "d-flex flex-row align-self-start mb-5",
-          staticStyle: { width: "100%" },
-        },
+        { staticClass: "mb-5", staticStyle: { width: "100%" } },
         [
           _c(
             "v-card",
@@ -157,7 +160,12 @@ var render = function () {
                     },
                     [
                       _c("img", {
-                        attrs: { height: "350pt", width: "100%", src: i.path },
+                        attrs: {
+                          alt: _vm.loading.img,
+                          height: "350pt",
+                          width: "100%",
+                          src: i.path,
+                        },
                       }),
                     ]
                   )
@@ -292,7 +300,8 @@ var render = function () {
               _c(
                 "div",
                 {
-                  staticClass: "d-flex flex-column justify-center text-center",
+                  staticClass: "d-flex flex-column",
+                  staticStyle: { "margin-left": "20%" },
                 },
                 [
                   _c(
@@ -396,7 +405,7 @@ var render = function () {
               _c("div", { staticClass: "d-flex flex-row my-2" }, [
                 _c(
                   "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "80%" } },
+                  { staticClass: "mx-auto", staticStyle: { width: "90%" } },
                   [
                     _c(
                       "router-link",
@@ -440,7 +449,7 @@ var render = function () {
               _c("div", { staticClass: "d-flex flex-row my-2" }, [
                 _c(
                   "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "80%" } },
+                  { staticClass: "mx-auto", staticStyle: { width: "90%" } },
                   [
                     _c(
                       "router-link",
@@ -484,7 +493,7 @@ var render = function () {
               _c("div", { staticClass: "d-flex flex-row my-2" }, [
                 _c(
                   "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "80%" } },
+                  { staticClass: "mx-auto", staticStyle: { width: "90%" } },
                   [
                     _c(
                       "router-link",
@@ -528,7 +537,7 @@ var render = function () {
               _c("div", { staticClass: "d-flex flex-row my-2" }, [
                 _c(
                   "div",
-                  { staticClass: "mx-auto", staticStyle: { width: "80%" } },
+                  { staticClass: "mx-auto", staticStyle: { width: "90%" } },
                   [
                     _c(
                       "router-link",

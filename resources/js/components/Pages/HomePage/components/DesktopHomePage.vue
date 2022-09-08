@@ -1,11 +1,12 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
-
+import {loading} from '../../../../constants/bg-image'
 const trans_prefix = 'pages.homePage';
 export default {
     name: "DesktopHomePage",
     data() {
         return {
+            loading,
             trans_prefix,
         }
     },
@@ -31,9 +32,9 @@ export default {
             "
             shaped>
             <div style="width: 100%">
-                <v-card-title class="justify-center">
+                <div class="text-center mt-2">
                     <span class="textInHomePage">{{ $t(`${trans_prefix}.title`) }}</span>
-                </v-card-title>
+                </div>
 
                 <div class="d-flex flex-row">
                     <div id="lineInHomePage" class="my-auto"></div>
@@ -176,7 +177,7 @@ export default {
                         </router-link>
                     </div>
                 </div>
-                <div id="lineInHomePage" class="mb-5"></div>
+                <div id="lineInHomePage" class="mt-5"></div>
             </div>
         </v-card>
         <div class="d-flex flex-row align-self-start ml-5" style="width: 55%;">
@@ -193,6 +194,7 @@ export default {
                         transition="fade-transition"
                     >
                         <img
+                            :alt="loading.img"
                             height="670pt"
                             width="100%"
                             :src="i.path"/>

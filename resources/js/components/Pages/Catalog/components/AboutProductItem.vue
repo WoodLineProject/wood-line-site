@@ -1,12 +1,14 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import {CheckLocaleMixin} from "../../../../mixins/check-locale-mixin";
+import {loading} from "../../../../constants/bg-image";
 import BigImageDialog from "../../../common/BigImageDialog";
 const trans_prefix = 'adminPanel.productManagement';
 export default {
     name: "AboutProductItem",
     data(){
         return {
+            loading,
             trans_prefix,
             id: null,
             classCardImg: '',
@@ -107,6 +109,7 @@ export default {
                             justify="center"
                         >
                             <v-img
+                                :lazy-src="loading.img"
                                 id="img"
                                 contain
                                 height="100%"

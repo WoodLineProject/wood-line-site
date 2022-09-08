@@ -1,11 +1,13 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
+import {loading} from '../../../../constants/bg-image'
 
 const trans_prefix = 'pages.homePage';
 export default {
     name: "MobileHomePage",
     data() {
         return {
+            loading,
             trans_prefix,
         }
     },
@@ -22,8 +24,8 @@ export default {
 </script>
 
 <template>
-    <div style="width: 98%; height: auto;">
-        <div class="d-flex flex-row align-self-start mb-5" style="width: 100%;">
+    <div style="width: 98%; height: auto;" class="d-flex flex-column">
+        <div class="mb-5" style="width: 100%;">
             <v-card shaped>
                 <v-carousel
                     :continuous="true"
@@ -37,6 +39,7 @@ export default {
                         transition="fade-transition"
                     >
                         <img
+                            :alt="loading.img"
                             height="350pt"
                             width="100%"
                             :src="i.path"/>
@@ -82,7 +85,7 @@ export default {
                     <span class="textInHomePage">{{ $t(`${trans_prefix}.title4`) }}</span>
                 </div>
 
-                <div class="d-flex flex-column justify-center text-center">
+                <div class="d-flex flex-column" style="margin-left: 20%">
                     <div class="mx-auto my-3" id="check_list">
                         <v-icon
                             size="75"
@@ -110,7 +113,6 @@ export default {
                         </v-icon>
                         <span class="textInIcons">{{ $t(`${trans_prefix}.sofa`) }}</span>
                     </div>
-
                     <div class="mx-auto my-3" id="check_list">
                         <v-icon
                             size="75"
@@ -123,7 +125,7 @@ export default {
                 </div>
 
                 <div class="d-flex flex-row my-2">
-                    <div class="mx-auto" style="width: 80%">
+                    <div class="mx-auto" style="width: 90%">
                         <router-link style="text-decoration: none;" :to="{ name: 'upholstery'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
@@ -139,7 +141,7 @@ export default {
                     </div>
                 </div>
                 <div class="d-flex flex-row my-2">
-                    <div class="mx-auto" style="width: 80%">
+                    <div class="mx-auto" style="width: 90%">
                         <router-link style="text-decoration: none;" :to="{ name: 'wholesaleCustomers'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
@@ -155,7 +157,7 @@ export default {
                     </div>
                 </div>
                 <div class="d-flex flex-row my-2">
-                    <div class="mx-auto" style="width: 80%">
+                    <div class="mx-auto" style="width: 90%">
                         <router-link style="text-decoration: none;" :to="{ name: 'aboutAs'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
@@ -171,7 +173,7 @@ export default {
                     </div>
                 </div>
                 <div class="d-flex flex-row my-2">
-                    <div class="mx-auto" style="width: 80%">
+                    <div class="mx-auto" style="width: 90%">
                         <router-link style="text-decoration: none;" :to="{ name: 'catalog'}">
                             <v-btn class="mx-auto" style="width: 100%"
                                    rounded
