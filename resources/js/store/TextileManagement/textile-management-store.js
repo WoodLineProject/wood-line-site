@@ -100,7 +100,7 @@ const actions = {
             });
     },
     deletePhotoAsync: async ({commit},payload) => {
-        return await axios.post('/delete-photo', payload)
+        return await axios.post('/delete-photo-textile', payload)
             .then(({data}) => {
                 return data.status
             })

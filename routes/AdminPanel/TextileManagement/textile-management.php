@@ -45,5 +45,5 @@ Route::group(['middleware' => [
 
         Route::post('/delete-textile-item',  [TextileManagementController::class, 'deleteTextileItem']);
 
-        Route::post('/delete-photo',  [TextileManagementController::class, 'deletePhoto']);
+        Route::post('/delete-photo-textile',  [TextileManagementController::class, 'deletePhoto']);
     });

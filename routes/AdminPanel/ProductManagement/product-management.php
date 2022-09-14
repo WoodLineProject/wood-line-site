@@ -45,5 +45,5 @@ Route::group(['middleware' => [
 
         Route::post('/delete-product-item',  [ProductManagementController::class, 'deleteProductItem']);
 
-        Route::post('/delete-photo',  [ProductManagementController::class, 'deletePhoto']);
+        Route::post('/delete-photo-product',  [ProductManagementController::class, 'deletePhoto']);
     });
