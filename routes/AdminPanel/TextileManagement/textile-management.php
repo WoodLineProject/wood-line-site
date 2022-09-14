@@ -27,7 +27,7 @@ Route::group(['middleware' => [
         Route::post('/edit-textile-item',  [TextileManagementController::class, 'editTextileItem']);
 
         Route::post('/get-textile-photo-by-id',  [TextileManagementController::class, 'getPhotoById']);
-        Route::post('/upload-photo',  [TextileManagementController::class, 'uploadPhoto']);
+        Route::post('/upload-photo-textile',  [TextileManagementController::class, 'uploadPhoto']);
     });
 
 Route::group(['middleware' => [

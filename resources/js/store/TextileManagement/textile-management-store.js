@@ -106,7 +106,7 @@ const actions = {
             })
     },
     uploadPhotoAsync: async ({commit},payload) => {
-        return await axios.post('/upload-photo', payload)
+        return await axios.post('/upload-photo-textile', payload)
             .then(({data}) => {
                 return data.status
             })

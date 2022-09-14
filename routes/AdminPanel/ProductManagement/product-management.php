@@ -27,7 +27,7 @@ Route::group(['middleware' => [
         Route::post('/edit-product-item',  [ProductManagementController::class, 'editProductItem']);
 
         Route::post('/get-product-photo-by-id',  [ProductManagementController::class, 'getPhotoById']);
-        Route::post('/upload-photo',  [ProductManagementController::class, 'uploadPhoto']);
+        Route::post('/upload-photo-product',  [ProductManagementController::class, 'uploadPhoto']);
     });
 
 Route::group(['middleware' => [
