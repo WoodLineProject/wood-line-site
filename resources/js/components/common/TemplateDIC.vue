@@ -91,17 +91,21 @@ export default {
                         name_ukr: this.selectedNameUkr,
                         name_rus: this.selectedNameRus,
                     }).then(result => {
-                        this.updateSelectedArrayFunc()
-                        this.alert(result)
+                        this.updateSelectedArrayFunc().then(() =>{
+                            this.getItemsCatalog()
+                        })
                         this.changeNameField()
+                        this.alert(result)
                     })
                 : this.editFunc({
                         id: this.selectedId,
                         name_ukr: this.selectedNameUkr,
                         name_rus: this.selectedNameRus,
                     }).then(result => {
+                        this.updateSelectedArrayFunc().then(() =>{
+                            this.getItemsCatalog()
+                        })
                         this.alert(result)
-                        this.updateSelectedArrayFunc()
                     });
 
         },

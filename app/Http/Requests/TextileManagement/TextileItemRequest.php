@@ -16,7 +16,7 @@ class TextileItemRequest extends FormRequest
                 'required',
                 'int',
                 'min:1',
-                "exists:" . Dic_textile_color::class . ",id",
+                "exists:" . Dic_textile_type::class . ",id",
             ],
             'maker_id' => [
                 'required',

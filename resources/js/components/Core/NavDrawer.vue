@@ -74,7 +74,6 @@ export default {
                         v-show="item.show"
                         :key="key"
                         :to="item.to"
-
                     >
                         <v-list-item-icon>
                             <v-icon>{{item.icon}}</v-icon>

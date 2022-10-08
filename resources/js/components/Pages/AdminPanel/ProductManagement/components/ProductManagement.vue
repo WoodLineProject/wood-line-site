@@ -171,6 +171,11 @@ export default {
             <template v-slot:item.is_angular="{ item }">
                 <v-checkbox disabled v-model="!!item.is_angular"/>
             </template>
+            <template v-slot:item.description="{ item }">
+                <div style="width: 100px;">
+                    {{item.description}}
+                </div>
+            </template>
             <template v-slot:header.action="{ props }">
                 <product-form-dialog v-if="$vuetify.breakpoint.mdAndUp"
                                      v-bind:title="$t(`app.add`)"

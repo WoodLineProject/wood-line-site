@@ -66,7 +66,7 @@ export default {
     </v-card>
 </template>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 #img {
     background-size: cover;
     background-repeat:no-repeat;
@@ -75,7 +75,7 @@ export default {
     height: 100%;
 }
 #HeaderCardProduct {
-    font-family: 'Rubik Moonrocks', cursive;
+    font-family: 'Yeseva One', cursive;
     word-spacing: 3px;
     font-size: 15pt;
 }
