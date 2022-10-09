@@ -193,3 +193,10 @@ export default {
         </v-card>
     </div>
 </template>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+#projectNameHomePage{
+    font-family: 'Dancing Script', cursive;
+    font-size: 35pt;
+}
+</style>
