@@ -59,7 +59,7 @@ export default {
                 <div class="d-flex flex-row">
                     <div id="lineInHomePage" class="my-auto"></div>
                     <v-card-title class="text-center">
-                        <span id="projectName" class="textInHomePage">{{ $t(`projectName`) }}</span>
+                        <span id="projectNameHomePage" class="textInHomePage">{{ $t(`projectName`) }}</span>
                     </v-card-title>
                     <div id="lineInHomePage" class="my-auto"></div>
                 </div>
